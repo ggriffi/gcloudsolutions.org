@@ -69,6 +69,19 @@
       color: var(--fg)
     }
 
+    .brand strong {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand strong::after {
+      content: "Cloud Solutions";
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
     .logo {
       width: 48px;
       height: 48px;
@@ -243,7 +256,7 @@
     <header>
       <a class="brand" href="#home" aria-label="G Cloud Solutions">
         <img src="assets/logo-glow.png" alt="G Cloud Solutions logo" class="logo" />
-        <strong>G Cloud Solutions</strong>
+        <strong>G</strong>
       </a>
       <nav class="nav">
         <a href="#services">Services</a>
