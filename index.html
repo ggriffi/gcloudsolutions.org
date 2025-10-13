@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>G Cloud Solutions — Networking • Automation • PC Builds</title>
-  <meta name="description" content="G Cloud Solutions: enterprise‑grade networking, smart‑home automation, and custom PC builds. Experienced engineer delivering secure, fast, and reliable setups for home and small business." />
+  <meta name="description"
+    content="G Cloud Solutions: enterprise‑grade networking, smart‑home automation, and custom PC builds. Experienced engineer delivering secure, fast, and reliable setups for home and small business." />
   <!-- Open Graph -->
   <meta property="og:title" content="G Cloud Solutions — Networking • Automation • PC Builds" />
-  <meta property="og:description" content="Enterprise‑grade networking, Home Assistant automations, Cloudflare tunnels, Proxmox homelab, and custom PCs." />
+  <meta property="og:description"
+    content="Enterprise‑grade networking, Home Assistant automations, Cloudflare tunnels, Proxmox homelab, and custom PCs." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og-image.png" />
   <meta property="og:url" content="https://gcloudsolutions.org" />
@@ -19,54 +22,221 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" />
   <style>
-    :root{
+    :root {
       --bg: #0b1020;
       --fg: #eaf3ff;
-      --muted:#94a3b8;
-      --primary:#14b8a6; /* teal */
-      --accent:#3b82f6;  /* blue */
-      --card:#0f172a;
-      --border:rgba(255,255,255,.08);
-      --glow: 0 0 40px rgba(20,184,166,.25), 0 0 80px rgba(59,130,246,.15);
+      --muted: #94a3b8;
+      --primary: #14b8a6;
+      /* teal */
+      --accent: #3b82f6;
+      /* blue */
+      --card: #0f172a;
+      --border: rgba(255, 255, 255, .08);
+      --glow: 0 0 40px rgba(20, 184, 166, .25), 0 0 80px rgba(59, 130, 246, .15);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Avenir, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color:var(--fg); background: radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,.25), transparent 60%), radial-gradient(900px 600px at -10% 10%, rgba(20,184,166,.25), transparent 60%), var(--bg);
-      line-height:1.6;
-    }
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 0}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
-    .logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--primary));box-shadow:var(--glow)}
-    .nav{display:flex;gap:18px}
-    .nav a{color:var(--muted);text-decoration:none;font-weight:600}
-    .nav a:hover{color:var(--fg)}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:56px 0}
-    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);backdrop-filter:blur(6px)}
-    h1{font-size:clamp(2.2rem,3.6vw,3.4rem);line-height:1.1;margin:14px 0 10px}
-    .lead{font-size:clamp(1rem,1.2vw,1.15rem);color:#c8d3e0;max-width:720px}
-    .cta{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
-    .btn{appearance:none;border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--accent));color:white;box-shadow:var(--glow)}
-    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--fg)}
-    .card{background:rgba(15,23,42,.6); border:1px solid var(--border); border-radius:16px; padding:18px}
-    .grid{display:grid;gap:16px}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
-    .grid-2{grid-template-columns:repeat(2,1fr)}
-    .pill{display:inline-flex;gap:6px;align-items:center;background:rgba(20,184,166,.12);color:#b8fff2;padding:6px 10px;border-radius:999px;border:1px solid rgba(20,184,166,.25)}
-    .muted{color:var(--muted)}
-    .right-graphic{aspect-ratio:4/3;border-radius:18px;background: radial-gradient(600px 300px at 70% -10%, rgba(59,130,246,.35), transparent 60%), linear-gradient(135deg, rgba(59,130,246,.18), rgba(20,184,166,.18)), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22 viewBox=%220 0 800 600%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop stop-color=%22%2327c3b7%22/><stop offset=%221%22 stop-color=%22%23408bfd%22/></linearGradient></defs><g fill=%22none%22 stroke=%22url(%23g)%22 stroke-opacity=%22.6%22><circle cx=%22400%22 cy=%22300%22 r=%22220%22/><circle cx=%22400%22 cy=%22300%22 r=%22280%22/><circle cx=%22400%22 cy=%22300%22 r=%22340%22/></g></svg>'); background-size:cover; border:1px solid var(--border); box-shadow:var(--glow)}
-    section{padding:36px 0}
-    footer{border-top:1px solid var(--border);margin-top:36px;padding:28px 0;color:var(--muted)}
-    .contact{display:flex;flex-wrap:wrap;gap:12px}
-    .tiny{font-size:.9rem}
 
-    @media (max-width: 880px){
-      .hero{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:1fr}
-      .grid-2{grid-template-columns:1fr}
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Avenir, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--fg);
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(59, 130, 246, .25), transparent 60%), radial-gradient(900px 600px at -10% 10%, rgba(20, 184, 166, .25), transparent 60%), var(--bg);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 8px 0
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--fg)
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      box-shadow: var(--glow)
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px
+    }
+
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600
+    }
+
+    .nav a:hover {
+      color: var(--fg)
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 56px 0
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      backdrop-filter: blur(6px)
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+      line-height: 1.1;
+      margin: 14px 0 10px
+    }
+
+    .lead {
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      color: #c8d3e0;
+      max-width: 720px
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      box-shadow: var(--glow)
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--fg)
+    }
+
+    .card {
+      background: rgba(15, 23, 42, .6);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr)
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr)
+    }
+
+    .pill {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      background: rgba(20, 184, 166, .12);
+      color: #b8fff2;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(20, 184, 166, .25)
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .right-graphic {
+      aspect-ratio: 4/3;
+      border-radius: 18px;
+      background: radial-gradient(600px 300px at 70% -10%, rgba(59, 130, 246, .35), transparent 60%), linear-gradient(135deg, rgba(59, 130, 246, .18), rgba(20, 184, 166, .18)), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22 viewBox=%220 0 800 600%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop stop-color=%22%2327c3b7%22/><stop offset=%221%22 stop-color=%22%23408bfd%22/></linearGradient></defs><g fill=%22none%22 stroke=%22url(%23g)%22 stroke-opacity=%22.6%22><circle cx=%22400%22 cy=%22300%22 r=%22220%22/><circle cx=%22400%22 cy=%22300%22 r=%22280%22/><circle cx=%22400%22 cy=%22300%22 r=%22340%22/></g></svg>');
+      background-size: cover;
+      border: 1px solid var(--border);
+      box-shadow: var(--glow)
+    }
+
+    section {
+      padding: 36px 0
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 36px;
+      padding: 28px 0;
+      color: var(--muted)
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    .tiny {
+      font-size: .9rem
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr
+      }
     }
   </style>
   <script type="application/ld+json">
@@ -84,11 +254,12 @@
   }
   </script>
 </head>
+
 <body>
   <div class="container">
     <header>
       <a class="brand" href="#home" aria-label="G Cloud Solutions">
-        <div class="logo" aria-hidden="true"></div>
+        <img src="assets/logo-glow.png" alt="G Cloud Solutions logo" class="logo" />
         <strong>G Cloud Solutions</strong>
       </a>
       <nav class="nav">
@@ -103,12 +274,16 @@
         <div>
           <span class="badge">Enterprise‑grade, homelab speed ⚡</span>
           <h1>Secure, fast networks & smart automations that just work.</h1>
-          <p class="lead">I design and optimize networks, build Home Assistant automations, deploy Proxmox servers, and craft custom PCs. Get the reliability of an enterprise stack with the care of a personal engineer.</p>
+          <p class="lead">I design and optimize networks, build Home Assistant automations, deploy Proxmox servers, and
+            craft custom PCs. Get the reliability of an enterprise stack with the care of a personal engineer.</p>
           <div class="cta">
-            <a class="btn btn-primary" href="mailto:ggriffith@gcloudsolutions.org?subject=Project%20inquiry%20from%20website">Start a project</a>
-            <a class="btn btn-ghost" href="https://www.fiverr.com/ggriffith85" target="_blank" rel="noopener">View Fiverr profile</a>
+            <a class="btn btn-primary"
+              href="mailto:ggriffith@gcloudsolutions.org?subject=Project%20inquiry%20from%20website">Start a project</a>
+            <a class="btn btn-ghost" href="https://www.fiverr.com/ggriffith85" target="_blank" rel="noopener">View
+              Fiverr profile</a>
           </div>
-          <div style="margin-top:16px" class="tiny muted">Response time ~24h • Located in the US • Remote or on‑site (by arrangement)</div>
+          <div style="margin-top:16px" class="tiny muted">Response time ~24h • Located in the US • Remote or on‑site (by
+            arrangement)</div>
         </div>
         <div class="right-graphic card" aria-hidden="true"></div>
       </div>
@@ -118,33 +293,41 @@
           <div class="card">
             <div class="pill">Networking</div>
             <h3>Firewall, VLANs, Wi‑Fi</h3>
-            <p class="muted">UniFi, ASUS & FortiGate tuning, site‑to‑site VPN, QoS, DNS filtering (Pi‑hole/AdGuard), Cloudflare tunnels, remote access hardening.</p>
+            <p class="muted">UniFi, ASUS & FortiGate tuning, site‑to‑site VPN, QoS, DNS filtering (Pi‑hole/AdGuard),
+              Cloudflare tunnels, remote access hardening.</p>
           </div>
           <div class="card">
             <div class="pill">Automation</div>
             <h3>Home Assistant & Dashboards</h3>
-            <p class="muted">Matter/Thread devices, Node‑RED flows, sunrise lighting, presence, Grafana metrics, secure multi‑VLAN device control.</p>
+            <p class="muted">Matter/Thread devices, Node‑RED flows, sunrise lighting, presence, Grafana metrics, secure
+              multi‑VLAN device control.</p>
           </div>
           <div class="card">
             <div class="pill">Compute</div>
             <h3>Proxmox & Custom PCs</h3>
-            <p class="muted">Homelab hosts, Windows/Linux VMs & containers, NAS planning, and quiet, power‑efficient PC builds.</p>
+            <p class="muted">Homelab hosts, Windows/Linux VMs & containers, NAS planning, and quiet, power‑efficient PC
+              builds.</p>
           </div>
         </div>
       </section>
 
       <section id="about" class="card">
         <h2>About</h2>
-        <p>Hi, I’m <strong>Geoffrey Griffith</strong>, a seasoned network engineer with 10+ years across enterprise and homelab environments. I focus on clean designs, security‑first practices, and documentation you can maintain.</p>
+        <p>Hi, I’m <strong>Geoffrey Griffith</strong>, a seasoned network engineer with 10+ years across enterprise and
+          homelab environments. I focus on clean designs, security‑first practices, and documentation you can maintain.
+        </p>
       </section>
 
       <section id="contact">
         <div class="card">
           <h2>Let’s talk</h2>
-          <p class="muted">Tell me about your goals—new build, network clean‑up, or automation wish‑list—and I’ll map a clear plan with options and pricing.</p>
+          <p class="muted">Tell me about your goals—new build, network clean‑up, or automation wish‑list—and I’ll map a
+            clear plan with options and pricing.</p>
           <div class="contact">
-            <a class="btn btn-primary" href="mailto:ggriffith@gcloudsolutions.org?subject=Project%20inquiry%20from%20website">Email Geoffrey</a>
-            <a class="btn btn-ghost" href="https://www.fiverr.com/ggriffith85" target="_blank" rel="noopener">Fiverr Profile</a>
+            <a class="btn btn-primary"
+              href="mailto:ggriffith@gcloudsolutions.org?subject=Project%20inquiry%20from%20website">Email Geoffrey</a>
+            <a class="btn btn-ghost" href="https://www.fiverr.com/ggriffith85" target="_blank" rel="noopener">Fiverr
+              Profile</a>
           </div>
         </div>
       </section>
@@ -159,4 +342,5 @@
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <!-- Optional: Paste your analytics script here (e.g., Plausible or GA). -->
 </body>
+
 </html>
