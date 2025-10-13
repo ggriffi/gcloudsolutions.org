@@ -113,6 +113,15 @@
       padding: 56px 0
     }
 
+    .hero-logo {
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+      display: block;
+      filter: drop-shadow(0 0 40px rgba(20, 184, 166, 0.5)) drop-shadow(0 0 80px rgba(59, 130, 246, 0.4));
+      border-radius: 20px;
+    }
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -204,12 +213,12 @@
     }
 
     .right-graphic {
-      aspect-ratio: 4/3;
-      border-radius: 18px;
-      background: radial-gradient(600px 300px at 70% -10%, rgba(59, 130, 246, .35), transparent 60%), linear-gradient(135deg, rgba(59, 130, 246, .18), rgba(20, 184, 166, .18)), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22 viewBox=%220 0 800 600%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop stop-color=%22%2327c3b7%22/><stop offset=%221%22 stop-color=%22%23408bfd%22/></linearGradient></defs><g fill=%22none%22 stroke=%22url(%23g)%22 stroke-opacity=%22.6%22><circle cx=%22400%22 cy=%22300%22 r=%22220%22/><circle cx=%22400%22 cy=%22300%22 r=%22280%22/><circle cx=%22400%22 cy=%22300%22 r=%22340%22/></g></svg>');
-      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(600px 300px at 70% -10%, rgba(59, 130, 246, .2), transparent 60%);
       border: 1px solid var(--border);
-      box-shadow: var(--glow)
+      box-shadow: var(--glow);
     }
 
     section {
@@ -281,7 +290,9 @@
           <div style="margin-top:16px" class="tiny muted">Response time ~24h • Located in the US • Remote or on‑site (by
             arrangement)</div>
         </div>
-        <div class="right-graphic card" aria-hidden="true"></div>
+        <div class="right-graphic card" aria-hidden="false">
+          <img src="assets/logo-glow.png" alt="G Cloud Solutions glowing logo" class="hero-logo">
+        </div>
       </div>
 
       <section id="services">
