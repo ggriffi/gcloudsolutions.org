@@ -4,20 +4,22 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>G Cloud Solutions — Cloud & Network Consulting (KC Metro)</title>
+    <title>G Cloud Solutions | UniFi & VLANs, Home Assistant, Proxmox, PC Builds — Kansas City & Leavenworth</title>
     <link rel="canonical" href="https://gcloudsolutions.org/" />
 
-    <!-- Open Graph / Twitter -->
+    <!-- Meta / Social -->
+    <meta name="description"
+        content="G Cloud Solutions helps homes & small businesses in Kansas City & Leavenworth with UniFi/VLAN design, Wi‑Fi tune‑ups, Home Assistant automations, Proxmox homelabs, and custom PC builds. Free 30‑min consult." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://gcloudsolutions.org/" />
-    <meta property="og:title" content="G Cloud Solutions — Cloud & Network Consulting (KC Metro)" />
+    <meta property="og:title" content="G Cloud Solutions — Networking, Home Assistant & Homelab (KC Metro)" />
     <meta property="og:description"
-        content="UniFi/VLAN design, Home Assistant, Proxmox, AdGuard, and PC builds. Free 30‑min consult. $25 Wi‑Fi tune‑up promo." />
+        content="UniFi/VLAN design • $25 Wi‑Fi tune‑up • Home Assistant • Proxmox • PC builds. Serving Kansas City & Leavenworth. Free 30‑minute consultation." />
     <meta property="og:image" content="/assets/og-card.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="G Cloud Solutions — Cloud & Network Consulting (KC Metro)" />
+    <meta name="twitter:title" content="G Cloud Solutions — Networking, Home Assistant & Homelab (KC Metro)" />
     <meta name="twitter:description"
-        content="UniFi/VLAN design, Home Assistant, Proxmox, AdGuard, and PC builds. Free 30‑min consult. $25 Wi‑Fi tune‑up promo." />
+        content="UniFi/VLAN design • $25 Wi‑Fi tune‑up • Home Assistant • Proxmox • PC builds. Serving Kansas City & Leavenworth. Free 30‑minute consultation." />
     <meta name="twitter:image" content="/assets/og-card.jpg" />
 
     <!-- Security / privacy hints -->
@@ -28,11 +30,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    <!-- Fonts (self-host recommended). This demo uses system font stack for speed. -->
-
-    <!-- Critical CSS (inline). Keep lean for fast LCP) -->
+    <!-- Critical CSS (inline). Keep lean for fast LCP -->
     <style>
-        /* Base */
         html {
             box-sizing: border-box;
             scroll-behavior: smooth
@@ -84,7 +83,6 @@
             white-space: nowrap
         }
 
-        /* Header */
         header {
             position: sticky;
             top: 0;
@@ -109,7 +107,7 @@
             font-weight: 800
         }
 
-        .logo svg {
+        .logo img {
             width: 28px;
             height: 28px
         }
@@ -139,7 +137,6 @@
             border-color: #dde4ee
         }
 
-        /* Hero */
         .hero {
             display: grid;
             place-items: center;
@@ -190,7 +187,6 @@
             border-radius: 16px
         }
 
-        /* Sections */
         section {
             padding: 56px 0;
             border-top: 1px solid #f2f6fb
@@ -217,13 +213,11 @@
             color: var(--muted)
         }
 
-        /* Testimonials */
         .quote {
             font-size: 18px;
             line-height: 1.5
         }
 
-        /* Footer */
         footer {
             padding: 32px 0;
             background: #f8fafc;
@@ -231,7 +225,6 @@
             color: #334155
         }
 
-        /* Responsive */
         @media (max-width:900px) {
             .grid {
                 grid-template-columns: 1fr 1fr
@@ -253,18 +246,18 @@
         }
     </style>
 
-    <!-- Main CSS (optional external). This file is small; defer heavy CSS/JS. -->
+    <!-- Optional external CSS (kept non‑blocking) -->
     <link rel="preload" as="style" href="/assets/app.min.css" />
     <link rel="stylesheet" href="/assets/app.min.css" media="print" onload="this.media='all'" />
     <noscript>
         <link rel="stylesheet" href="/assets/app.min.css" />
     </noscript>
 
-    <!-- LCP image preload (replace with your real path); keep dimensions/aspect to avoid CLS -->
+    <!-- LCP image preload (swap path if needed) -->
     <link rel="preload" as="image" href="/assets/hero.avif" imagesrcset="/assets/hero.avif 1x, /assets/hero@2x.avif 2x"
         fetchpriority="high" />
 
-    <!-- JSON-LD: Organization + Website + Service -->
+    <!-- JSON-LD: Organization + Website + Service (GBP‑consistent) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -272,16 +265,9 @@
       "name": "G Cloud Solutions",
       "url": "https://gcloudsolutions.org/",
       "logo": "https://gcloudsolutions.org/assets/logo.svg",
-      "sameAs": [
-        "https://www.facebook.com/",
-        "https://www.linkedin.com/"
-      ],
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "areaServed": "US",
-        "availableLanguage": "English"
-      }]
+      "email": "ggriffith@gcloudsolutions.org",
+      "areaServed": "Kansas City Metro, Leavenworth, US",
+      "sameAs": []
     }
   </script>
     <script type="application/ld+json">
@@ -289,6 +275,7 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "url": "https://gcloudsolutions.org/",
+      "name": "G Cloud Solutions",
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://gcloudsolutions.org/?s={search_term_string}",
@@ -300,21 +287,20 @@
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "serviceType": "Cloud & Network Consulting",
+      "serviceType": "Networking, Home Automation & Homelab",
       "provider": {"@type":"Organization","name":"G Cloud Solutions"},
-      "areaServed": "Kansas City Metro, US",
-      "description": "UniFi/VLAN design, Home Assistant, AdGuard, Proxmox, PC building and on-site Wi‑Fi tuning.",
+      "areaServed": "Kansas City Metro & Leavenworth, US",
+      "description": "UniFi/VLAN design, $25 Wi‑Fi tune‑ups, Home Assistant automations, Proxmox homelabs, and custom PC builds.",
       "offers": {"@type":"Offer","price":"25.00","priceCurrency":"USD","description":"$25 Wi‑Fi tune‑up special; free 30‑min consultation."}
     }
   </script>
 
-    <!-- Defer non-critical scripts -->
     <script defer>
-        // Minimal JS: mobile nav toggle & smooth scroll helpers
         document.addEventListener('DOMContentLoaded', () => {
             const btn = document.querySelector('#menuButton');
             const menu = document.querySelector('#mobileMenu');
             if (btn && menu) { btn.addEventListener('click', () => menu.toggleAttribute('hidden')); }
+            document.getElementById('year').textContent = new Date().getFullYear();
         });
     </script>
 </head>
@@ -325,16 +311,7 @@
     <header>
         <div class="container bar">
             <a class="logo" href="#" aria-label="G Cloud Solutions home">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <defs>
-                        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                            <stop stop-color="#0ea5e9" />
-                            <stop offset="1" stop-color="#22c55e" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M4 12a8 8 0 1 1 8 8" stroke="url(#g)" stroke-width="2" />
-                    <path d="M7 12h6v4" stroke="#0ea5e9" stroke-width="2" />
-                </svg>
+                <img src="/assets/logo.svg" width="28" height="28" alt="G Cloud Solutions logo" />
                 <span>G Cloud Solutions</span>
             </a>
             <nav aria-label="primary">
@@ -342,7 +319,7 @@
                 <a href="#work">Work</a>
                 <a href="#testimonials">Testimonials</a>
                 <a href="#contact" class="btn ghost">Contact</a>
-                <a href="#book" class="btn primary">Free 30‑min Consult</a>
+                <a href="#contact" class="btn primary">Free 30‑min Consult</a>
             </nav>
             <button id="menuButton" class="btn ghost" aria-controls="mobileMenu" aria-expanded="false">Menu</button>
         </div>
@@ -351,19 +328,19 @@
             <p><a href="#work">Work</a></p>
             <p><a href="#testimonials">Testimonials</a></p>
             <p><a class="btn ghost" href="#contact">Contact</a></p>
-            <p><a class="btn primary" href="#book">Free 30‑min Consult</a></p>
+            <p><a class="btn primary" href="#contact">Free 30‑min Consult</a></p>
         </div>
     </header>
 
     <main id="main">
-        <!-- Hero -->
         <section class="hero" id="home">
             <div class="container wrap">
-                <h1>Cloud & Network Consulting for Homes and Small Business</h1>
-                <p class="lead">UniFi/VLAN design, Home Assistant automation, AdGuard DNS filtering, Proxmox homelabs,
-                    and custom PC builds — done right and documented. Serving the Kansas City metro & remote.</p>
+                <h1>Networking, Automations & Homelabs — Done Right</h1>
+                <p class="lead">UniFi/UDR networks with clean VLANs, reliable Wi‑Fi, Home Assistant dashboards &
+                    routines, Proxmox homelabs, and custom PC builds. Serving Kansas City & Leavenworth • Remote
+                    nationwide.</p>
                 <div class="ctas">
-                    <a class="btn primary" id="book" href="#contact">Book your free 30‑minute consult</a>
+                    <a class="btn primary" href="#contact">Book your free 30‑minute consult</a>
                     <a class="btn ghost" href="#wifi">$25 Wi‑Fi Tune‑Up →</a>
                 </div>
                 <div class="badges" aria-label="Highlights">
@@ -376,7 +353,6 @@
             </div>
         </section>
 
-        <!-- Services -->
         <section id="services">
             <div class="container">
                 <h2>Services</h2>
@@ -389,18 +365,18 @@
                     </article>
                     <article class="card" role="listitem">
                         <h3>Home Assistant & Automations</h3>
-                        <p class="muted">Dashboard setup, Node‑RED flows, sunrise lighting, temperature automations,
+                        <p class="muted">Dashboards, Node‑RED flows, sunrise lighting, temperature automations,
                             Matter/BLE pairing, and backups.</p>
                     </article>
                     <article class="card" role="listitem">
                         <h3>Homelab & Virtualization</h3>
                         <p class="muted">Proxmox installs, 4–6 VM blueprints, NAS layouts, monitoring with
-                            Prometheus/Grafana, and remote access hardening.</p>
+                            Grafana/Prometheus, and secure remote access.</p>
                     </article>
                     <article class="card" role="listitem">
                         <h3>PC Builds</h3>
-                        <p class="muted">Budget to high‑performance builds; component sourcing, assembly,
-                            cable‑management, burn‑in, and Windows/Linux setup.</p>
+                        <p class="muted">Budget to performance builds; sourcing, assembly, cable‑management, burn‑in,
+                            and OS setup.</p>
                     </article>
                     <article class="card" role="listitem">
                         <h3>Security & DNS</h3>
@@ -409,14 +385,12 @@
                     </article>
                     <article class="card" role="listitem">
                         <h3>Support & Documentation</h3>
-                        <p class="muted">Step‑by‑step runbooks, network maps, and handoff docs so you’re never stuck.
-                        </p>
+                        <p class="muted">Runbooks, network maps, and handoff docs so you’re never stuck.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- Work / Case study teasers -->
         <section id="work">
             <div class="container">
                 <h2>Recent Work</h2>
@@ -440,7 +414,6 @@
             </div>
         </section>
 
-        <!-- Testimonials -->
         <section id="testimonials">
             <div class="container">
                 <h2>What Clients Say</h2>
@@ -464,11 +437,10 @@
             </div>
         </section>
 
-        <!-- Contact -->
         <section id="contact">
             <div class="container">
                 <h2>Contact</h2>
-                <p class="muted">Based in the Kansas City metro. Remote friendly.</p>
+                <p class="muted">Based in the Kansas City metro (Leavenworth). Remote friendly.</p>
                 <div class="grid">
                     <form class="card" method="post" action="mailto:ggriffith@gcloudsolutions.org" enctype="text/plain">
                         <label for="name">Name</label>
@@ -490,7 +462,7 @@
                             the call.</p>
                         <ul>
                             <li>UniFi & VLAN health check</li>
-                            <li>Home Assistant ideas & integrations</li>
+                            <li>Home Assistant integrations</li>
                             <li>Homelab sizing (NAS/Proxmox) & parts list</li>
                         </ul>
                         <p><a class="btn ghost"
@@ -504,15 +476,10 @@
 
     <footer>
         <div class="container">
-            <p><strong>G Cloud Solutions</strong> — Cloud & Network Consulting</p>
-            <p class="muted">© <span id="year"></span> G Cloud Solutions • Kansas City, USA</p>
+            <p><strong>G Cloud Solutions</strong> — Networking, Home Assistant & Homelab</p>
+            <p class="muted">© <span id="year"></span> G Cloud Solutions • Kansas City & Leavenworth, USA</p>
         </div>
     </footer>
-
-    <script defer>
-        // Lazy-load any non-critical images (add loading="lazy" if you add more images)
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
 </body>
 
 </html>
