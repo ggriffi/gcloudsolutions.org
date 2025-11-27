@@ -1,485 +1,986 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <title>G Cloud Solutions — Network & Cybersecurity</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>G Cloud Solutions | UniFi & VLANs, Home Assistant, Proxmox, PC Builds — Kansas City & Leavenworth</title>
-    <link rel="canonical" href="https://gcloudsolutions.org/" />
-
-    <!-- Meta / Social -->
-    <meta name="description"
-        content="G Cloud Solutions helps homes & small businesses in Kansas City & Leavenworth with UniFi/VLAN design, Wi‑Fi tune‑ups, Home Assistant automations, Proxmox homelabs, and custom PC builds. Free 30‑min consult." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://gcloudsolutions.org/" />
-    <meta property="og:title" content="G Cloud Solutions — Networking, Home Assistant & Homelab (KC Metro)" />
-    <meta property="og:description"
-        content="UniFi/VLAN design • $25 Wi‑Fi tune‑up • Home Assistant • Proxmox • PC builds. Serving Kansas City & Leavenworth. Free 30‑minute consultation." />
-    <meta property="og:image" content="/assets/og-card.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="G Cloud Solutions — Networking, Home Assistant & Homelab (KC Metro)" />
-    <meta name="twitter:description"
-        content="UniFi/VLAN design • $25 Wi‑Fi tune‑up • Home Assistant • Proxmox • PC builds. Serving Kansas City & Leavenworth. Free 30‑minute consultation." />
-    <meta name="twitter:image" content="/assets/og-card.jpg" />
-
-    <!-- Security / privacy hints -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-
-    <!-- Preconnects (adjust/remove if unused) -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-    <!-- Critical CSS (inline). Keep lean for fast LCP -->
     <style>
-        html {
-            box-sizing: border-box;
-            scroll-behavior: smooth
+        :root {
+            --bg: #05070b;
+            --bg-alt: #0c1018;
+            --card: #111725;
+            --accent: #24e38a;
+            --accent-soft: rgba(36, 227, 138, 0.15);
+            --text: #f7fafc;
+            --muted: #a0aec0;
+            --danger: #f56565;
+            --border: #2d3748;
+            --radius-lg: 18px;
+            --radius-sm: 10px;
+            --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
+            --shadow-card: 0 14px 30px rgba(0, 0, 0, 0.45);
+            --max-width: 1080px;
         }
 
-        *,
-        *:before,
-        *:after {
-            box-sizing: inherit
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
-            color: #0b1220;
-            background: #ffffff
-        }
-
-        img {
-            max-width: 100%;
-            height: auto
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #10182b 0, #05070b 45%, #020308 100%);
+            color: var(--text);
+            line-height: 1.6;
         }
 
         a {
-            color: inherit
+            color: inherit;
+            text-decoration: none;
         }
 
-        :root {
-            --c1: #0ea5e9;
-            --c2: #22c55e;
-            --ink: #0b1220;
-            --muted: #5b6777;
-            --bg: #ffffff;
-            --max: 1180px
-        }
-
-        .container {
-            max-width: var(--max);
-            margin: 0 auto;
-            padding: 0 16px
-        }
-
-        .visually-hidden {
-            position: absolute !important;
-            height: 1px;
-            width: 1px;
-            overflow: hidden;
-            clip: rect(1px, 1px, 1px, 1px);
-            white-space: nowrap
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, .9);
-            backdrop-filter: saturate(180%) blur(10px);
-            border-bottom: 1px solid #eef2f7;
-            z-index: 10
+            z-index: 50;
+            backdrop-filter: blur(14px);
+            background: linear-gradient(to bottom, rgba(5, 7, 11, 0.96), rgba(5, 7, 11, 0.5));
+            border-bottom: 1px solid rgba(45, 55, 72, 0.7);
         }
 
-        .bar {
+        .nav {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0.75rem 1.1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            min-height: 64px
+            gap: 1rem;
         }
 
-        .logo {
+        .nav-left {
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            font-weight: 800
+            gap: 0.85rem;
         }
 
-        .logo img {
-            width: 28px;
-            height: 28px
+        .logo-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 40%;
+            background: radial-gradient(circle at 30% 20%, #24e38a 0, #0bbf77 20%, #020617 70%);
+            position: relative;
+            box-shadow:
+                0 0 18px rgba(36, 227, 138, 0.7),
+                0 10px 26px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
         }
 
-        nav a {
-            margin-left: 16px;
-            text-decoration: none;
-            font-weight: 600
+        .logo-mark::before,
+        .logo-mark::after {
+            content: "";
+            position: absolute;
+            inset: 18%;
+            border-radius: 40%;
+            border: 1px solid rgba(4, 12, 30, 0.7);
+        }
+
+        .logo-text-main {
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            font-size: 0.98rem;
+        }
+
+        .logo-text-sub {
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.88rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            transition: color 0.18s ease, opacity 0.18s ease;
+            opacity: 0.85;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
         .btn {
-            display: inline-block;
-            padding: 12px 18px;
-            border-radius: 12px;
-            font-weight: 800;
-            text-decoration: none;
-            border: 1px solid transparent
+            border-radius: 999px;
+            padding: 0.55rem 1.2rem;
+            font-size: 0.85rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            transition: all 0.18s ease;
+            white-space: nowrap;
         }
 
-        .btn.primary {
-            background: linear-gradient(90deg, var(--c1), var(--c2));
-            color: #fff;
-            box-shadow: 0 6px 18px rgba(14, 165, 233, .25)
+        .btn-primary {
+            background: linear-gradient(135deg, #24e38a, #13c275);
+            color: #020617;
+            font-weight: 600;
+            box-shadow:
+                0 0 0 1px rgba(1, 22, 39, 0.6),
+                0 10px 22px rgba(13, 148, 136, 0.45);
         }
 
-        .btn.ghost {
-            border-color: #dde4ee
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow:
+                0 12px 26px rgba(13, 148, 136, 0.6);
+        }
+
+        .btn-ghost {
+            border-color: rgba(148, 163, 184, 0.6);
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--muted);
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(148, 163, 184, 0.95);
+            color: var(--text);
+            background: rgba(15, 23, 42, 0.95);
         }
 
         .hero {
+            max-width: var(--max-width);
+            margin: 1.7rem auto 0;
+            padding: 2.2rem 1.1rem 2.6rem;
             display: grid;
-            place-items: center;
-            min-height: 72vh;
-            background: radial-gradient(1200px 600px at 20% -10%, rgba(14, 165, 233, .12), transparent), radial-gradient(1000px 500px at 90% -10%, rgba(34, 197, 94, .10), transparent)
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.7fr);
+            gap: 2.2rem;
+            align-items: center;
         }
 
-        .hero .wrap {
-            padding: 72px 0;
-            text-align: center
+        .hero-eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.68rem;
+            color: var(--accent);
+            margin-bottom: 0.9rem;
         }
 
-        h1 {
-            font-size: clamp(32px, 6vw, 56px);
-            line-height: 1.1;
-            margin: 0 0 12px
+        .hero h1 {
+            font-size: clamp(2.1rem, 2.6vw + 1.4rem, 2.9rem);
+            line-height: 1.08;
+            margin-bottom: 0.7rem;
         }
 
-        .lead {
-            font-size: clamp(16px, 2.4vw, 20px);
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-sub {
             color: var(--muted);
-            max-width: 840px;
-            margin: 0 auto 28px
+            max-width: 30rem;
+            font-size: 0.96rem;
+            margin-bottom: 1.4rem;
         }
 
-        .ctas {
+        .hero-meta {
             display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.3rem;
+            font-size: 0.8rem;
+            color: var(--muted);
         }
 
-        .badges {
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+        }
+
+        .hero-right {
+            position: relative;
+            min-height: 260px;
+        }
+
+        .hero-card {
+            position: relative;
+            background: radial-gradient(circle at top, #111827, #020617);
+            border-radius: 24px;
+            padding: 1.3rem 1.35rem 1.4rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(36, 227, 138, 0.2), transparent 55%),
+                radial-gradient(circle at 80% 0%, rgba(59, 130, 246, 0.16), transparent 55%);
+            opacity: 0.9;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        .card-header {
             display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 12px;
-            color: #1f2937
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero-media {
-            margin-top: 24px
+        .card-title {
+            font-size: 0.86rem;
+            color: var(--muted);
         }
 
-        .hero-media img {
-            aspect-ratio: 16/9;
-            width: min(980px, 92vw);
-            border-radius: 16px
+        .status-pill {
+            font-size: 0.7rem;
+            padding: 0.18rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(15, 118, 110, 0.26);
+            color: #a7f3d0;
+            border: 1px solid rgba(45, 212, 191, 0.5);
         }
 
-        section {
-            padding: 56px 0;
-            border-top: 1px solid #f2f6fb
-        }
-
-        .grid {
+        .network-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.5rem;
+            margin-bottom: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .node {
+            padding: 0.6rem 0.5rem;
+            border-radius: 0.85rem;
+            border: 1px solid rgba(55, 65, 81, 0.85);
+            background: rgba(15, 23, 42, 0.9);
+            font-size: 0.72rem;
+            line-height: 1.3;
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.8);
+        }
+
+        .node-label {
+            color: var(--muted);
+            font-size: 0.7rem;
+        }
+
+        .node-value {
+            font-weight: 600;
+            font-size: 0.78rem;
+        }
+
+        .node-badge {
+            font-size: 0.65rem;
+            color: #bbf7d0;
+        }
+
+        .node.node-accent {
+            border-color: rgba(36, 227, 138, 0.9);
+            box-shadow:
+                0 0 0 1px rgba(36, 227, 138, 0.6),
+                0 12px 26px rgba(5, 150, 105, 0.8);
+        }
+
+        .hero-footnote {
+            font-size: 0.74rem;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 0.4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1.4rem 1.1rem 2.4rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+        }
+
+        .section-kicker {
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.65rem;
+            color: var(--accent);
+            margin-bottom: 0.15rem;
+        }
+
+        .section-description {
+            color: var(--muted);
+            font-size: 0.9rem;
+            max-width: 30rem;
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.4rem;
+        }
+
+        .pill {
+            padding: 0.22rem 0.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(75, 85, 99, 0.9);
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        .pill span {
+            color: var(--accent);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.2rem;
         }
 
         .card {
-            border: 1px solid #eef2f7;
-            border-radius: 16px;
-            padding: 18px;
-            background: #fff
+            background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), #020617);
+            border-radius: var(--radius-lg);
+            padding: 1rem 1rem 1.1rem;
+            border: 1px solid rgba(51, 65, 85, 0.9);
+            box-shadow: var(--shadow-card);
         }
 
         .card h3 {
-            margin: 8px 0 6px
+            font-size: 0.96rem;
+            margin-bottom: 0.25rem;
         }
 
-        .muted {
-            color: var(--muted)
+        .card p {
+            font-size: 0.86rem;
+            color: var(--muted);
+            margin-bottom: 0.45rem;
         }
 
-        .quote {
-            font-size: 18px;
-            line-height: 1.5
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        .card ul li::before {
+            content: "•";
+            color: var(--accent);
+            margin-right: 0.35rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .step {
+            border-radius: var(--radius-lg);
+            border: 1px dashed rgba(75, 85, 99, 0.9);
+            padding: 0.85rem 0.9rem;
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .step-index {
+            font-size: 0.78rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin-bottom: 0.2rem;
+        }
+
+        .step h3 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .step p {
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        .pricing-row {
+            display: grid;
+            grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+            gap: 1.4rem;
+            align-items: flex-start;
+        }
+
+        .pricing-list .price-item {
+            border-bottom: 1px solid rgba(55, 65, 81, 0.9);
+            padding: 0.7rem 0;
+        }
+
+        .price-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .price-name {
+            font-size: 0.9rem;
+        }
+
+        .price-tag {
+            font-size: 0.86rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .price-sub {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .cta-panel {
+            border-radius: var(--radius-lg);
+            padding: 1rem 1.1rem;
+            background: linear-gradient(140deg, rgba(36, 227, 138, 0.09), rgba(15, 23, 42, 0.95));
+            border: 1px solid rgba(36, 227, 138, 0.4);
+            box-shadow: 0 14px 34px rgba(16, 185, 129, 0.3);
+        }
+
+        .cta-panel h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cta-panel p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            margin-bottom: 0.7rem;
         }
 
         footer {
-            padding: 32px 0;
-            background: #f8fafc;
-            border-top: 1px solid #eef2f7;
-            color: #334155
+            border-top: 1px solid rgba(30, 64, 175, 0.6);
+            margin-top: auto;
+            background: linear-gradient(to top, #020617, rgba(2, 6, 23, 0.7));
         }
 
-        @media (max-width:900px) {
-            .grid {
-                grid-template-columns: 1fr 1fr
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1.2rem 1.1rem 1.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .footer-col {
+            max-width: 260px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.18rem 0.55rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(55, 65, 81, 0.9);
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: #22c55e;
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        @media (max-width: 840px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: minmax(0, 1fr);
+                margin-top: 1.2rem;
+            }
+
+            .hero-right {
+                order: -1;
+            }
+
+            .card-grid,
+            .process-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .pricing-row {
+                grid-template-columns: minmax(0, 1fr);
             }
         }
 
-        @media (max-width:640px) {
-            nav {
-                display: none
+        @media (max-width: 640px) {
+            .hero {
+                padding-top: 1.6rem;
             }
 
-            .grid {
-                grid-template-columns: 1fr
-            }
-
-            .hero .wrap {
-                padding: 56px 0
+            .nav {
+                padding-inline: 0.9rem;
             }
         }
     </style>
-
-    <!-- Optional external CSS (kept non‑blocking) -->
-    <link rel="preload" as="style" href="/assets/app.min.css" />
-    <link rel="stylesheet" href="/assets/app.min.css" media="print" onload="this.media='all'" />
-    <noscript>
-        <link rel="stylesheet" href="/assets/app.min.css" />
-    </noscript>
-
-    <!-- LCP image preload (swap path if needed) -->
-    <link rel="preload" as="image" href="/assets/hero.avif" imagesrcset="/assets/hero.avif 1x, /assets/hero@2x.avif 2x"
-        fetchpriority="high" />
-
-    <!-- JSON-LD: Organization + Website + Service (GBP‑consistent) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "G Cloud Solutions",
-      "url": "https://gcloudsolutions.org/",
-      "logo": "https://gcloudsolutions.org/assets/logo.svg",
-      "email": "ggriffith@gcloudsolutions.org",
-      "areaServed": "Kansas City Metro, Leavenworth, US",
-      "sameAs": []
-    }
-  </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "https://gcloudsolutions.org/",
-      "name": "G Cloud Solutions",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://gcloudsolutions.org/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-  </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Networking, Home Automation & Homelab",
-      "provider": {"@type":"Organization","name":"G Cloud Solutions"},
-      "areaServed": "Kansas City Metro & Leavenworth, US",
-      "description": "UniFi/VLAN design, $25 Wi‑Fi tune‑ups, Home Assistant automations, Proxmox homelabs, and custom PC builds.",
-      "offers": {"@type":"Offer","price":"25.00","priceCurrency":"USD","description":"$25 Wi‑Fi tune‑up special; free 30‑min consultation."}
-    }
-  </script>
-
-    <script defer>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.querySelector('#menuButton');
-            const menu = document.querySelector('#mobileMenu');
-            if (btn && menu) { btn.addEventListener('click', () => menu.toggleAttribute('hidden')); }
-            document.getElementById('year').textContent = new Date().getFullYear();
-        });
-    </script>
 </head>
 
 <body>
-    <a class="visually-hidden" href="#main">Skip to content</a>
-
-    <header>
-        <div class="container bar">
-            <a class="logo" href="#" aria-label="G Cloud Solutions home">
-                <img src="/assets/logo.svg" width="28" height="28" alt="G Cloud Solutions logo" />
-                <span>G Cloud Solutions</span>
-            </a>
-            <nav aria-label="primary">
-                <a href="#services">Services</a>
-                <a href="#work">Work</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#contact" class="btn ghost">Contact</a>
-                <a href="#contact" class="btn primary">Free 30‑min Consult</a>
-            </nav>
-            <button id="menuButton" class="btn ghost" aria-controls="mobileMenu" aria-expanded="false">Menu</button>
-        </div>
-        <div id="mobileMenu" hidden class="container" role="dialog" aria-label="Mobile menu">
-            <p><a href="#services">Services</a></p>
-            <p><a href="#work">Work</a></p>
-            <p><a href="#testimonials">Testimonials</a></p>
-            <p><a class="btn ghost" href="#contact">Contact</a></p>
-            <p><a class="btn primary" href="#contact">Free 30‑min Consult</a></p>
-        </div>
-    </header>
-
-    <main id="main">
-        <section class="hero" id="home">
-            <div class="container wrap">
-                <h1>Networking, Automations & Homelabs — Done Right</h1>
-                <p class="lead">UniFi/UDR networks with clean VLANs, reliable Wi‑Fi, Home Assistant dashboards &
-                    routines, Proxmox homelabs, and custom PC builds. Serving Kansas City & Leavenworth • Remote
-                    nationwide.</p>
-                <div class="ctas">
-                    <a class="btn primary" href="#contact">Book your free 30‑minute consult</a>
-                    <a class="btn ghost" href="#wifi">$25 Wi‑Fi Tune‑Up →</a>
-                </div>
-                <div class="badges" aria-label="Highlights">
-                    <span>UniFi • VLANs • Home Assistant • Proxmox • PC Builds</span>
-                </div>
-                <div class="hero-media">
-                    <img src="/assets/hero.avif" width="1536" height="1024"
-                        alt="Network dashboard and homelab gear on desk" loading="eager" decoding="async" />
-                </div>
-            </div>
-        </section>
-
-        <section id="services">
-            <div class="container">
-                <h2>Services</h2>
-                <div class="grid" role="list">
-                    <article class="card" role="listitem">
-                        <h3 id="wifi">Wi‑Fi & Networking</h3>
-                        <p class="muted">UniFi/UDR, VLAN segmentation (Adults/Kids/IoT), DHCP scopes, roaming
-                            optimization, and Cloudflare tunnels.</p>
-                        <p><strong>$25 Wi‑Fi Tune‑Up</strong>: quick on‑site/remote audit + fixes.</p>
-                    </article>
-                    <article class="card" role="listitem">
-                        <h3>Home Assistant & Automations</h3>
-                        <p class="muted">Dashboards, Node‑RED flows, sunrise lighting, temperature automations,
-                            Matter/BLE pairing, and backups.</p>
-                    </article>
-                    <article class="card" role="listitem">
-                        <h3>Homelab & Virtualization</h3>
-                        <p class="muted">Proxmox installs, 4–6 VM blueprints, NAS layouts, monitoring with
-                            Grafana/Prometheus, and secure remote access.</p>
-                    </article>
-                    <article class="card" role="listitem">
-                        <h3>PC Builds</h3>
-                        <p class="muted">Budget to performance builds; sourcing, assembly, cable‑management, burn‑in,
-                            and OS setup.</p>
-                    </article>
-                    <article class="card" role="listitem">
-                        <h3>Security & DNS</h3>
-                        <p class="muted">AdGuard Home, DoH/DoT, safe‑search policies, family profiles, and logging to
-                            Wazuh/Graylog.</p>
-                    </article>
-                    <article class="card" role="listitem">
-                        <h3>Support & Documentation</h3>
-                        <p class="muted">Runbooks, network maps, and handoff docs so you’re never stuck.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="work">
-            <div class="container">
-                <h2>Recent Work</h2>
-                <div class="grid">
-                    <article class="card">
-                        <h3>Whole‑home UniFi & VLAN Segmentation</h3>
-                        <p class="muted">UDR‑7 + Lite 8 PoE + ASUS EBP15, Adults/Kids/IoT/Management VLANs, AdGuard
-                            filtering, and Cloudflare tunnels.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Home Assistant Dashboards</h3>
-                        <p class="muted">System monitor tiles, sunrise wake‑lights, Alexa temperature automations, and
-                            Node‑RED scenes.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Proxmox Homelab</h3>
-                        <p class="muted">Windows Server AD, Linux services, NAS, Grafana/Prometheus with AdGuard metrics
-                            and uptime alerts.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials">
-            <div class="container">
-                <h2>What Clients Say</h2>
-                <div class="grid">
-                    <figure class="card">
-                        <blockquote class="quote">“The $25 tune‑up fixed our roaming and doubled speeds. He even set up
-                            family‑safe filtering.”</blockquote>
-                        <figcaption class="muted">— S. Martinez, KC North</figcaption>
-                    </figure>
-                    <figure class="card">
-                        <blockquote class="quote">“Clear documentation and VLANs that just work. Our smart home is
-                            finally reliable.”</blockquote>
-                        <figcaption class="muted">— A. Wilkins, Leavenworth</figcaption>
-                    </figure>
-                    <figure class="card">
-                        <blockquote class="quote">“Built a quiet Proxmox box and migrated our services in one evening.
-                            Zero downtime.”</blockquote>
-                        <figcaption class="muted">— J. Chang, Shawnee</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="container">
-                <h2>Contact</h2>
-                <p class="muted">Based in the Kansas City metro (Leavenworth). Remote friendly.</p>
-                <div class="grid">
-                    <form class="card" method="post" action="mailto:ggriffith@gcloudsolutions.org" enctype="text/plain">
-                        <label for="name">Name</label>
-                        <input id="name" name="name" required
-                            style="width:100%;padding:12px;border-radius:10px;border:1px solid #d7dde7;margin:6px 0 12px" />
-                        <label for="email">Email</label>
-                        <input id="email" name="email" type="email" required
-                            style="width:100%;padding:12px;border-radius:10px;border:1px solid #d7dde7;margin:6px 0 12px" />
-                        <label for="msg">Project details</label>
-                        <textarea id="msg" name="message" rows="5" required
-                            style="width:100%;padding:12px;border-radius:10px;border:1px solid #d7dde7;margin:6px 0 18px"></textarea>
-                        <button class="btn primary" type="submit">Send</button>
-                        <p class="muted" style="margin-top:8px">Or email <a
-                                href="mailto:ggriffith@gcloudsolutions.org">ggriffith@gcloudsolutions.org</a></p>
-                    </form>
-                    <div class="card">
-                        <h3>Free 30‑minute consultation</h3>
-                        <p class="muted">Tell me your current setup and goals. I’ll outline a plan and estimate right on
-                            the call.</p>
-                        <ul>
-                            <li>UniFi & VLAN health check</li>
-                            <li>Home Assistant integrations</li>
-                            <li>Homelab sizing (NAS/Proxmox) & parts list</li>
-                        </ul>
-                        <p><a class="btn ghost"
-                                href="mailto:ggriffith@gcloudsolutions.org?subject=Consultation%20Request">Request a
-                                time</a></p>
+    <div class="page">
+        <header>
+            <div class="nav">
+                <div class="nav-left">
+                    <div class="logo-mark"></div>
+                    <div>
+                        <div class="logo-text-main">G Cloud Solutions</div>
+                        <div class="logo-text-sub">Network &amp; Cybersecurity</div>
                     </div>
                 </div>
+                <nav class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#smb-it">Small Business IT</a>
+                    <a href="#security">Cybersecurity</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <div class="nav-cta">
+                    <span class="badge">
+                        <span class="badge-dot"></span>
+                        Remote &amp; local support
+                    </span>
+                    <a href="#contact" class="btn btn-primary">Request a consult</a>
+                </div>
             </div>
-        </section>
-    </main>
+        </header>
 
-    <footer>
-        <div class="container">
-            <p><strong>G Cloud Solutions</strong> — Networking, Home Assistant & Homelab</p>
-            <p class="muted">© <span id="year"></span> G Cloud Solutions • Kansas City & Leavenworth, USA</p>
-        </div>
-    </footer>
+        <main>
+            <!-- HERO -->
+            <section class="hero" id="home">
+                <div>
+                    <div class="hero-eyebrow">Small business IT • Secure networks</div>
+                    <h1>Professional <span>network &amp; security</span> for small business.</h1>
+                    <p class="hero-sub">
+                        G Cloud Solutions designs and secures business-grade networks
+                        for offices, shops, and clinics — so your Wi-Fi, POS, and systems
+                        stay fast, stable, and protected.
+                    </p>
+                    <div>
+                        <a href="#contact" class="btn btn-primary">Book a network review</a>
+                        <a href="#services" class="btn btn-ghost">View services</a>
+                    </div>
+                    <div class="hero-meta">
+                        <span>• VLAN design &amp; segmentation</span>
+                        <span>• Firewall hardening</span>
+                        <span>• Remote support available</span>
+                    </div>
+                </div>
+
+                <div class="hero-right">
+                    <div class="hero-card">
+                        <div class="card-header">
+                            <div class="card-title">Live network overview</div>
+                            <div class="status-pill">Secure layout • Active</div>
+                        </div>
+                        <div class="network-grid">
+                            <div class="node node-accent">
+                                <div class="node-label">POS / Terminals</div>
+                                <div class="node-value">Isolated VLAN</div>
+                                <div class="node-badge">Guest traffic blocked</div>
+                            </div>
+                            <div class="node">
+                                <div class="node-label">Office devices</div>
+                                <div class="node-value">Trusted LAN</div>
+                                <div class="node-badge">Policy-based access</div>
+                            </div>
+                            <div class="node">
+                                <div class="node-label">Guest Wi-Fi</div>
+                                <div class="node-value">Internet only</div>
+                                <div class="node-badge">No LAN access</div>
+                            </div>
+                            <div class="node">
+                                <div class="node-label">IoT &amp; cameras</div>
+                                <div class="node-value">Restricted</div>
+                                <div class="node-badge">Limited outbound</div>
+                            </div>
+                            <div class="node">
+                                <div class="node-label">Management</div>
+                                <div class="node-value">Admin only</div>
+                                <div class="node-badge">Secured access</div>
+                            </div>
+                            <div class="node">
+                                <div class="node-label">DNS filtering</div>
+                                <div class="node-value">Enabled</div>
+                                <div class="node-badge">Threats reduced</div>
+                            </div>
+                        </div>
+                        <div class="hero-footnote">
+                            <span>Clean, segmented networks prevent one device from risking your entire business.</span>
+                            <span>Designed • Documented • Supported</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WHO WE HELP / SERVICES -->
+            <section class="section" id="services">
+                <div class="section-header">
+                    <div>
+                        <div class="section-kicker">Services</div>
+                        <h2 class="section-title">Small business networking, done right.</h2>
+                        <p class="section-description">
+                            From slow Wi-Fi and dropped POS terminals to insecure guest
+                            networks, we rebuild your environment with a clear, security-first design.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="pill-row">
+                            <div class="pill"><span>Retail</span> • shops &amp; cafes</div>
+                            <div class="pill"><span>Offices</span> • clinics &amp; services</div>
+                            <div class="pill"><span>Hybrid</span> • remote &amp; on-site</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-grid">
+                    <article class="card">
+                        <h3>Network design &amp; cleanup</h3>
+                        <p>We organize and rebuild your network so everything is stable, documented, and easy to
+                            support.</p>
+                        <ul>
+                            <li>Router, switch, and Wi-Fi layout</li>
+                            <li>Structured VLAN design</li>
+                            <li>Clear IP and DHCP plan</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <h3>Firewall &amp; security hardening</h3>
+                        <p>Practical cybersecurity protections that match your tools and your budget.</p>
+                        <ul>
+                            <li>Firewall policy review &amp; cleanup</li>
+                            <li>Segmentation for POS, office, guest, IoT</li>
+                            <li>Safe DNS &amp; access control</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <h3>Wi-Fi &amp; performance tuning</h3>
+                        <p>Eliminate dead zones, dropouts, and random slowdowns across your business.</p>
+                        <ul>
+                            <li>Access point placement &amp; channels</li>
+                            <li>SSID and security configuration</li>
+                            <li>Bandwidth &amp; QoS adjustments</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SMALL BUSINESS IT / PROCESS -->
+            <section class="section" id="smb-it">
+                <div class="section-header">
+                    <div>
+                        <div class="section-kicker">Process</div>
+                        <h2 class="section-title">A clear, three-step engagement.</h2>
+                        <p class="section-description">
+                            We keep the process simple: understand your environment, redesign
+                            with security in mind, and support you as your business grows.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="process-grid">
+                    <div class="step">
+                        <div class="step-index">Step 1</div>
+                        <h3>Network assessment</h3>
+                        <p>
+                            We review your existing setup, map devices, identify risks, and
+                            document how things are configured today.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <div class="step-index">Step 2</div>
+                        <h3>Secure redesign</h3>
+                        <p>
+                            We propose a clear network layout with VLANs, firewall rules, and
+                            Wi-Fi configuration tailored to your business.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <div class="step-index">Step 3</div>
+                        <h3>Implementation &amp; handoff</h3>
+                        <p>
+                            We implement changes, validate performance, and leave you with
+                            clean documentation and optional ongoing support.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CYBERSECURITY -->
+            <section class="section" id="security">
+                <div class="section-header">
+                    <div>
+                        <div class="section-kicker">Cybersecurity</div>
+                        <h2 class="section-title">Practical security for real-world networks.</h2>
+                        <p class="section-description">
+                            No buzzwords, no fear tactics. Just solid protections that keep
+                            POS systems, staff devices, and guest traffic safely separated.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-grid">
+                    <article class="card">
+                        <h3>Segmentation &amp; access control</h3>
+                        <p>Limit the blast radius when something goes wrong.</p>
+                        <ul>
+                            <li>Dedicated POS &amp; office networks</li>
+                            <li>Guest Wi-Fi with internet-only access</li>
+                            <li>Restricted IoT &amp; cameras</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>DNS &amp; threat reduction</h3>
+                        <p>Reduce risky domains and known-bad destinations at the network edge.</p>
+                        <ul>
+                            <li>Secure DNS resolvers</li>
+                            <li>Content &amp; threat filtering options</li>
+                            <li>Safer browsing for staff</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Visibility &amp; logging (optional)</h3>
+                        <p>For businesses that need extra visibility into their environment.</p>
+                        <ul>
+                            <li>Basic logging strategies</li>
+                            <li>Alerting options for key systems</li>
+                            <li>Guidance on future monitoring tools</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <!-- PRICING -->
+            <section class="section" id="pricing">
+                <div class="section-header">
+                    <div>
+                        <div class="section-kicker">Pricing</div>
+                        <h2 class="section-title">Straightforward, project-based pricing.</h2>
+                        <p class="section-description">
+                            Clear pricing for typical small-business environments. Larger or
+                            multi-site networks can be scoped with a quick consult.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pricing-row">
+                    <div class="pricing-list">
+                        <div class="price-item">
+                            <div class="price-header">
+                                <div class="price-name">Network checkup</div>
+                                <div class="price-tag">$75</div>
+                            </div>
+                            <div class="price-sub">
+                                Full review of your current setup with documented recommendations and quick wins.
+                            </div>
+                        </div>
+
+                        <div class="price-item">
+                            <div class="price-header">
+                                <div class="price-name">Business network cleanup</div>
+                                <div class="price-tag">$150</div>
+                            </div>
+                            <div class="price-sub">
+                                Fixes structure, Wi-Fi issues, and common security gaps in an existing network.
+                            </div>
+                        </div>
+
+                        <div class="price-item">
+                            <div class="price-header">
+                                <div class="price-name">Full network redesign</div>
+                                <div class="price-tag">$250</div>
+                            </div>
+                            <div class="price-sub">
+                                VLANs, firewall policies, Wi-Fi design, and documentation for small offices or shops.
+                            </div>
+                        </div>
+
+                        <div class="price-item">
+                            <div class="price-header">
+                                <div class="price-name">Cybersecurity hardening</div>
+                                <div class="price-tag">$300+</div>
+                            </div>
+                            <div class="price-sub">
+                                Threat reduction, segmentation, DNS filtering, and safer remote access, scoped to your
+                                needs.
+                            </div>
+                        </div>
+
+                        <div class="price-item">
+                            <div class="price-header">
+                                <div class="price-name">Managed support</div>
+                                <div class="price-tag">$49–99/mo</div>
+                            </div>
+                            <div class="price-sub">
+                                Ongoing checkups, policy adjustments, and priority support for existing clients.
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="cta-panel">
+                        <h3>Not sure which option fits?</h3>
+                        <p>
+                            Start with a network checkup. You’ll get a clear snapshot of
+                            where you are today, what needs attention, and which package
+                            makes the most sense.
+                        </p>
+                        <a href="#contact" class="btn btn-primary">Schedule a checkup</a>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- ABOUT + CONTACT -->
+            <section class="section" id="about">
+                <div class="section-header">
+                    <div>
+                        <div class="section-kicker">About</div>
+                        <h2 class="section-title">A partner who understands small business networks.</h2>
+                        <p class="section-description">
+                            G Cloud Solutions focuses on practical, maintainable IT —
+                            the kind that fits real businesses, not just enterprise diagrams.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pricing-row">
+                    <div>
+                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.8rem;">
+                            Every project starts with listening: what your business does,
+                            what systems you rely on, and what’s causing headaches today.
+                            From there, we design a network that balances security, performance,
+                            and simplicity — and we document it so you’re never locked into
+                            a “mystery configuration”.
+                        </p>
+                        <p style="color: var(--muted); font-size: 0.9rem;">
+                            The goal is simple: fewer outages, fewer surprises, and a clear
+                            understanding of how your network supports your business.
+                        </p>
+                    </div>
+
+                    <div id="contact">
+                        <h3 style="font-size: 0.98rem; margin-bottom: 0.4rem;">Contact</h3>
+                        <p style="font-size: 0.86rem; color: var(--muted); margin-bottom: 0.4rem;">
+                            Ready to review or redesign your network? Send a brief description
+                            of your environment and we’ll follow up with next steps.
+                        </p>
+                        <p style="font-size: 0.86rem; color: var(--muted); margin-bottom: 0.2rem;">
+                            📧 Email: <strong>support@gcloudsolutions.org</strong>
+                        </p>
+                        <p style="font-size: 0.8rem; color: var(--muted);">
+                            Typical response: same business day.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-col">
+                    <div style="font-size: 0.86rem; margin-bottom: 0.25rem;">G Cloud Solutions — Network &amp;
+                        Cybersecurity</div>
+                    <div>Secure, modern networking for small business.</div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#services">Services</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <div>© <span id="year"></span> G Cloud Solutions. All rights reserved.</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
