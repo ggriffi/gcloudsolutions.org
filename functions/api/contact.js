@@ -1,42 +1,87 @@
-<? php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // Collect and sanitize data
-  $business = trim($_POST['Business_Name'] ?? '');
-  $phone = trim($_POST['Phone'] ?? '');
-  $email = trim($_POST['Email'] ?? '');
-  $website = trim($_POST['Website'] ?? '');
-  $subject = trim($_POST['Subject'] ?? 'New consulting request');
-  $desc = trim($_POST['Description'] ?? '');
-  $best_time = trim($_POST['Best_time_to_contact'] ?? '');
-  $best_method = trim($_POST['Best_method_to_contact'] ?? '');
-  $onsite = trim($_POST['On_site_presence_required'] ?? '');
+// functions/api/contact.js
 
-  // Basic validation
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    die('Invalid email address.');
+export async function onRequestPost(context) {
+  const { request, env } = context;
+
+  const formData = await request.formData();
+
+  // Honeypot spam trap
+  const extra = formData.get("extra_field");
+  if (extra) {
+    return new Response("OK", { status: 200 });
   }
 
-  $to = 'support@gcloudsolutions.org';
-  $subjectLine = 'New Consulting Request: '.$business;
+  const business = formData.get("business_name") || "";
+  const phone = formData.get("phone") || "";
+  const email = formData.get("email") || "";
+  const website = formData.get("website") || "";
+  const subject = formData.get("subject") || "New consulting request";
+  const description = formData.get("description") || "";
+  const bestTime = formData.get("best_time") || "";
+  const bestMethod = formData.get("best_method") || "";
+  const onsite = formData.get("onsite_required") || "";
 
-  $body = "Business Name: $business\n"
-    . "Phone: $phone\n"
-      . "Email: $email\n"
-        . "Website: $website\n"
-          . "Subject: $subject\n\n"
-            . "Description:\n$desc\n\n"
-              . "Best time to contact: $best_time\n"
-                . "Best method to contact: $best_method\n"
-                  . "On site presence required: $onsite\n";
-
-  $headers = "From: noreply@gcloudsolutions.org\r\n"
-    . "Reply-To: $email\r\n";
-
-  if (mail($to, $subjectLine, $body, $headers)) {
-        echo "Thanks! Your request has been sent.";
-  } else {
-        echo "Something went wrong sending your request. Please email support@gcloudsolutions.org directly.";
+  if (!email || !business || !description) {
+    return new Response("Missing required fields.", { status: 400 });
   }
-} else {
-    echo "Invalid request.";
+
+  const bodyText =
+    `New consulting request from G Cloud Solutions website\n\n` +
+    `Business Name: ${business}\n` +
+    `Phone: ${phone}\n` +
+    `Email: ${email}\n` +
+    `Website: ${website}\n\n` +
+    `Subject: ${subject}\n` +
+    `Description:\n${description}\n\n` +
+    `Best time to contact: ${bestTime}\n` +
+    `Best method to contact: ${bestMethod}\n` +
+    `On-site presence required: ${onsite}\n`;
+
+  // --- MAILGUN EMAIL SEND ---
+  try {
+    const apiKey = env.MAILGUN_API_KEY;
+    const domain = env.MAILGUN_DOMAIN;
+    const toEmail = env.MAILGUN_TO_EMAIL;
+
+    if (!apiKey || !domain || !toEmail) {
+      console.error("Mailgun env vars missing");
+    } else {
+      const auth = "Basic " + btoa(`api:${apiKey}`);
+
+      const params = new URLSearchParams();
+      params.append("from", `G Cloud Solutions <no-reply@${domain}>`);
+      params.append("to", toEmail);
+      params.append("subject", `New consulting request: ${business}`);
+      params.append("text", bodyText);
+
+      const mgRes = await fetch(`https://api.mailgun.net/v3/${domain}/messages`, {
+        method: "POST",
+        headers: {
+          "Authorization": auth,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: params.toString(),
+      });
+
+      if (!mgRes.ok) {
+        const errText = await mgRes.text();
+        console.error("Mailgun error:", mgRes.status, errText);
+      }
+    }
+  } catch (err) {
+    console.error("Error sending via Mailgun:", err);
+  }
+
+  // Redirect back to the contact section with success flag
+  return new Response(null, {
+    status: 303,
+    headers: { Location: "/#contact-success" },
+  });
+}
+
+export async function onRequestGet(context) {
+  return new Response(
+    "Contact endpoint. Please submit the form from the website.",
+    { status: 200, headers: { "Content-Type": "text/plain" } }
+  );
 }
