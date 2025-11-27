@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <title>G Cloud Solutions — Network & Cybersecurity</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="G Cloud Solutions provides professional small business networking and cybersecurity services — VLAN design, firewall hardening, Wi-Fi optimization, and secure remote support." />
     <style>
         :root {
             --bg: #05070b;
@@ -199,7 +201,7 @@
 
         .hero-sub {
             color: var(--muted);
-            max-width: 30rem;
+            max-width: 32rem;
             font-size: 0.96rem;
             margin-bottom: 1.4rem;
         }
@@ -556,10 +558,6 @@
             box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
         }
 
-        .nav-toggle {
-            display: none;
-        }
-
         @media (max-width: 840px) {
             .nav-links {
                 display: none;
@@ -591,6 +589,103 @@
 
             .nav {
                 padding-inline: 0.9rem;
+            }
+        }
+
+        /* CONTACT FORM STYLES */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+            gap: 1.6rem;
+            align-items: flex-start;
+        }
+
+        .contact-form {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: var(--radius-lg);
+            padding: 1rem 1.1rem 1.2rem;
+            border: 1px solid rgba(51, 65, 85, 0.9);
+            box-shadow: var(--shadow-card);
+            font-size: 0.86rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .form-field {
+            flex: 1;
+            min-width: 160px;
+            margin-bottom: 0.75rem;
+        }
+
+        .form-field label {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            padding: 0.45rem 0.55rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(55, 65, 81, 0.9);
+            background: rgba(15, 23, 42, 0.95);
+            color: var(--text);
+            font-size: 0.84rem;
+            outline: none;
+            transition: border-color 0.16s ease, box-shadow 0.16s ease;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: rgba(36, 227, 138, 0.7);
+            box-shadow: 0 0 0 1px rgba(36, 227, 138, 0.6);
+        }
+
+        .form-help {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+
+        .contact-aside {
+            font-size: 0.86rem;
+            color: var(--muted);
+        }
+
+        .contact-aside h3 {
+            font-size: 0.98rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .contact-aside p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-aside ul {
+            padding-left: 1rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.82rem;
+        }
+
+        .contact-aside li {
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-aside strong {
+            color: var(--accent);
+        }
+
+        @media (max-width: 840px) {
+            .contact-grid {
+                grid-template-columns: minmax(0, 1fr);
             }
         }
     </style>
@@ -632,9 +727,9 @@
                     <div class="hero-eyebrow">Small business IT • Secure networks</div>
                     <h1>Professional <span>network &amp; security</span> for small business.</h1>
                     <p class="hero-sub">
-                        G Cloud Solutions designs and secures business-grade networks
-                        for offices, shops, and clinics — so your Wi-Fi, POS, and systems
-                        stay fast, stable, and protected.
+                        G Cloud Solutions designs and secures business-grade networks for offices,
+                        shops, and clinics — so your Wi-Fi, POS, and critical systems stay fast,
+                        stable, and protected from everyday threats.
                     </p>
                     <div>
                         <a href="#contact" class="btn btn-primary">Book a network review</a>
@@ -650,8 +745,8 @@
                 <div class="hero-right">
                     <div class="hero-card">
                         <div class="card-header">
-                            <div class="card-title">Live network overview</div>
-                            <div class="status-pill">Secure layout • Active</div>
+                            <div class="card-title">Example small business layout</div>
+                            <div class="status-pill">Segmented • Monitored</div>
                         </div>
                         <div class="network-grid">
                             <div class="node node-accent">
@@ -686,22 +781,23 @@
                             </div>
                         </div>
                         <div class="hero-footnote">
-                            <span>Clean, segmented networks prevent one device from risking your entire business.</span>
+                            <span>Clean, segmented networks stop one risky device from impacting your entire
+                                business.</span>
                             <span>Designed • Documented • Supported</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- WHO WE HELP / SERVICES -->
+            <!-- SERVICES -->
             <section class="section" id="services">
                 <div class="section-header">
                     <div>
                         <div class="section-kicker">Services</div>
                         <h2 class="section-title">Small business networking, done right.</h2>
                         <p class="section-description">
-                            From slow Wi-Fi and dropped POS terminals to insecure guest
-                            networks, we rebuild your environment with a clear, security-first design.
+                            From slow Wi-Fi and unstable POS systems to confusing “mystery”
+                            configurations, we rebuild your environment with a clear, security-first design.
                         </p>
                     </div>
                     <div>
@@ -721,17 +817,17 @@
                         <ul>
                             <li>Router, switch, and Wi-Fi layout</li>
                             <li>Structured VLAN design</li>
-                            <li>Clear IP and DHCP plan</li>
+                            <li>Clear IP, DHCP, and DNS plan</li>
                         </ul>
                     </article>
 
                     <article class="card">
                         <h3>Firewall &amp; security hardening</h3>
-                        <p>Practical cybersecurity protections that match your tools and your budget.</p>
+                        <p>Practical cybersecurity protections that fit your tools, your staff, and your budget.</p>
                         <ul>
                             <li>Firewall policy review &amp; cleanup</li>
                             <li>Segmentation for POS, office, guest, IoT</li>
-                            <li>Safe DNS &amp; access control</li>
+                            <li>Secure DNS &amp; safer remote access</li>
                         </ul>
                     </article>
 
@@ -747,15 +843,15 @@
                 </div>
             </section>
 
-            <!-- SMALL BUSINESS IT / PROCESS -->
+            <!-- PROCESS -->
             <section class="section" id="smb-it">
                 <div class="section-header">
                     <div>
                         <div class="section-kicker">Process</div>
                         <h2 class="section-title">A clear, three-step engagement.</h2>
                         <p class="section-description">
-                            We keep the process simple: understand your environment, redesign
-                            with security in mind, and support you as your business grows.
+                            We keep the process straightforward: understand your environment,
+                            redesign with security in mind, and support you as your business grows.
                         </p>
                     </div>
                 </div>
@@ -766,7 +862,7 @@
                         <h3>Network assessment</h3>
                         <p>
                             We review your existing setup, map devices, identify risks, and
-                            document how things are configured today.
+                            document how things are configured today — including ISP gear.
                         </p>
                     </div>
                     <div class="step">
@@ -774,15 +870,15 @@
                         <h3>Secure redesign</h3>
                         <p>
                             We propose a clear network layout with VLANs, firewall rules, and
-                            Wi-Fi configuration tailored to your business.
+                            Wi-Fi configuration tailored to the way your business actually runs.
                         </p>
                     </div>
                     <div class="step">
                         <div class="step-index">Step 3</div>
                         <h3>Implementation &amp; handoff</h3>
                         <p>
-                            We implement changes, validate performance, and leave you with
-                            clean documentation and optional ongoing support.
+                            We implement changes, verify performance, and leave you with
+                            clean documentation and optional ongoing support if you want it.
                         </p>
                     </div>
                 </div>
@@ -795,8 +891,8 @@
                         <div class="section-kicker">Cybersecurity</div>
                         <h2 class="section-title">Practical security for real-world networks.</h2>
                         <p class="section-description">
-                            No buzzwords, no fear tactics. Just solid protections that keep
-                            POS systems, staff devices, and guest traffic safely separated.
+                            No scare tactics, no overkill tools — just solid protections that
+                            keep POS systems, staff devices, and guest traffic safely separated.
                         </p>
                     </div>
                 </div>
@@ -808,7 +904,7 @@
                         <ul>
                             <li>Dedicated POS &amp; office networks</li>
                             <li>Guest Wi-Fi with internet-only access</li>
-                            <li>Restricted IoT &amp; cameras</li>
+                            <li>Separate IoT, cameras, and “risky” devices</li>
                         </ul>
                     </article>
                     <article class="card">
@@ -817,15 +913,15 @@
                         <ul>
                             <li>Secure DNS resolvers</li>
                             <li>Content &amp; threat filtering options</li>
-                            <li>Safer browsing for staff</li>
+                            <li>Safer browsing for staff and shared PCs</li>
                         </ul>
                     </article>
                     <article class="card">
                         <h3>Visibility &amp; logging (optional)</h3>
-                        <p>For businesses that need extra visibility into their environment.</p>
+                        <p>For businesses that want more insight into their network behavior.</p>
                         <ul>
                             <li>Basic logging strategies</li>
-                            <li>Alerting options for key systems</li>
+                            <li>High-level alerting for key systems</li>
                             <li>Guidance on future monitoring tools</li>
                         </ul>
                     </article>
@@ -839,8 +935,8 @@
                         <div class="section-kicker">Pricing</div>
                         <h2 class="section-title">Straightforward, project-based pricing.</h2>
                         <p class="section-description">
-                            Clear pricing for typical small-business environments. Larger or
-                            multi-site networks can be scoped with a quick consult.
+                            Clear pricing for typical small-business environments. Multi-site or
+                            complex setups can be scoped with a short conversation.
                         </p>
                     </div>
                 </div>
@@ -853,7 +949,8 @@
                                 <div class="price-tag">$75</div>
                             </div>
                             <div class="price-sub">
-                                Full review of your current setup with documented recommendations and quick wins.
+                                Full review of your current setup with documented findings, risks, and quick-win
+                                recommendations.
                             </div>
                         </div>
 
@@ -863,7 +960,8 @@
                                 <div class="price-tag">$150</div>
                             </div>
                             <div class="price-sub">
-                                Fixes structure, Wi-Fi issues, and common security gaps in an existing network.
+                                Fixes structure, Wi-Fi issues, and common security gaps in an existing network without a
+                                full redesign.
                             </div>
                         </div>
 
@@ -873,7 +971,8 @@
                                 <div class="price-tag">$250</div>
                             </div>
                             <div class="price-sub">
-                                VLANs, firewall policies, Wi-Fi design, and documentation for small offices or shops.
+                                VLANs, firewall policies, Wi-Fi design, and documentation for a typical small office or
+                                shop.
                             </div>
                         </div>
 
@@ -884,7 +983,7 @@
                             </div>
                             <div class="price-sub">
                                 Threat reduction, segmentation, DNS filtering, and safer remote access, scoped to your
-                                needs.
+                                risk level and tools.
                             </div>
                         </div>
 
@@ -894,17 +993,18 @@
                                 <div class="price-tag">$49–99/mo</div>
                             </div>
                             <div class="price-sub">
-                                Ongoing checkups, policy adjustments, and priority support for existing clients.
+                                Ongoing checkups, policy adjustments, and priority support for existing G Cloud
+                                Solutions clients.
                             </div>
                         </div>
                     </div>
 
                     <aside class="cta-panel">
-                        <h3>Not sure which option fits?</h3>
+                        <h3>Not sure where to start?</h3>
                         <p>
-                            Start with a network checkup. You’ll get a clear snapshot of
-                            where you are today, what needs attention, and which package
-                            makes the most sense.
+                            Most clients begin with a network checkup. From there, we decide
+                            together whether you need a cleanup, a full redesign, or just a
+                            few targeted changes.
                         </p>
                         <a href="#contact" class="btn btn-primary">Schedule a checkup</a>
                     </aside>
@@ -927,11 +1027,11 @@
                 <div class="pricing-row">
                     <div>
                         <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.8rem;">
-                            Every project starts with listening: what your business does,
-                            what systems you rely on, and what’s causing headaches today.
-                            From there, we design a network that balances security, performance,
-                            and simplicity — and we document it so you’re never locked into
-                            a “mystery configuration”.
+                            Every project starts with listening: what your business does, what
+                            systems you rely on, and what’s causing headaches today. From
+                            there, we design a network that balances security, performance, and
+                            simplicity — and we document it so you’re never stuck with a
+                            “black box” configuration.
                         </p>
                         <p style="color: var(--muted); font-size: 0.9rem;">
                             The goal is simple: fewer outages, fewer surprises, and a clear
@@ -939,18 +1039,91 @@
                         </p>
                     </div>
 
+                    <!-- CONTACT FORM -->
                     <div id="contact">
-                        <h3 style="font-size: 0.98rem; margin-bottom: 0.4rem;">Contact</h3>
-                        <p style="font-size: 0.86rem; color: var(--muted); margin-bottom: 0.4rem;">
-                            Ready to review or redesign your network? Send a brief description
-                            of your environment and we’ll follow up with next steps.
+                        <div class="section-kicker">Contact</div>
+                        <h2 class="section-title" style="margin-bottom: 0.6rem;">Tell us about your network.</h2>
+                        <p class="section-description" style="margin-bottom: 1rem;">
+                            Share a few details about your environment and what you’re running into.
+                            You’ll get a follow-up with next steps and available time slots.
                         </p>
-                        <p style="font-size: 0.86rem; color: var(--muted); margin-bottom: 0.2rem;">
-                            📧 Email: <strong>support@gcloudsolutions.org</strong>
-                        </p>
-                        <p style="font-size: 0.8rem; color: var(--muted);">
-                            Typical response: same business day.
-                        </p>
+
+                        <div class="contact-grid">
+                            <form class="contact-form" method="POST" action="mailto:support@gcloudsolutions.org"
+                                enctype="text/plain">
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="name">Your name</label>
+                                        <input id="name" name="Name" type="text" required />
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="email">Email</label>
+                                        <input id="email" name="Email" type="email" required />
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="business">Business name</label>
+                                        <input id="business" name="Business" type="text" />
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="service">What do you need help with?</label>
+                                        <select id="service" name="Service">
+                                            <option value="Network checkup">Network checkup</option>
+                                            <option value="Network cleanup">Network cleanup</option>
+                                            <option value="Full redesign">Full network redesign</option>
+                                            <option value="Cybersecurity hardening">Cybersecurity hardening</option>
+                                            <option value="Ongoing support">Ongoing support</option>
+                                            <option value="Not sure">Not sure yet</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="message">Briefly describe your current setup and issues</label>
+                                    <textarea id="message" name="Details" rows="4" required></textarea>
+                                    <div class="form-help">
+                                        Example: “UDR + UniFi switches, 8–10 staff devices, POS terminals, cameras,
+                                        guest Wi-Fi. POS drops a few times a week and Wi-Fi is weak in back office.”
+                                    </div>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="timing">Preferred contact time (optional)</label>
+                                    <input id="timing" name="Preferred contact time" type="text"
+                                        placeholder="e.g. Weekdays after 4 PM Central" />
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Send details via email</button>
+                                <div class="form-help">
+                                    This button opens your default email client with your answers filled in.
+                                    You can review everything before sending.
+                                </div>
+                            </form>
+
+                            <div class="contact-aside">
+                                <h3>Response time &amp; expectations</h3>
+                                <p>
+                                    <strong>Typical response:</strong> same business day for messages during
+                                    standard hours. You’ll get a clear next step — usually a short call or
+                                    a recommended starting package.
+                                </p>
+                                <p>
+                                    Helpful details to include:
+                                </p>
+                                <ul>
+                                    <li>How many staff and locations you have</li>
+                                    <li>Rough number of devices (POS, PCs, cameras, phones)</li>
+                                    <li>Any compliance concerns (HIPAA, PCI, etc.)</li>
+                                    <li>Biggest pain points with your current network</li>
+                                </ul>
+                                <p>
+                                    Prefer to reach out directly? Email
+                                    <strong>support@gcloudsolutions.org</strong>.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
