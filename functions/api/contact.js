@@ -84,4 +84,28 @@ export async function onRequestPost({ request, env }) {
 
     if (!mgRes.ok) {
       return new Response(
-        "Mailgun ret
+        "Mailgun returned an error:\n" + debug.join("\n"),
+        { status: 502 }
+      );
+    }
+
+    // Success
+    return new Response(
+      "Mailgun accepted the message.\n\nDebug info:\n" + debug.join("\n"),
+      { status: 200 }
+    );
+  } catch (err) {
+    debug.push("Caught error: " + (err && err.toString ? err.toString() : String(err)));
+    return new Response(
+      "Unexpected error in contact function:\n" + debug.join("\n"),
+      { status: 500 }
+    );
+  }
+}
+
+export async function onRequestGet() {
+  return new Response(
+    "Contact endpoint. Please submit the form from the website.",
+    { status: 200, headers: { "Content-Type": "text/plain" } }
+  );
+}
