@@ -1041,91 +1041,97 @@
 
                     <!-- CONTACT FORM -->
                     <div id="contact">
-                        <div class="section-kicker">Contact</div>
-                        <h2 class="section-title" style="margin-bottom: 0.6rem;">Tell us about your network.</h2>
-                        <p class="section-description" style="margin-bottom: 1rem;">
-                            Share a few details about your environment and what you’re running into.
-                            You’ll get a follow-up with next steps and available time slots.
-                        </p>
+                        <form
+  class="contact-form"
+  method="POST"
+  action="/api/contact"
+>
+  <div class="form-field">
+    <label for="businessName">Business Name</label>
+    <input id="businessName" name="business_name" type="text" required />
+  </div>
 
-                        <div class="contact-grid">
-                            <form class="contact-form" method="POST" action="mailto:support@gcloudsolutions.org"
-                                enctype="text/plain">
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label for="name">Your name</label>
-                                        <input id="name" name="Name" type="text" required />
-                                    </div>
-                                    <div class="form-field">
-                                        <label for="email">Email</label>
-                                        <input id="email" name="Email" type="email" required />
-                                    </div>
-                                </div>
+  <div class="form-row">
+    <div class="form-field">
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel" required />
+    </div>
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required />
+    </div>
+  </div>
 
-                                <div class="form-row">
-                                    <div class="form-field">
-                                        <label for="business">Business name</label>
-                                        <input id="business" name="Business" type="text" />
-                                    </div>
-                                    <div class="form-field">
-                                        <label for="service">What do you need help with?</label>
-                                        <select id="service" name="Service">
-                                            <option value="Network checkup">Network checkup</option>
-                                            <option value="Network cleanup">Network cleanup</option>
-                                            <option value="Full redesign">Full network redesign</option>
-                                            <option value="Cybersecurity hardening">Cybersecurity hardening</option>
-                                            <option value="Ongoing support">Ongoing support</option>
-                                            <option value="Not sure">Not sure yet</option>
-                                        </select>
-                                    </div>
-                                </div>
+  <div class="form-field">
+    <label for="website">Website</label>
+    <input id="website" name="website" type="url" placeholder="https://example.com" />
+  </div>
 
-                                <div class="form-field">
-                                    <label for="message">Briefly describe your current setup and issues</label>
-                                    <textarea id="message" name="Details" rows="4" required></textarea>
-                                    <div class="form-help">
-                                        Example: “UDR + UniFi switches, 8–10 staff devices, POS terminals, cameras,
-                                        guest Wi-Fi. POS drops a few times a week and Wi-Fi is weak in back office.”
-                                    </div>
-                                </div>
+  <div class="form-field">
+    <label for="subject">Subject</label>
+    <input
+      id="subject"
+      name="subject"
+      type="text"
+      placeholder="e.g. Network cleanup, redesign, security review"
+      required
+    />
+  </div>
 
-                                <div class="form-field">
-                                    <label for="timing">Preferred contact time (optional)</label>
-                                    <input id="timing" name="Preferred contact time" type="text"
-                                        placeholder="e.g. Weekdays after 4 PM Central" />
-                                </div>
+  <div class="form-field">
+    <label for="description">Description</label>
+    <textarea
+      id="description"
+      name="description"
+      rows="4"
+      required
+      placeholder="Briefly describe your current setup (ISP/router, switches, Wi-Fi, POS, cameras, etc.) and what you’d like to improve."
+    ></textarea>
+  </div>
 
-                                <button type="submit" class="btn btn-primary">Send details via email</button>
-                                <div class="form-help">
-                                    This button opens your default email client with your answers filled in.
-                                    You can review everything before sending.
-                                </div>
-                            </form>
+  <div class="form-row">
+    <div class="form-field">
+      <label for="bestTime">Best time to contact</label>
+      <input
+        id="bestTime"
+        name="best_time"
+        type="text"
+        placeholder="e.g. Weekdays after 4 PM Central"
+      />
+    </div>
+    <div class="form-field">
+      <label for="bestMethod">Best method to contact</label>
+      <select id="bestMethod" name="best_method">
+        <option value="phone">Phone call</option>
+        <option value="text">Text message</option>
+        <option value="email">Email</option>
+      </select>
+    </div>
+  </div>
 
-                            <div class="contact-aside">
-                                <h3>Response time &amp; expectations</h3>
-                                <p>
-                                    <strong>Typical response:</strong> same business day for messages during
-                                    standard hours. You’ll get a clear next step — usually a short call or
-                                    a recommended starting package.
-                                </p>
-                                <p>
-                                    Helpful details to include:
-                                </p>
-                                <ul>
-                                    <li>How many staff and locations you have</li>
-                                    <li>Rough number of devices (POS, PCs, cameras, phones)</li>
-                                    <li>Any compliance concerns (HIPAA, PCI, etc.)</li>
-                                    <li>Biggest pain points with your current network</li>
-                                </ul>
-                                <p>
-                                    Prefer to reach out directly? Email
-                                    <strong>support@gcloudsolutions.org</strong>.
-                                </p>
-                            </div>
-                        </div>
+  <div class="form-field">
+    <label for="onsite">On site presence required?</label>
+    <select id="onsite" name="onsite_required">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+      <option value="unsure">Not sure yet</option>
+    </select>
+  </div>
+
+  <!-- Honeypot spam trap -->
+  <div style="display:none;">
+    <label>Leave this field empty</label>
+    <input type="text" name="extra_field" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit consulting request</button>
+  <div class="form-help">
+    Your details will be securely submitted to G Cloud Solutions. We’ll reply with
+    follow-up questions or available time slots.
+  </div>
+</form>
+                
                     </div>
-                </div>
             </section>
         </main>
 
