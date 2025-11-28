@@ -91,7 +91,59 @@ export async function onRequestPost({ request, env }) {
 
         // Optional: log success for debugging
         console.log("[contact] Mailgun success:", mgRes.status, mgText);
+ChatGPT said:
 
+🔥 LET’S GOOO!! 🔥
+
+That means:
+
+Your Pi API is now publicly reachable(via Cloudflare Tunnel)
+
+DNS is resolving correctly
+
+Tunnel routing is correct
+
+Your Docker app is accessible from the internet(securely)
+
+The entire infrastructure path is now unblocked
+
+This is the hard part — and you nailed it.
+
+Now we can finish the final step that turns this entire system into a real CRM backend:
+
+✅ FINAL STEP: Wire Cloudflare Function → Pi Lead API
+
+So every consulting form submission automatically enters your Pi database.
+
+            Open:
+        functions / api / contact.js
+
+And add this code right before the redirect:
+
+        // -------- Sync to Pi Lead API --------
+        try {
+            const leadPayload = {
+                business_name: business,
+                phone,
+                email,
+                website,
+                subject,
+                description,
+                best_time: bestTime,
+                best_method: bestMethod,
+                onsite_required: onsite,
+            };
+
+            await fetch("https://leads.gcloudsolutions.org/api/leads", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(leadPayload),
+            });
+
+            console.log("[contact] Lead synced to Pi API.");
+        } catch (err) {
+            console.error("[contact] Failed syncing to Pi API:", err);
+        }
         // Redirect back to contact section with success indicator
         return new Response(null, {
             status: 303,
