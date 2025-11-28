@@ -688,6 +688,62 @@
                 grid-template-columns: minmax(0, 1fr);
             }
         }
+
+        /* Success banner styles */
+        .alert-success {
+            display: none;
+            margin-bottom: 0.9rem;
+            border-radius: 0.9rem;
+            border: 1px solid rgba(36, 227, 138, 0.7);
+            background: radial-gradient(circle at top left, rgba(22, 163, 74, 0.18), rgba(15, 23, 42, 0.95));
+            box-shadow: 0 14px 30px rgba(16, 185, 129, 0.35);
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .alert-success.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .alert-success-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            padding: 0.6rem 0.8rem;
+        }
+
+        .alert-success-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            background: rgba(22, 163, 74, 0.9);
+            color: #ecfdf5;
+            box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.25);
+            flex-shrink: 0;
+        }
+
+        .alert-success-body {
+            font-size: 0.8rem;
+            color: #bbf7d0;
+        }
+
+        .alert-success-title {
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .alert-success-text {
+            color: #a7f3d0;
+            font-size: 0.78rem;
+        }
     </style>
 </head>
 
@@ -1152,6 +1208,42 @@
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script>
+        (function () {
+            function showContactSuccess() {
+                const banner = document.getElementById("contact-success");
+                if (!banner) return;
+
+                banner.style.display = "block";
+                // force layout so transition applies
+                void banner.offsetWidth;
+                banner.classList.add("show");
+
+                // Smooth scroll to center around the banner
+                try {
+                    banner.scrollIntoView({ behavior: "smooth", block: "center" });
+                } catch (e) {
+                    banner.scrollIntoView();
+                }
+
+                // Auto-hide after 10 seconds
+                setTimeout(() => {
+                    banner.classList.remove("show");
+                    setTimeout(() => {
+                        banner.style.display = "none";
+                    }, 300);
+                }, 10000);
+            }
+
+            if (window.location.hash === "#contact-success") {
+                if (document.readyState === "complete" || document.readyState === "interactive") {
+                    showContactSuccess();
+                } else {
+                    window.addEventListener("DOMContentLoaded", showContactSuccess);
+                }
+            }
+        })();
     </script>
 </body>
 
