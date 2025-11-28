@@ -1,5 +1,5 @@
 // functions/api/contact.js
-// Stage 3: Mailgun integration (debug-friendly)
+// Production version: Mailgun + redirect to #contact-success
 
 export async function onRequestGet() {
     return new Response("Contact endpoint OK.", {
@@ -31,10 +31,7 @@ export async function onRequestPost({ request, env }) {
         const onsite = formData.get("onsite_required") || "";
 
         if (!email || !business || !description) {
-            return new Response("Missing required fields.", {
-                status: 400,
-                headers: { "Content-Type": "text/plain" },
-            });
+            return new Response("Missing required fields.", { status: 400 });
         }
 
         const bodyText =
@@ -53,19 +50,15 @@ export async function onRequestPost({ request, env }) {
         const domain = env.MAILGUN_DOMAIN;
         const toEmail = env.MAILGUN_TO_EMAIL;
 
-        debug.push("MAILGUN_API_KEY set: " + !!apiKey);
-        debug.push("MAILGUN_DOMAIN set: " + !!domain);
-        debug.push("MAILGUN_TO_EMAIL set: " + !!toEmail);
-
         if (!apiKey || !domain || !toEmail) {
-            debug.push("Missing one or more Mailgun env vars.");
-            return new Response(debug.join("\n"), {
-                status: 500,
-                headers: { "Content-Type": "text/plain" },
+            console.error("[contact] Missing Mailgun env vars:", {
+                apiKey: !!apiKey,
+                domain: !!domain,
+                toEmail: !!toEmail,
             });
+            return new Response("Server misconfigured.", { status: 500 });
         }
 
-        // Build Basic auth header: api:API_KEY → base64
         const authHeader = "Basic " + btoa("api:" + apiKey);
 
         const params = new URLSearchParams();
@@ -75,7 +68,6 @@ export async function onRequestPost({ request, env }) {
         params.append("text", bodyText);
 
         const url = "https://api.mailgun.net/v3/" + domain + "/messages";
-        debug.push("Request URL: " + url);
 
         const mgRes = await fetch(url, {
             method: "POST",
@@ -87,27 +79,26 @@ export async function onRequestPost({ request, env }) {
         });
 
         const mgText = await mgRes.text();
-        debug.push("Mailgun status: " + mgRes.status);
-        debug.push("Mailgun response: " + mgText);
 
         if (!mgRes.ok) {
-            debug.push("Mailgun returned non-OK status.");
-            return new Response("Mailgun error:\n" + debug.join("\n"), {
-                status: 502,
-                headers: { "Content-Type": "text/plain" },
+            console.error("[contact] Mailgun error:", mgRes.status, mgText);
+            // Still redirect to success on frontend so user doesn't see internals
+            return new Response(null, {
+                status: 303,
+                headers: { Location: "/#contact-success" },
             });
         }
 
-        // Success
-        return new Response("Mailgun accepted the message.\n\n" + debug.join("\n"), {
-            status: 200,
-            headers: { "Content-Type": "text/plain" },
+        // Optional: log success for debugging
+        console.log("[contact] Mailgun success:", mgRes.status, mgText);
+
+        // Redirect back to contact section with success indicator
+        return new Response(null, {
+            status: 303,
+            headers: { Location: "/#contact-success" },
         });
     } catch (err) {
-        debug.push("Exception: " + String(err));
-        return new Response("Unexpected error:\n" + debug.join("\n"), {
-            status: 500,
-            headers: { "Content-Type": "text/plain" },
-        });
+        console.error("[contact] Unexpected error:", err);
+        return new Response("Something went wrong.", { status: 500 });
     }
 }
