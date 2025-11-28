@@ -800,6 +800,17 @@
                             configurations, we rebuild your environment with a clear, security-first design.
                         </p>
                     </div>
+                    <div id="contact-success" class="alert-success">
+                        <div class="alert-success-inner">
+                            <div class="alert-success-icon">✓</div>
+                            <div class="alert-success-body">
+                                <div class="alert-success-title">Thanks! Your consulting request was received.</div>
+                                <div class="alert-success-text">
+                                    We’ll review your details and reach out soon with next steps and available times.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <div class="pill-row">
                             <div class="pill"><span>Retail</span> • shops &amp; cafes</div>
@@ -1041,96 +1052,78 @@
 
                     <!-- CONTACT FORM -->
                     <div id="contact">
-                        <form
-  class="contact-form"
-  method="POST"
-  action="/api/contact"
->
-  <div class="form-field">
-    <label for="businessName">Business Name</label>
-    <input id="businessName" name="business_name" type="text" required />
-  </div>
+                        <form class="contact-form" method="POST" action="/api/contact">
+                            <div class="form-field">
+                                <label for="businessName">Business Name</label>
+                                <input id="businessName" name="business_name" type="text" required />
+                            </div>
 
-  <div class="form-row">
-    <div class="form-field">
-      <label for="phone">Phone</label>
-      <input id="phone" name="phone" type="tel" required />
-    </div>
-    <div class="form-field">
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required />
-    </div>
-  </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="phone">Phone</label>
+                                    <input id="phone" name="phone" type="tel" required />
+                                </div>
+                                <div class="form-field">
+                                    <label for="email">Email</label>
+                                    <input id="email" name="email" type="email" required />
+                                </div>
+                            </div>
 
-  <div class="form-field">
-    <label for="website">Website</label>
-    <input id="website" name="website" type="url" placeholder="https://example.com" />
-  </div>
+                            <div class="form-field">
+                                <label for="website">Website</label>
+                                <input id="website" name="website" type="url" placeholder="https://example.com" />
+                            </div>
 
-  <div class="form-field">
-    <label for="subject">Subject</label>
-    <input
-      id="subject"
-      name="subject"
-      type="text"
-      placeholder="e.g. Network cleanup, redesign, security review"
-      required
-    />
-  </div>
+                            <div class="form-field">
+                                <label for="subject">Subject</label>
+                                <input id="subject" name="subject" type="text"
+                                    placeholder="e.g. Network cleanup, redesign, security review" required />
+                            </div>
 
-  <div class="form-field">
-    <label for="description">Description</label>
-    <textarea
-      id="description"
-      name="description"
-      rows="4"
-      required
-      placeholder="Briefly describe your current setup (ISP/router, switches, Wi-Fi, POS, cameras, etc.) and what you’d like to improve."
-    ></textarea>
-  </div>
+                            <div class="form-field">
+                                <label for="description">Description</label>
+                                <textarea id="description" name="description" rows="4" required
+                                    placeholder="Briefly describe your current setup (ISP/router, switches, Wi-Fi, POS, cameras, etc.) and what you’d like to improve."></textarea>
+                            </div>
 
-  <div class="form-row">
-    <div class="form-field">
-      <label for="bestTime">Best time to contact</label>
-      <input
-        id="bestTime"
-        name="best_time"
-        type="text"
-        placeholder="e.g. Weekdays after 4 PM Central"
-      />
-    </div>
-    <div class="form-field">
-      <label for="bestMethod">Best method to contact</label>
-      <select id="bestMethod" name="best_method">
-        <option value="phone">Phone call</option>
-        <option value="text">Text message</option>
-        <option value="email">Email</option>
-      </select>
-    </div>
-  </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="bestTime">Best time to contact</label>
+                                    <input id="bestTime" name="best_time" type="text"
+                                        placeholder="e.g. Weekdays after 4 PM Central" />
+                                </div>
+                                <div class="form-field">
+                                    <label for="bestMethod">Best method to contact</label>
+                                    <select id="bestMethod" name="best_method">
+                                        <option value="phone">Phone call</option>
+                                        <option value="text">Text message</option>
+                                        <option value="email">Email</option>
+                                    </select>
+                                </div>
+                            </div>
 
-  <div class="form-field">
-    <label for="onsite">On site presence required?</label>
-    <select id="onsite" name="onsite_required">
-      <option value="no">No</option>
-      <option value="yes">Yes</option>
-      <option value="unsure">Not sure yet</option>
-    </select>
-  </div>
+                            <div class="form-field">
+                                <label for="onsite">On site presence required?</label>
+                                <select id="onsite" name="onsite_required">
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="unsure">Not sure yet</option>
+                                </select>
+                            </div>
 
-  <!-- Honeypot spam trap -->
-  <div style="display:none;">
-    <label>Leave this field empty</label>
-    <input type="text" name="extra_field" />
-  </div>
+                            <!-- Honeypot spam trap -->
+                            <div style="display:none;">
+                                <label>Leave this field empty</label>
+                                <input type="text" name="extra_field" />
+                            </div>
 
-  <button type="submit" class="btn btn-primary">Submit consulting request</button>
-  <div class="form-help">
-    Your details will be securely submitted to G Cloud Solutions. We’ll reply with
-    follow-up questions or available time slots.
-  </div>
-</form>
-                
+                            <button type="submit" class="btn btn-primary">Submit consulting request</button>
+                            <div class="form-help">
+                                Your details will be securely submitted to G Cloud Solutions. We’ll reply with
+                                follow-up questions or available time slots.
+                            </div>
+                        </form>
+
                     </div>
             </section>
         </main>
