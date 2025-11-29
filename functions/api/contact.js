@@ -1,5 +1,9 @@
 // functions/api/contact.js
-// Production version: Mailgun + redirect to #contact-success
+// G Cloud Solutions contact handler:
+//  - parses form
+//  - sends email via Mailgun
+//  - syncs lead to Pi API
+//  - redirects back to #contact-success
 
 export async function onRequestGet() {
     return new Response("Contact endpoint OK.", {
@@ -9,8 +13,6 @@ export async function onRequestGet() {
 }
 
 export async function onRequestPost({ request, env }) {
-    let debug = [];
-
     try {
         const formData = await request.formData();
 
@@ -46,81 +48,51 @@ export async function onRequestPost({ request, env }) {
             "Best method to contact: " + bestMethod + "\n" +
             "On-site presence required: " + onsite + "\n";
 
-        const apiKey = env.MAILGUN_API_KEY;
-        const domain = env.MAILGUN_DOMAIN;
-        const toEmail = env.MAILGUN_TO_EMAIL;
+        // -------- MAILGUN EMAIL --------
+        try {
+            const apiKey = env.MAILGUN_API_KEY;
+            const domain = env.MAILGUN_DOMAIN;
+            const toEmail = env.MAILGUN_TO_EMAIL;
 
-        if (!apiKey || !domain || !toEmail) {
-            console.error("[contact] Missing Mailgun env vars:", {
-                apiKey: !!apiKey,
-                domain: !!domain,
-                toEmail: !!toEmail,
-            });
-            return new Response("Server misconfigured.", { status: 500 });
+            if (!apiKey || !domain || !toEmail) {
+                console.error("[contact] Missing Mailgun env vars:", {
+                    apiKey: !!apiKey,
+                    domain: !!domain,
+                    toEmail: !!toEmail,
+                });
+            } else {
+                const authHeader = "Basic " + btoa("api:" + apiKey);
+
+                const params = new URLSearchParams();
+                params.append("from", "G Cloud Solutions <no-reply@" + domain + ">");
+                params.append("to", toEmail);
+                params.append("subject", "New consulting request: " + business);
+                params.append("text", bodyText);
+
+                const url = "https://api.mailgun.net/v3/" + domain + "/messages";
+
+                const mgRes = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        Authorization: authHeader,
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: params.toString(),
+                });
+
+                const mgText = await mgRes.text();
+
+                if (!mgRes.ok) {
+                    console.error("[contact] Mailgun error:", mgRes.status, mgText);
+                } else {
+                    console.log("[contact] Mailgun success:", mgRes.status, mgText);
+                }
+            }
+        } catch (err) {
+            console.error("[contact] Mailgun exception:", err);
         }
 
-        const authHeader = "Basic " + btoa("api:" + apiKey);
-
-        const params = new URLSearchParams();
-        params.append("from", "G Cloud Solutions <no-reply@" + domain + ">");
-        params.append("to", toEmail);
-        params.append("subject", "New consulting request: " + business);
-        params.append("text", bodyText);
-
-        const url = "https://api.mailgun.net/v3/" + domain + "/messages";
-
-        const mgRes = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Authorization": authHeader,
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: params.toString(),
-        });
-
-        const mgText = await mgRes.text();
-
-        if (!mgRes.ok) {
-            console.error("[contact] Mailgun error:", mgRes.status, mgText);
-            // Still redirect to success on frontend so user doesn't see internals
-            return new Response(null, {
-                status: 303,
-                headers: { Location: "/#contact-success" },
-            });
-        }
-
-        // Optional: log success for debugging
-        console.log("[contact] Mailgun success:", mgRes.status, mgText);
-ChatGPT said:
-
-🔥 LET’S GOOO!! 🔥
-
-That means:
-
-Your Pi API is now publicly reachable(via Cloudflare Tunnel)
-
-DNS is resolving correctly
-
-Tunnel routing is correct
-
-Your Docker app is accessible from the internet(securely)
-
-The entire infrastructure path is now unblocked
-
-This is the hard part — and you nailed it.
-
-Now we can finish the final step that turns this entire system into a real CRM backend:
-
-✅ FINAL STEP: Wire Cloudflare Function → Pi Lead API
-
-So every consulting form submission automatically enters your Pi database.
-
-            Open:
-        functions / api / contact.js
-
-And add this code right before the redirect:
-
-        // -------- Sync to Pi Lead API --------
+        // -------- PI LEAD API SYNC --------
         try {
             const leadPayload = {
                 business_name: business,
@@ -134,17 +106,23 @@ And add this code right before the redirect:
                 onsite_required: onsite,
             };
 
-            await fetch("https://leads.gcloudsolutions.org/api/leads", {
+            const piRes = await fetch("https://leads.gcloudsolutions.org/api/leads", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(leadPayload),
             });
 
-            console.log("[contact] Lead synced to Pi API.");
+            if (!piRes.ok) {
+                const text = await piRes.text();
+                console.error("[contact] Pi API error:", piRes.status, text);
+            } else {
+                console.log("[contact] Lead synced to Pi API.");
+            }
         } catch (err) {
-            console.error("[contact] Failed syncing to Pi API:", err);
+            console.error("[contact] Pi API exception:", err);
         }
-        // Redirect back to contact section with success indicator
+
+        // -------- REDIRECT BACK TO SITE --------
         return new Response(null, {
             status: 303,
             headers: { Location: "/#contact-success" },
