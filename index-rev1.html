@@ -9,21 +9,15 @@
         content="G Cloud Solutions provides professional small business networking and cybersecurity services — VLAN design, firewall hardening, Wi-Fi optimization, and secure remote support." />
     <style>
         :root {
-            /* KC Current–inspired palette */
-            --bg: #0A2239;
-            /* storm navy */
-            --bg-alt: #061525;
-            /* deeper navy for header/footer/sections */
-            --card: #10243A;
-            /* panel/card background */
-            --accent: #00A7A2;
-            /* teal primary */
-            --accent-soft: rgba(0, 167, 162, 0.16);
-            --text: #F5F7FA;
-            --muted: #A0AEC0;
-            --danger: #EF3B3A;
-            /* KC red for strong accents */
-            --border: #1F3B5B;
+            --bg: #05070b;
+            --bg-alt: #0c1018;
+            --card: #111725;
+            --accent: #24e38a;
+            --accent-soft: rgba(36, 227, 138, 0.15);
+            --text: #f7fafc;
+            --muted: #a0aec0;
+            --danger: #f56565;
+            --border: #2d3748;
             --radius-lg: 18px;
             --radius-sm: 10px;
             --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
@@ -39,10 +33,7 @@
 
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background:
-                radial-gradient(circle at top, rgba(0, 167, 162, 0.18) 0, transparent 45%),
-                radial-gradient(circle at bottom right, rgba(239, 59, 58, 0.12) 0, transparent 55%),
-                radial-gradient(circle at center, #0A2239 0, #020814 55%, #01040A 100%);
+            background: radial-gradient(circle at top, #10182b 0, #05070b 45%, #020308 100%);
             color: var(--text);
             line-height: 1.6;
         }
@@ -63,10 +54,8 @@
             top: 0;
             z-index: 50;
             backdrop-filter: blur(14px);
-            background: linear-gradient(to bottom,
-                    rgba(6, 21, 37, 0.96),
-                    rgba(6, 21, 37, 0.6));
-            border-bottom: 1px solid rgba(31, 59, 91, 0.8);
+            background: linear-gradient(to bottom, rgba(5, 7, 11, 0.96), rgba(5, 7, 11, 0.5));
+            border-bottom: 1px solid rgba(45, 55, 72, 0.7);
         }
 
         .nav {
@@ -85,34 +74,31 @@
             gap: 0.85rem;
         }
 
-        /* Updated logo block to use shield logo */
         .logo-mark {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: #020814;
-            border: 2px solid var(--danger);
-            /* red outline like the shield */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            width: 34px;
+            height: 34px;
+            border-radius: 40%;
+            background: radial-gradient(circle at 30% 20%, #24e38a 0, #0bbf77 20%, #020617 70%);
+            position: relative;
             box-shadow:
-                0 0 18px rgba(239, 59, 58, 0.55),
+                0 0 18px rgba(36, 227, 138, 0.7),
                 0 10px 26px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
         }
 
-        .logo-mark img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .logo-mark::before,
+        .logo-mark::after {
+            content: "";
+            position: absolute;
+            inset: 18%;
+            border-radius: 40%;
+            border: 1px solid rgba(4, 12, 30, 0.7);
         }
 
         .logo-text-main {
             font-weight: 600;
-            letter-spacing: 0.08em;
-            font-size: 0.9rem;
-            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-size: 0.98rem;
         }
 
         .logo-text-sub {
@@ -159,18 +145,18 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #00A7A2, #35B8B3);
-            color: #020814;
+            background: linear-gradient(135deg, #24e38a, #13c275);
+            color: #020617;
             font-weight: 600;
             box-shadow:
-                0 0 0 1px rgba(1, 15, 30, 0.7),
-                0 10px 22px rgba(0, 167, 162, 0.55);
+                0 0 0 1px rgba(1, 22, 39, 0.6),
+                0 10px 22px rgba(13, 148, 136, 0.45);
         }
 
         .btn-primary:hover {
             transform: translateY(-1px);
             box-shadow:
-                0 12px 26px rgba(0, 167, 162, 0.7);
+                0 12px 26px rgba(13, 148, 136, 0.6);
         }
 
         .btn-ghost {
@@ -235,8 +221,8 @@
             gap: 0.4rem;
             padding: 0.25rem 0.7rem;
             border-radius: 999px;
-            background: rgba(9, 20, 38, 0.9);
-            border: 1px solid rgba(31, 59, 91, 0.9);
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(51, 65, 85, 0.8);
         }
 
         .hero-right {
@@ -246,7 +232,7 @@
 
         .hero-card {
             position: relative;
-            background: radial-gradient(circle at top, #10243A, #020814);
+            background: radial-gradient(circle at top, #111827, #020617);
             border-radius: 24px;
             padding: 1.3rem 1.35rem 1.4rem;
             box-shadow: var(--shadow-soft);
@@ -260,8 +246,8 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(circle at 15% 15%, rgba(0, 167, 162, 0.22), transparent 55%),
-                radial-gradient(circle at 80% 0%, rgba(239, 59, 58, 0.18), transparent 55%);
+                radial-gradient(circle at 15% 15%, rgba(36, 227, 138, 0.2), transparent 55%),
+                radial-gradient(circle at 80% 0%, rgba(59, 130, 246, 0.16), transparent 55%);
             opacity: 0.9;
             pointer-events: none;
             mix-blend-mode: screen;
@@ -285,9 +271,9 @@
             font-size: 0.7rem;
             padding: 0.18rem 0.6rem;
             border-radius: 999px;
-            background: rgba(0, 167, 162, 0.12);
-            color: #b2f5ea;
-            border: 1px solid rgba(0, 167, 162, 0.7);
+            background: rgba(15, 118, 110, 0.26);
+            color: #a7f3d0;
+            border: 1px solid rgba(45, 212, 191, 0.5);
         }
 
         .network-grid {
@@ -302,14 +288,14 @@
         .node {
             padding: 0.6rem 0.5rem;
             border-radius: 0.85rem;
-            border: 1px solid rgba(55, 65, 81, 0.9);
-            background: rgba(9, 13, 24, 0.96);
+            border: 1px solid rgba(55, 65, 81, 0.85);
+            background: rgba(15, 23, 42, 0.9);
             font-size: 0.72rem;
             line-height: 1.3;
             display: flex;
             flex-direction: column;
             gap: 0.15rem;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.85);
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.8);
         }
 
         .node-label {
@@ -324,14 +310,14 @@
 
         .node-badge {
             font-size: 0.65rem;
-            color: #b2f5ea;
+            color: #bbf7d0;
         }
 
         .node.node-accent {
-            border-color: rgba(0, 167, 162, 0.9);
+            border-color: rgba(36, 227, 138, 0.9);
             box-shadow:
-                0 0 0 1px rgba(0, 167, 162, 0.7),
-                0 12px 26px rgba(0, 167, 162, 0.85);
+                0 0 0 1px rgba(36, 227, 138, 0.6),
+                0 12px 26px rgba(5, 150, 105, 0.8);
         }
 
         .hero-footnote {
@@ -403,10 +389,10 @@
         }
 
         .card {
-            background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), #020814);
+            background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), #020617);
             border-radius: var(--radius-lg);
             padding: 1rem 1rem 1.1rem;
-            border: 1px solid rgba(51, 65, 85, 0.95);
+            border: 1px solid rgba(51, 65, 85, 0.9);
             box-shadow: var(--shadow-card);
         }
 
@@ -444,7 +430,7 @@
             border-radius: var(--radius-lg);
             border: 1px dashed rgba(75, 85, 99, 0.9);
             padding: 0.85rem 0.9rem;
-            background: rgba(9, 13, 24, 0.9);
+            background: rgba(15, 23, 42, 0.8);
         }
 
         .step-index {
@@ -503,9 +489,9 @@
         .cta-panel {
             border-radius: var(--radius-lg);
             padding: 1rem 1.1rem;
-            background: linear-gradient(140deg, rgba(0, 167, 162, 0.12), rgba(9, 13, 24, 0.98));
-            border: 1px solid rgba(0, 167, 162, 0.5);
-            box-shadow: 0 14px 34px rgba(0, 167, 162, 0.35);
+            background: linear-gradient(140deg, rgba(36, 227, 138, 0.09), rgba(15, 23, 42, 0.95));
+            border: 1px solid rgba(36, 227, 138, 0.4);
+            box-shadow: 0 14px 34px rgba(16, 185, 129, 0.3);
         }
 
         .cta-panel h3 {
@@ -520,9 +506,9 @@
         }
 
         footer {
-            border-top: 1px solid rgba(31, 59, 91, 0.9);
+            border-top: 1px solid rgba(30, 64, 175, 0.6);
             margin-top: auto;
-            background: linear-gradient(to top, #020814, rgba(2, 8, 20, 0.8));
+            background: linear-gradient(to top, #020617, rgba(2, 6, 23, 0.7));
         }
 
         .footer-inner {
@@ -558,7 +544,7 @@
             gap: 0.3rem;
             padding: 0.18rem 0.55rem;
             border-radius: 999px;
-            background: rgba(9, 13, 24, 0.96);
+            background: rgba(15, 23, 42, 0.9);
             border: 1px solid rgba(55, 65, 81, 0.9);
             font-size: 0.72rem;
             color: var(--muted);
@@ -568,8 +554,8 @@
             width: 7px;
             height: 7px;
             border-radius: 999px;
-            background: var(--accent);
-            box-shadow: 0 0 0 4px rgba(0, 167, 162, 0.35);
+            background: #22c55e;
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
         }
 
         @media (max-width: 840px) {
@@ -615,10 +601,10 @@
         }
 
         .contact-form {
-            background: rgba(9, 13, 24, 0.96);
+            background: rgba(15, 23, 42, 0.9);
             border-radius: var(--radius-lg);
             padding: 1rem 1.1rem 1.2rem;
-            border: 1px solid rgba(51, 65, 85, 0.95);
+            border: 1px solid rgba(51, 65, 85, 0.9);
             box-shadow: var(--shadow-card);
             font-size: 0.86rem;
         }
@@ -649,7 +635,7 @@
             padding: 0.45rem 0.55rem;
             border-radius: 0.5rem;
             border: 1px solid rgba(55, 65, 81, 0.9);
-            background: rgba(9, 13, 24, 0.98);
+            background: rgba(15, 23, 42, 0.95);
             color: var(--text);
             font-size: 0.84rem;
             outline: none;
@@ -659,8 +645,8 @@
         .form-field input:focus,
         .form-field select:focus,
         .form-field textarea:focus {
-            border-color: rgba(0, 167, 162, 0.7);
-            box-shadow: 0 0 0 1px rgba(0, 167, 162, 0.6);
+            border-color: rgba(36, 227, 138, 0.7);
+            box-shadow: 0 0 0 1px rgba(36, 227, 138, 0.6);
         }
 
         .form-help {
@@ -708,9 +694,9 @@
             display: none;
             margin-bottom: 0.9rem;
             border-radius: 0.9rem;
-            border: 1px solid rgba(0, 167, 162, 0.7);
-            background: radial-gradient(circle at top left, rgba(0, 167, 162, 0.2), rgba(9, 13, 24, 0.98));
-            box-shadow: 0 14px 30px rgba(0, 167, 162, 0.4);
+            border: 1px solid rgba(36, 227, 138, 0.7);
+            background: radial-gradient(circle at top left, rgba(22, 163, 74, 0.18), rgba(15, 23, 42, 0.95));
+            box-shadow: 0 14px 30px rgba(16, 185, 129, 0.35);
             opacity: 0;
             transform: translateY(-8px);
             transition: opacity 0.3s ease, transform 0.3s ease;
@@ -738,9 +724,9 @@
             justify-content: center;
             font-size: 0.9rem;
             font-weight: 700;
-            background: rgba(0, 167, 162, 0.92);
+            background: rgba(22, 163, 74, 0.9);
             color: #ecfdf5;
-            box-shadow: 0 0 0 4px rgba(0, 167, 162, 0.35);
+            box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.25);
             flex-shrink: 0;
         }
 
@@ -766,12 +752,9 @@
         <header>
             <div class="nav">
                 <div class="nav-left">
-                    <div class="logo-mark">
-                        <!-- Update this path to wherever you place the KC-style shield logo -->
-                        <img src="img/gcloud-shield-kc.png" alt="G Cloud Solutions logo">
-                    </div>
+                    <div class="logo-mark"></div>
                     <div>
-                        <div class="logo-text-main">G CLOUD SOLUTIONS</div>
+                        <div class="logo-text-main">G Cloud Solutions</div>
                         <div class="logo-text-sub">Network &amp; Cybersecurity</div>
                     </div>
                 </div>
@@ -869,8 +852,8 @@
                         <div class="section-kicker">Services</div>
                         <h2 class="section-title">Small business networking, done right.</h2>
                         <p class="section-description">
-                            From slow Wi-Fi and unstable POS systems to confusing “mystery” configurations, we rebuild
-                            your environment with a clear, security-first design.
+                            From slow Wi-Fi and unstable POS systems to confusing “mystery”
+                            configurations, we rebuild your environment with a clear, security-first design.
                         </p>
                     </div>
                     <div id="contact-success" class="alert-success">
