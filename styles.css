@@ -1,4 +1,4 @@
-/* Reset & base */
+/* Base & Reset */
 * {
     margin: 0;
     padding: 0;
@@ -7,10 +7,16 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    background-color: #F4F5F7;
+    color: #1C2331;
     line-height: 1.6;
-    color: #222;
-    background: #fff;
     scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 1rem;
 }
 
 img {
@@ -19,29 +25,12 @@ img {
     display: block;
 }
 
-a {
-    text-decoration: none;
-}
-
-button {
-    cursor: pointer;
-    border: none;
-    background: none;
-}
-
-/* Layout containers */
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 0 1rem;
-}
-
-/* Header / Nav */
+/* Header */
 .header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
@@ -55,7 +44,7 @@ button {
 .logo {
     font-size: 1.6rem;
     font-weight: 600;
-    color: #0052D4;
+    color: #1C2331;
 }
 
 .nav-links {
@@ -65,32 +54,34 @@ button {
 }
 
 .nav-links a {
-    color: #222;
+    color: #4C566A;
     font-weight: 500;
+    text-decoration: none;
     transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: #0052D4;
+    color: #1C2331;
 }
 
 .mobile-menu {
     display: none;
     font-size: 2rem;
     background: none;
-    color: #222;
+    color: #1C2331;
 }
 
-/* Hero (split layout) */
+/* Hero */
 .hero-split {
     padding: 4rem 0;
+    background: #EDEFF1;
 }
 
 .hero-split-content {
     display: flex;
     align-items: center;
-    gap: 2rem;
     flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .hero-text {
@@ -98,14 +89,15 @@ button {
 }
 
 .hero-text h1 {
-    font-size: 2.75rem;
+    font-size: 2.5rem;
+    color: #1C2331;
     margin-bottom: 1rem;
 }
 
 .hero-text p {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
+    color: #4C566A;
     margin-bottom: 2rem;
-    color: #444;
 }
 
 .hero-image {
@@ -113,23 +105,23 @@ button {
 }
 
 .hero-image img {
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 /* Buttons */
 .btn-primary {
     display: inline-block;
-    padding: 0.8rem 2rem;
-    background: #0052D4;
+    padding: 0.75rem 2rem;
+    background-color: #1C2331;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 6px;
     font-weight: 600;
     transition: background 0.3s, transform 0.2s;
 }
 
 .btn-primary:hover {
-    background: #003b8c;
+    background-color: #2E3A4F;
     transform: translateY(-2px);
 }
 
@@ -139,54 +131,48 @@ button {
 }
 
 .alt-bg {
-    background: #f9f9f9;
+    background-color: #F9FAFB;
 }
 
 h2 {
     text-align: center;
+    color: #1C2331;
     font-size: 2rem;
-    color: #0052D4;
     margin-bottom: 2rem;
 }
 
-/* Benefits grid */
+/* Benefits Grid */
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
 }
 
 .benefit {
-    background: #fff;
+    background-color: #FAFAFA;
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.benefit:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .benefit .icon {
     font-size: 2rem;
-    color: #0052D4;
-    margin-bottom: 1rem;
+    color: #1C2331;
+    margin-bottom: 0.75rem;
 }
 
 .benefit h4 {
-    margin-bottom: 0.75rem;
-    color: #222;
+    margin-bottom: 0.5rem;
+    color: #1C2331;
 }
 
 .benefit p {
-    color: #555;
     font-size: 0.95rem;
+    color: #4C566A;
 }
 
-/* Service cards */
+/* Service Cards */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -194,112 +180,43 @@ h2 {
 }
 
 .card {
-    background: #fff;
+    background-color: #FAFAFA;
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .card h3 {
-    font-size: 1.25rem;
-    color: #0052D4;
+    color: #1C2331;
     margin-bottom: 0.75rem;
 }
 
 .card p {
-    color: #555;
+    color: #4C566A;
     font-size: 0.95rem;
 }
 
-/* Contact form */
+/* Contact */
 .contact-container {
     max-width: 600px;
     margin: auto;
+    text-align: center;
 }
 
 .contact-form {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-top: 2rem;
 }
 
 .contact-form label {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    font-weight: 500;
-    color: #333;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #0052D4;
-    outline: none;
-}
-
-.contact-form button {
-    padding: 1rem;
-    background: #0052D4;
-    color: #fff;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: background 0.3s, transform 0.2s;
-}
-
-.contact-form button:hover {
-    background: #003b8c;
-    transform: translateY(-2px);
-}
-
-/* Footer */
-.footer {
-    background: #222;
-    color: #eee;
-    text-align: center;
-    padding: 1.5rem 0;
-    font-size: 0.9rem;
-}
-
-/* Responsive Nav & Layout */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: #fff;
-        position: absolute;
-        right: 1rem;
-        top: 70px;
-        width: 220px;
-        border: 1px solid #ccc;
-        padding: 1rem;
-        border-radius: 5px;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .mobile-menu {
-        display: block;
-    }
-
-    .hero-split-content {
-        flex-direction: column-reverse;
-    }
-}
+    align
