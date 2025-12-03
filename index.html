@@ -6,36 +6,42 @@
     <title>G Cloud Solutions — Network & Cybersecurity</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="G Cloud Solutions designs and secures small business networks — VLANs, Wi-Fi, and practical cybersecurity.">
+        content="G Cloud Solutions designs and secures small business networks — VLANs, Wi-Fi, and practical cybersecurity." />
 
     <style>
         :root {
-            --bg-main: #020814;
-            --bg-navy: #0A2239;
-            --bg-navy-soft: #061525;
-            --bg-teal: #00A7A2;
+            --page-bg: #f3f4f6;
+            --content-bg: #ffffff;
+            --content-alt: #f9fafb;
+            --border-subtle: #e5e7eb;
+            --border-strong: #d1d5db;
+            --text-main: #111827;
+            --text-muted: #6b7280;
             --accent: #00A7A2;
-            --accent-soft: rgba(0, 167, 162, 0.16);
-            --text: #F5F7FA;
-            --muted: #A0AEC0;
-            --border: #1F3B5B;
+            /* KC teal */
+            --accent-soft: rgba(0, 167, 162, 0.08);
+            --accent-strong: #008f8a;
+            --alert-red: #EF3B3A;
+            /* KC red accent */
             --radius-lg: 18px;
-            --radius-sm: 10px;
-            --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
-            --shadow-card: 0 14px 30px rgba(0, 0, 0, 0.45);
-            --max-width: 1080px;
+            --radius-md: 12px;
+            --radius-pill: 999px;
+            --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.13);
+            --shadow-card: 0 10px 30px rgba(17, 24, 39, 0.12);
+            --shadow-subtle: 0 1px 2px rgba(15, 23, 42, 0.06);
+            --max-width: 1120px;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top, #0A2239 0, #020814 55%, #000 100%);
-            color: var(--text);
+            background: var(--page-bg);
+            color: var(--text-main);
             line-height: 1.6;
         }
 
@@ -50,48 +56,46 @@
             flex-direction: column;
         }
 
-        /* HEADER */
+        /* HEADER / NAV – light, tech-mag vibe */
         header {
             position: sticky;
             top: 0;
             z-index: 50;
+            background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(14px);
-            background: linear-gradient(to bottom,
-                    rgba(6, 21, 37, 0.96),
-                    rgba(6, 21, 37, 0.65),
-                    rgba(6, 21, 37, 0.1));
-            border-bottom: 1px solid rgba(31, 59, 91, 0.9);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.95);
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
         }
 
         .nav {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0.75rem 1.1rem;
-            display: flex;
+            padding: 0.6rem 1rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
             align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
+            column-gap: 1rem;
         }
 
         .nav-left {
             display: flex;
             align-items: center;
-            gap: 0.85rem;
+            gap: 0.75rem;
         }
 
         .logo-mark {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            background: #020814;
-            border: 2px solid #EF3B3A;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: #020617;
+            border: 2px solid var(--alert-red);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             box-shadow:
-                0 0 14px rgba(239, 59, 58, 0.4),
-                0 10px 26px rgba(0, 0, 0, 0.8);
+                0 0 10px rgba(239, 59, 58, 0.35),
+                0 6px 14px rgba(15, 23, 42, 0.35);
         }
 
         .logo-mark img {
@@ -101,51 +105,58 @@
         }
 
         .logo-text-main {
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.08em;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
         }
 
         .logo-text-sub {
-            font-size: 0.72rem;
-            color: var(--muted);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
         }
 
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 1.5rem;
+            gap: 1.4rem;
             font-size: 0.88rem;
         }
 
         .nav-links a {
-            color: var(--muted);
-            opacity: 0.85;
-            transition: color 0.18s ease, opacity 0.18s ease;
+            color: var(--text-muted);
+            padding-bottom: 0.2rem;
+            border-bottom: 2px solid transparent;
+            transition: color 0.18s ease, border-color 0.18s ease;
         }
 
         .nav-links a:hover {
             color: var(--accent);
-            opacity: 1;
+            border-color: var(--accent-soft);
         }
 
-        .nav-cta {
+        .nav-right {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            justify-content: flex-end;
+            gap: 0.6rem;
         }
 
-        .badge {
+        .badge-pill {
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
-            padding: 0.18rem 0.55rem;
-            border-radius: 999px;
-            background: rgba(9, 13, 24, 0.96);
-            border: 1px solid rgba(55, 65, 81, 0.9);
-            font-size: 0.72rem;
-            color: var(--muted);
+            gap: 0.35rem;
+            padding: 0.18rem 0.6rem;
+            border-radius: var(--radius-pill);
+            background: #f3f4ff;
+            border: 1px solid #e5e7eb;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            white-space: nowrap;
         }
 
         .badge-dot {
@@ -153,397 +164,605 @@
             height: 7px;
             border-radius: 999px;
             background: var(--accent);
-            box-shadow: 0 0 0 4px rgba(0, 167, 162, 0.35);
+            box-shadow: 0 0 0 3px rgba(0, 167, 162, 0.25);
         }
 
         .btn {
-            border-radius: 999px;
-            padding: 0.55rem 1.2rem;
-            font-size: 0.85rem;
+            border-radius: var(--radius-pill);
+            padding: 0.4rem 0.95rem;
+            font-size: 0.8rem;
             border: 1px solid transparent;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.4rem;
+            gap: 0.3rem;
             transition: all 0.18s ease;
             white-space: nowrap;
+            background: none;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #00A7A2, #35B8B3);
-            color: #020814;
+            background: linear-gradient(135deg, var(--accent), #35b8b3);
+            color: #0b1120;
             font-weight: 600;
-            box-shadow:
-                0 0 0 1px rgba(1, 15, 30, 0.7),
-                0 10px 22px rgba(0, 167, 162, 0.55);
+            box-shadow: 0 8px 18px rgba(16, 185, 129, 0.25);
         }
 
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 12px 26px rgba(0, 167, 162, 0.7);
+            box-shadow: 0 10px 22px rgba(16, 185, 129, 0.35);
         }
 
-        .btn-ghost {
-            border-color: rgba(148, 163, 184, 0.6);
-            background: rgba(15, 23, 42, 0.6);
-            color: var(--muted);
+        .btn-outline {
+            border-color: #d1d5db;
+            color: #111827;
+            background: #ffffff;
         }
 
-        .btn-ghost:hover {
-            border-color: rgba(148, 163, 184, 0.95);
-            color: var(--text);
-            background: rgba(15, 23, 42, 0.95);
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent-strong);
+            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.1);
         }
 
-        /* STRIPS */
-        .strip {
-            width: 100%;
+        /* LAYOUT */
+        main {
+            flex: 1;
         }
 
-        .strip-inner {
+        .main-shell {
             max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 3rem 1.1rem;
-        }
-
-        .strip-hero {
-            background:
-                radial-gradient(circle at top left, rgba(0, 167, 162, 0.25), transparent 55%),
-                radial-gradient(circle at bottom right, rgba(239, 59, 58, 0.22), transparent 55%),
-                linear-gradient(to bottom, #0A2239, #020814);
-        }
-
-        .strip-services {
-            background: linear-gradient(to bottom, #061525, #020814);
-            border-top: 1px solid rgba(24, 41, 69, 0.9);
-        }
-
-        /* Option 2: teal → navy gradient for security strip */
-        .strip-security {
-            background: linear-gradient(to bottom,
-                    rgba(0, 167, 162, 0.9),
-                    #061525);
-            border-top: 1px solid rgba(0, 167, 162, 0.45);
-            color: #F5F7FA;
-        }
-
-        .strip-security .muted {
-            color: #E0E9EC;
-        }
-
-        .strip-pricing {
-            background: linear-gradient(to bottom, #061525, #020814);
-            border-top: 1px solid rgba(24, 41, 69, 0.9);
-        }
-
-        /* No more bright red – subtle gradient with a hint of KC red in the border */
-        .strip-contact {
-            background: linear-gradient(to bottom, #071727, #020814);
-            color: #F5F7FA;
-            border-top: 2px solid rgba(239, 59, 58, 0.45);
-        }
-
-        .strip-contact .muted {
-            color: #A0AEC0;
-        }
-
-        /* HERO */
-        .hero-grid {
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
             display: grid;
-            grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
-            gap: 2.4rem;
-            align-items: center;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 1.3fr);
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 960px) {
+            .main-shell {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        /* HERO / FEATURED AREA (left column top) */
+        .hero-card {
+            background: var(--content-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-soft);
+            padding: 1.6rem 1.6rem 1.4rem;
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+            gap: 1.6rem;
+        }
+
+        @media (max-width: 800px) {
+            .hero-card {
+                grid-template-columns: minmax(0, 1fr);
+            }
         }
 
         .hero-eyebrow {
             text-transform: uppercase;
             letter-spacing: 0.16em;
             font-size: 0.68rem;
-            color: var(--accent);
-            margin-bottom: 0.9rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.1rem, 2.6vw + 1.4rem, 2.9rem);
-            line-height: 1.08;
+            color: var(--accent-strong);
             margin-bottom: 0.7rem;
         }
 
-        .hero h1 span {
-            color: var(--accent);
+        .hero-title {
+            font-size: clamp(1.7rem, 2vw + 1rem, 2.1rem);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title span {
+            color: var(--accent-strong);
         }
 
         .hero-sub {
-            color: var(--muted);
-            max-width: 30rem;
-            font-size: 0.95rem;
-            margin-bottom: 1.4rem;
+            color: var(--text-muted);
+            font-size: 0.96rem;
+            margin-bottom: 0.9rem;
+            max-width: 32rem;
         }
 
-        .hero-meta {
+        .hero-chips {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1.3rem;
-            font-size: 0.8rem;
-            color: var(--muted);
+            gap: 0.45rem;
+            margin-bottom: 1rem;
         }
 
-        .hero-meta span {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.25rem 0.7rem;
-            border-radius: 999px;
-            background: rgba(9, 20, 38, 0.9);
-            border: 1px solid rgba(31, 59, 91, 0.9);
+        .chip {
+            font-size: 0.75rem;
+            padding: 0.15rem 0.55rem;
+            border-radius: var(--radius-pill);
+            background: #f3f4ff;
+            border: 1px solid #e5e7eb;
+            color: var(--text-muted);
         }
 
-        .hero-card {
-            position: relative;
-            background: radial-gradient(circle at top, #10243A, #020814);
-            border-radius: 24px;
-            padding: 1.3rem 1.35rem 1.4rem;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(148, 163, 184, 0.28);
-            overflow: hidden;
-            isolation: isolate;
-        }
-
-        .hero-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 15% 15%, rgba(0, 167, 162, 0.22), transparent 55%),
-                radial-gradient(circle at 80% 0%, rgba(239, 59, 58, 0.18), transparent 55%);
-            opacity: 0.9;
-            pointer-events: none;
-            mix-blend-mode: screen;
-        }
-
-        .card-header {
+        .hero-actions {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.8rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-title {
-            font-size: 0.86rem;
-            color: var(--muted);
-        }
-
-        .status-pill {
-            font-size: 0.7rem;
-            padding: 0.18rem 0.6rem;
-            border-radius: 999px;
-            background: rgba(0, 167, 162, 0.12);
-            color: #b2f5ea;
-            border: 1px solid rgba(0, 167, 162, 0.7);
-        }
-
-        .network-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0.5rem;
-            margin-bottom: 0.9rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .node {
-            padding: 0.6rem 0.5rem;
-            border-radius: 0.85rem;
-            border: 1px solid rgba(55, 65, 81, 0.9);
-            background: rgba(9, 13, 24, 0.96);
-            font-size: 0.72rem;
-            line-height: 1.3;
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.85);
-        }
-
-        .node-label {
-            color: var(--muted);
-            font-size: 0.7rem;
-        }
-
-        .node-value {
-            font-weight: 600;
-            font-size: 0.78rem;
-        }
-
-        .node-badge {
-            font-size: 0.65rem;
-            color: #b2f5ea;
-        }
-
-        .node.node-accent {
-            border-color: rgba(0, 167, 162, 0.9);
-            box-shadow:
-                0 0 0 1px rgba(0, 167, 162, 0.7),
-                0 12px 26px rgba(0, 167, 162, 0.85);
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-bottom: 0.4rem;
         }
 
         .hero-footnote {
-            font-size: 0.74rem;
-            color: var(--muted);
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-top: 0.4rem;
-            position: relative;
-            z-index: 1;
+            font-size: 0.78rem;
+            color: var(--text-muted);
         }
 
-        /* SECTION HEADERS */
+        .hero-media {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .hero-image-frame {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            background: radial-gradient(circle at top left, rgba(0, 167, 162, 0.16), #020617);
+            box-shadow: var(--shadow-card);
+            min-height: 170px;
+        }
+
+        .hero-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.96;
+        }
+
+        .hero-tag {
+            position: absolute;
+            inset: auto 0 0 auto;
+            margin: 0.6rem 0.6rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: var(--radius-pill);
+            background: rgba(15, 23, 42, 0.88);
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            color: #e5e7eb;
+            font-size: 0.7rem;
+        }
+
+        .hero-mini {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            padding: 0.45rem 0.55rem;
+            border-radius: var(--radius-md);
+            background: var(--content-alt);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .hero-mini-thumb {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #0b1120;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-mini-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-mini-text {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .hero-mini-text strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 0.1rem;
+        }
+
+        /* FEATURE ROW under hero (like “Latest” cards) */
+        .feature-row {
+            margin-top: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        @media (max-width: 960px) {
+            .feature-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .feature-row {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .feature-card {
+            background: var(--content-bg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            padding: 0.85rem 0.9rem;
+            box-shadow: var(--shadow-subtle);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-card);
+            transform: translateY(-2px);
+            border-color: rgba(0, 167, 162, 0.5);
+        }
+
+        .feature-tag {
+            font-size: 0.7rem;
+            color: var(--accent-strong);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+        }
+
+        .feature-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .feature-text {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* RIGHT SIDEBAR – “Quick info” style */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .sidebar-card {
+            background: var(--content-bg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-subtle);
+            padding: 0.9rem 0.95rem;
+            font-size: 0.8rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.86rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            margin-top: 0.35rem;
+        }
+
+        .sidebar-list li {
+            padding: 0.3rem 0;
+            border-top: 1px solid #f3f4f6;
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .sidebar-label {
+            color: var(--text-muted);
+        }
+
+        .sidebar-value {
+            font-weight: 500;
+        }
+
+        /* SECTION WRAPPER */
+        .section {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+            margin-top: 2rem;
+        }
+
         .section-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: baseline;
             gap: 1rem;
-            margin-bottom: 1.4rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.5rem;
         }
 
         .section-kicker {
+            font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 0.18em;
-            font-size: 0.65rem;
-            color: var(--accent);
-            margin-bottom: 0.25rem;
+            color: var(--accent-strong);
         }
 
         .section-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
         }
 
-        .section-description {
-            color: var(--muted);
-            font-size: 0.9rem;
-            max-width: 30rem;
+        .section-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
         .muted {
-            color: var(--muted);
+            color: var(--text-muted);
         }
 
-        /* SIMPLE 2-COLUMN SERVICES GRID */
-        .card-grid {
+        /* SERVICES CARDS (editorial grid) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        @media (max-width: 960px) {
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .services-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .service-card {
+            background: var(--content-bg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-subtle);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-card);
+            transform: translateY(-2px);
+            border-color: rgba(0, 167, 162, 0.5);
+        }
+
+        .service-media {
+            height: 120px;
+            background: #0b1120;
+            overflow: hidden;
+        }
+
+        .service-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.95;
+        }
+
+        .service-body {
+            padding: 0.85rem 0.9rem 0.9rem;
+        }
+
+        .service-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent-strong);
+            margin-bottom: 0.25rem;
+        }
+
+        .service-title {
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .service-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .service-meta {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+        }
+
+        /* SECURITY STRIP – “panel” style */
+        .security-panel {
+            background: linear-gradient(to right, var(--accent-soft), #e5f6f5);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(0, 167, 162, 0.4);
+            padding: 1rem 1rem 1.1rem;
+            display: grid;
+            grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+            gap: 1rem;
+            box-shadow: 0 12px 28px rgba(5, 150, 105, 0.2);
+        }
+
+        @media (max-width: 800px) {
+            .security-panel {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .security-text p {
+            font-size: 0.85rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .security-list {
+            margin-top: 0.4rem;
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1.2rem;
+            gap: 0.4rem;
+            font-size: 0.8rem;
         }
 
-        .card {
-            background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), #020814);
-            border-radius: var(--radius-lg);
-            padding: 1rem 1rem 1.1rem;
-            border: 1px solid rgba(51, 65, 85, 0.95);
-            box-shadow: var(--shadow-card);
+        @media (max-width: 640px) {
+            .security-list {
+                grid-template-columns: minmax(0, 1fr);
+            }
         }
 
-        .card h3 {
-            font-size: 0.96rem;
-            margin-bottom: 0.35rem;
+        .security-pill {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: var(--radius-pill);
+            padding: 0.25rem 0.6rem;
+            border: 1px solid rgba(148, 163, 184, 0.6);
         }
 
-        .card p {
-            font-size: 0.86rem;
-            color: var(--muted);
-            margin-bottom: 0.35rem;
-        }
-
-        .card ul {
-            list-style: none;
-            padding-left: 0;
+        .security-image {
+            border-radius: var(--radius-md);
+            border: 1px dashed rgba(15, 23, 42, 0.25);
+            background:
+                radial-gradient(circle at top left, rgba(0, 167, 162, 0.1), transparent 60%),
+                #0b1120;
+            min-height: 140px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e5e7eb;
             font-size: 0.82rem;
-            color: var(--muted);
+            text-align: center;
+            padding: 0.8rem;
         }
 
-        .card ul li::before {
-            content: "•";
-            color: var(--accent);
-            margin-right: 0.35rem;
+        .security-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.96;
+        }
+
+        .security-badge {
+            position: absolute;
+            top: 0.6rem;
+            right: 0.6rem;
+            padding: 0.14rem 0.55rem;
+            border-radius: var(--radius-pill);
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.65);
+            font-size: 0.7rem;
         }
 
         /* PRICING */
-        .pricing-row {
+        .pricing-shell {
             display: grid;
             grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-            gap: 1.4rem;
-            align-items: flex-start;
+            gap: 1.3rem;
         }
 
-        .pricing-list .price-item {
-            border-bottom: 1px solid rgba(55, 65, 81, 0.9);
-            padding: 0.7rem 0;
+        @media (max-width: 800px) {
+            .pricing-shell {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .pricing-list {
+            background: var(--content-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-subtle);
+            padding: 0.8rem 0.95rem;
+            font-size: 0.84rem;
+        }
+
+        .price-item {
+            padding: 0.6rem 0.2rem;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
         }
 
         .price-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            gap: 0.75rem;
-            margin-bottom: 0.15rem;
+            gap: 0.5rem;
+            margin-bottom: 0.05rem;
         }
 
         .price-name {
-            font-size: 0.9rem;
-        }
-
-        .price-tag {
-            font-size: 0.86rem;
-            color: var(--accent);
             font-weight: 600;
         }
 
+        .price-tag {
+            color: var(--accent-strong);
+            font-weight: 600;
+            font-size: 0.86rem;
+        }
+
         .price-sub {
+            color: var(--text-muted);
             font-size: 0.8rem;
-            color: var(--muted);
         }
 
-        .cta-panel {
+        .pricing-aside {
+            background: var(--content-alt);
             border-radius: var(--radius-lg);
-            padding: 1rem 1.1rem;
-            background: linear-gradient(140deg, rgba(0, 167, 162, 0.12), rgba(9, 13, 24, 0.98));
-            border: 1px solid rgba(0, 167, 162, 0.5);
-            box-shadow: 0 14px 34px rgba(0, 167, 162, 0.35);
+            border: 1px solid var(--border-subtle);
+            padding: 0.85rem 0.95rem;
+            font-size: 0.83rem;
+            box-shadow: var(--shadow-subtle);
         }
 
-        .cta-panel h3 {
-            font-size: 1rem;
+        .pricing-aside h3 {
+            font-size: 0.95rem;
             margin-bottom: 0.25rem;
         }
 
-        .cta-panel p {
-            font-size: 0.84rem;
-            color: var(--muted);
-            margin-bottom: 0.7rem;
+        .pricing-aside p {
+            margin-bottom: 0.6rem;
+            color: var(--text-muted);
         }
 
         /* CONTACT */
         .contact-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
-            gap: 1.6rem;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.8fr);
+            gap: 1.4rem;
             align-items: flex-start;
         }
 
-        .contact-text p {
-            font-size: 0.9rem;
-            margin-bottom: 0.7rem;
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .contact-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
         .contact-text ul {
-            padding-left: 1rem;
-            font-size: 0.86rem;
-            margin-bottom: 0.7rem;
+            margin: 0.5rem 0 0.8rem;
+            padding-left: 1.1rem;
         }
 
         .contact-text li {
@@ -551,12 +770,12 @@
         }
 
         .contact-form {
-            background: rgba(9, 13, 24, 0.96);
+            background: var(--content-bg);
             border-radius: var(--radius-lg);
-            padding: 1rem 1.1rem 1.2rem;
-            border: 1px solid rgba(51, 65, 85, 0.95);
-            box-shadow: var(--shadow-card);
-            font-size: 0.86rem;
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-soft);
+            padding: 0.95rem 1rem 1.1rem;
+            font-size: 0.84rem;
         }
 
         .form-row {
@@ -567,15 +786,15 @@
 
         .form-field {
             flex: 1;
-            min-width: 160px;
+            min-width: 180px;
             margin-bottom: 0.75rem;
         }
 
         .form-field label {
             display: block;
             font-size: 0.78rem;
-            color: var(--muted);
-            margin-bottom: 0.25rem;
+            color: var(--text-muted);
+            margin-bottom: 0.2rem;
         }
 
         .form-field input,
@@ -583,38 +802,40 @@
         .form-field textarea {
             width: 100%;
             padding: 0.45rem 0.55rem;
-            border-radius: 0.5rem;
-            border: 1px solid rgba(55, 65, 81, 0.9);
-            background: rgba(9, 13, 24, 0.98);
-            color: var(--text);
+            border-radius: 0.55rem;
+            border: 1px solid var(--border-strong);
+            background: #ffffff;
+            color: var(--text-main);
             font-size: 0.84rem;
             outline: none;
-            transition: border-color 0.16s ease, box-shadow 0.16s ease;
+            transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
         }
 
         .form-field input:focus,
         .form-field select:focus,
         .form-field textarea:focus {
-            border-color: rgba(0, 167, 162, 0.7);
-            box-shadow: 0 0 0 1px rgba(0, 167, 162, 0.6);
+            border-color: var(--accent-strong);
+            box-shadow: 0 0 0 1px var(--accent-soft);
+            background-color: #f9fafb;
         }
 
         .form-help {
             font-size: 0.75rem;
-            color: var(--muted);
+            color: var(--text-muted);
             margin-top: 0.3rem;
         }
 
         .alert-success {
             display: none;
-            margin-bottom: 0.9rem;
+            margin-bottom: 0.8rem;
             border-radius: 0.9rem;
-            border: 1px solid rgba(0, 167, 162, 0.7);
-            background: radial-gradient(circle at top left, rgba(0, 167, 162, 0.2), rgba(9, 13, 24, 0.98));
-            box-shadow: 0 14px 30px rgba(0, 167, 162, 0.4);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            background: #ecfdf5;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.25);
             opacity: 0;
-            transform: translateY(-8px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(-6px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            font-size: 0.8rem;
         }
 
         .alert-success.show {
@@ -625,9 +846,9 @@
 
         .alert-success-inner {
             display: flex;
+            gap: 0.6rem;
+            padding: 0.55rem 0.7rem;
             align-items: flex-start;
-            gap: 0.65rem;
-            padding: 0.6rem 0.8rem;
         }
 
         .alert-success-icon {
@@ -639,83 +860,70 @@
             justify-content: center;
             font-size: 0.9rem;
             font-weight: 700;
-            background: rgba(0, 167, 162, 0.92);
+            background: #059669;
             color: #ecfdf5;
-            box-shadow: 0 0 0 4px rgba(0, 167, 162, 0.35);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
             flex-shrink: 0;
         }
 
         .alert-success-title {
             font-weight: 600;
             margin-bottom: 0.15rem;
-            font-size: 0.8rem;
-        }
-
-        .alert-success-text {
-            color: #a7f3d0;
-            font-size: 0.78rem;
         }
 
         /* FOOTER */
         footer {
-            border-top: 1px solid rgba(31, 59, 91, 0.9);
-            background: linear-gradient(to top, #020814, rgba(2, 8, 20, 0.8));
+            border-top: 1px solid var(--border-subtle);
+            background: #ffffff;
             margin-top: auto;
         }
 
         .footer-inner {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 1.2rem 1.1rem 1.6rem;
+            padding: 1rem 1rem 1.5rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            gap: 1rem;
-            font-size: 0.8rem;
-            color: var(--muted);
+            gap: 0.9rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
         }
 
         .footer-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.9rem;
+            gap: 0.8rem;
         }
 
         .footer-links a {
-            font-size: 0.78rem;
-            color: var(--muted);
+            color: var(--text-muted);
         }
 
-        @media (max-width: 860px) {
-            .nav-links {
+        @media (max-width: 800px) {
+            .nav {
+                grid-template-columns: auto auto;
+                grid-template-rows: auto auto;
+                row-gap: 0.5rem;
+            }
+
+            .nav-center {
                 display: none;
             }
 
-            .hero-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .hero-card {
-                margin-top: 1.5rem;
-            }
-
-            .card-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .pricing-row,
-            .contact-grid {
-                grid-template-columns: minmax(0, 1fr);
+            .nav-right {
+                justify-content: flex-end;
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 600px) {
             .nav {
-                padding-inline: 0.9rem;
+                padding-inline: 0.75rem;
             }
 
-            .strip-inner {
-                padding-inline: 0.9rem;
+            .section,
+            .main-shell {
+                padding-inline: 0.75rem;
             }
         }
     </style>
@@ -729,8 +937,8 @@
             <div class="nav">
                 <div class="nav-left">
                     <div class="logo-mark">
-                        <!-- update src if you rename the file -->
-                        <img src="img/gcloud_icon_logo.png" alt="G Cloud Solutions logo">
+                        <!-- your shield logo icon -->
+                        <img src="img/gcloud_icon_logo.png" alt="G Cloud Solutions logo" />
                     </div>
                     <div>
                         <div class="logo-text-main">G CLOUD SOLUTIONS</div>
@@ -738,18 +946,19 @@
                     </div>
                 </div>
 
-                <nav class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#services">Services</a>
-                    <a href="#security">Security</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#contact">Contact</a>
-                </nav>
+                <div class="nav-center">
+                    <nav class="nav-links">
+                        <a href="#home">Home</a>
+                        <a href="#services">Services</a>
+                        <a href="#security">Security</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#contact">Contact</a>
+                    </nav>
+                </div>
 
-                <div class="nav-cta">
-                    <span class="badge">
-                        <span class="badge-dot"></span>
-                        Remote &amp; local support
+                <div class="nav-right">
+                    <span class="badge-pill">
+                        <span class="badge-dot"></span> Remote &amp; local
                     </span>
                     <a href="#contact" class="btn btn-primary">Request a consult</a>
                 </div>
@@ -758,333 +967,421 @@
 
         <main>
 
-            <!-- STRIP 1: HERO -->
-            <section id="home" class="strip strip-hero">
-                <div class="strip-inner hero-grid">
-                    <div class="hero">
-                        <div class="hero-eyebrow">Small business IT • Secure networks</div>
-                        <h1>Make your network <span>boringly reliable</span>.</h1>
-                        <p class="hero-sub">
-                            I help small businesses clean up messy networks, lock down Wi-Fi,
-                            and keep the critical stuff online — without adding tools you don’t need.
+            <!-- MAIN SHELL: hero + sidebar, very “tech site” style -->
+            <section id="home" class="main-shell">
+                <div>
+
+                    <!-- HERO CARD -->
+                    <article class="hero-card">
+                        <div>
+                            <div class="hero-eyebrow">Small business networks • KC-based</div>
+                            <h1 class="hero-title">Make your network <span>boringly reliable</span>.</h1>
+                            <p class="hero-sub">
+                                I help small businesses clean up messy networks, lock down Wi-Fi, and keep the
+                                important stuff online — without loading you up with tools you’ll never use.
+                            </p>
+
+                            <div class="hero-chips">
+                                <span class="chip">UniFi / ISP routers</span>
+                                <span class="chip">VLANs &amp; segmentation</span>
+                                <span class="chip">Wi-Fi tuning</span>
+                                <span class="chip">Practical security</span>
+                            </div>
+
+                            <div class="hero-actions">
+                                <a href="#contact" class="btn btn-primary">Book a network review</a>
+                                <a href="#services" class="btn btn-outline">See what I do</a>
+                            </div>
+
+                            <p class="hero-footnote">
+                                Ideal for small offices, clinics, retail, and serious home labs that want a clean,
+                                documented setup.
+                            </p>
+                        </div>
+
+                        <div class="hero-media">
+                            <div class="hero-image-frame">
+                                <!-- Replace with a real dashboard / rack photo -->
+                                <img src="img/gcloud-dashboard-preview.jpg" alt="Network dashboard preview" />
+                                <div class="hero-tag">Example: segmented small business layout</div>
+                            </div>
+
+                            <div class="hero-mini">
+                                <div class="hero-mini-thumb">
+                                    <!-- Could be your shield logo on dark, or a network map thumb -->
+                                    <img src="img/gcloud-mini-map.jpg" alt="Network map thumbnail" />
+                                </div>
+                                <div class="hero-mini-text">
+                                    <strong>POS, office, guest, and IoT each in their own lane.</strong>
+                                    One cheap camera, TV, or rogue guest device won’t see your entire network.
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Feature row like “Latest” cards -->
+                    <div class="feature-row">
+                        <article class="feature-card">
+                            <div class="feature-tag">Quick win</div>
+                            <div class="feature-title">Slow Wi-Fi &amp; random drops</div>
+                            <p class="feature-text">
+                                Fix channel overlap, roaming, and access point placement so people stop
+                                blaming “the internet” for bad Wi-Fi.
+                            </p>
+                        </article>
+
+                        <article class="feature-card">
+                            <div class="feature-tag">Security</div>
+                            <div class="feature-title">Guest &amp; staff properly separated</div>
+                            <p class="feature-text">
+                                Give guests internet access without letting them anywhere near your POS,
+                                cameras, or internal files.
+                            </p>
+                        </article>
+
+                        <article class="feature-card">
+                            <div class="feature-tag">Clarity</div>
+                            <div class="feature-title">You get a map you can keep</div>
+                            <p class="feature-text">
+                                Simple diagrams and notes so future you (or another tech) can see what’s
+                                where in minutes.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Sidebar – “at a glance” info -->
+                <aside class="sidebar">
+                    <div class="sidebar-card">
+                        <div class="sidebar-title">What I typically work on</div>
+                        <ul class="sidebar-list">
+                            <li>
+                                <span class="sidebar-label">Routers &amp; firewalls</span>
+                                <span class="sidebar-value">UniFi, ISP gear</span>
+                            </li>
+                            <li>
+                                <span class="sidebar-label">Environments</span>
+                                <span class="sidebar-value">Offices, shops, clinics</span>
+                            </li>
+                            <li>
+                                <span class="sidebar-label">Focus</span>
+                                <span class="sidebar-value">Stability &amp; security</span>
+                            </li>
+                            <li>
+                                <span class="sidebar-label">Work style</span>
+                                <span class="sidebar-value">Remote, KC area on-site</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <div class="sidebar-title">Good fits</div>
+                        <p>
+                            You’re a great fit if you:
                         </p>
-                        <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
-                            <a href="#contact" class="btn btn-primary">Book a network review</a>
-                            <a href="#services" class="btn btn-ghost">See what I do</a>
-                        </div>
-                        <div class="hero-meta">
-                            <span>UniFi &amp; small office networks</span>
-                            <span>VLANs &amp; firewall policies</span>
-                            <span>Remote or on-site (where possible)</span>
-                        </div>
+                        <ul class="sidebar-list">
+                            <li>
+                                <span class="sidebar-label">Pain</span>
+                                <span class="sidebar-value">“Things drop randomly”</span>
+                            </li>
+                            <li>
+                                <span class="sidebar-label">Tools</span>
+                                <span class="sidebar-value">Already own decent gear</span>
+                            </li>
+                            <li>
+                                <span class="sidebar-label">Goal</span>
+                                <span class="sidebar-value">“Make it solid &amp; safe”</span>
+                            </li>
+                        </ul>
                     </div>
+                </aside>
+            </section>
 
+            <!-- SERVICES SECTION -->
+            <section id="services" class="section">
+                <div class="section-header">
                     <div>
-                        <div class="hero-card">
-                            <div class="card-header">
-                                <div class="card-title">Typical layout I work with</div>
-                                <div class="status-pill">Segmented • Monitored</div>
-                            </div>
-                            <div class="network-grid">
-                                <div class="node node-accent">
-                                    <div class="node-label">POS &amp; payment</div>
-                                    <div class="node-value">Own VLAN</div>
-                                    <div class="node-badge">Guest blocked</div>
-                                </div>
-                                <div class="node">
-                                    <div class="node-label">Office gear</div>
-                                    <div class="node-value">Trusted LAN</div>
-                                    <div class="node-badge">Policy based</div>
-                                </div>
-                                <div class="node">
-                                    <div class="node-label">Guest Wi-Fi</div>
-                                    <div class="node-value">Internet only</div>
-                                    <div class="node-badge">No LAN route</div>
-                                </div>
-                                <div class="node">
-                                    <div class="node-label">Cameras &amp; IoT</div>
-                                    <div class="node-value">Restricted</div>
-                                    <div class="node-badge">Tight outbound</div>
-                                </div>
-                                <div class="node">
-                                    <div class="node-label">Admin</div>
-                                    <div class="node-value">Mgmt only</div>
-                                    <div class="node-badge">Hardened</div>
-                                </div>
-                                <div class="node">
-                                    <div class="node-label">DNS filtering</div>
-                                    <div class="node-value">Enabled</div>
-                                    <div class="node-badge">Less junk</div>
-                                </div>
-                            </div>
-                            <div class="hero-footnote">
-                                <span>One risky device shouldn’t be able to take out your whole shop.</span>
-                                <span>Design • Implement • Document</span>
-                            </div>
+                        <div class="section-kicker">Services</div>
+                        <h2 class="section-title">The main ways I can help.</h2>
+                    </div>
+                    <p class="section-sub">
+                        Focused offers that solve the most common network headaches for small businesses and serious
+                        home labs.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-media">
+                            <!-- Replace with a real “before/after rack” photo -->
+                            <img src="img/network-rack.jpg" alt="Network rack" />
                         </div>
+                        <div class="service-body">
+                            <div class="service-tag">Cleanup</div>
+                            <h3 class="service-title">Network clean-up &amp; layout</h3>
+                            <p class="service-text">
+                                Untangle the “someone installed this once” setup and turn it into a clean, documented
+                                network.
+                            </p>
+                            <p class="service-meta">
+                                • Audit modem/router/switch/AP stack<br />
+                                • Map key devices &amp; dependencies<br />
+                                • Provide a simple network diagram
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-media">
+                            <!-- Wi-Fi / AP photo -->
+                            <img src="img/office-wifi.jpg" alt="Office Wi-Fi" />
+                        </div>
+                        <div class="service-body">
+                            <div class="service-tag">Wi-Fi &amp; VLANs</div>
+                            <h3 class="service-title">Secure Wi-Fi &amp; segmentation</h3>
+                            <p class="service-text">
+                                Split staff, guest, POS, and IoT into separate lanes so one device can’t see it all.
+                            </p>
+                            <p class="service-meta">
+                                • Separate SSIDs for staff / guest / POS<br />
+                                • VLANs for office, guest, IoT, admin<br />
+                                • Clear, readable firewall policies
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-media">
+                            <!-- Could be a dashboard / graph -->
+                            <img src="img/gcloud-metrics.jpg" alt="Network metrics dashboard" />
+                        </div>
+                        <div class="service-body">
+                            <div class="service-tag">Tuning</div>
+                            <h3 class="service-title">Performance &amp; basics hardening</h3>
+                            <p class="service-text">
+                                Tighten the basics so things stay fast and safer by default without adding extra noise.
+                            </p>
+                            <p class="service-meta">
+                                • Channel &amp; roaming tuning<br />
+                                • DNS &amp; basic threat filtering<br />
+                                • Admin access &amp; remote access review
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SECURITY SECTION -->
+            <section id="security" class="section">
+                <div class="section-header">
+                    <div>
+                        <div class="section-kicker">Security</div>
+                        <h2 class="section-title">Practical security that fits real-life networks.</h2>
+                    </div>
+                    <p class="section-sub">
+                        No scare tactics. Just fewer ways to break things and fewer paths into your important systems.
+                    </p>
+                </div>
+
+                <div class="security-panel">
+                    <div class="security-text">
+                        <p>
+                            Most fixes are about shrinking trust: POS talks only to what it must, guests never touch
+                            your LAN, and IoT gear stays in its own sandbox.
+                        </p>
+                        <p>
+                            You keep working the same way — just with fewer “how did that even happen?” moments.
+                        </p>
+
+                        <div class="security-list">
+                            <div class="security-pill">Dedicated POS &amp; office segments</div>
+                            <div class="security-pill">Guest Wi-Fi with no LAN access</div>
+                            <div class="security-pill">IoT / cameras in their own zone</div>
+                            <div class="security-pill">DNS filtering and safer defaults</div>
+                        </div>
+                    </div>
+
+                    <div class="security-image">
+                        <!-- Replace with your shield graphic on a dark background -->
+                        <img src="img/gcloud-security-shield.jpg" alt="G Cloud security shield" />
+                        <div class="security-badge">Designed like a shield, not a maze</div>
                     </div>
                 </div>
             </section>
 
-            <!-- STRIP 2: SERVICES -->
-            <section id="services" class="strip strip-services">
-                <div class="strip-inner">
-                    <div class="section-header">
-                        <div>
-                            <div class="section-kicker">Services</div>
-                            <h2 class="section-title">Simple offers, real impact.</h2>
-                            <p class="section-description">
-                                No “enterprise package” fluff — just a few focused services that fix the most common
-                                small-business pains.
-                            </p>
+            <!-- PRICING SECTION -->
+            <section id="pricing" class="section">
+                <div class="section-header">
+                    <div>
+                        <div class="section-kicker">Pricing</div>
+                        <h2 class="section-title">Clear starting points, no mystery quotes.</h2>
+                    </div>
+                    <p class="section-sub">
+                        These cover most single-site setups. If yours is unusual or multi-site, we’ll scope it before
+                        you commit.
+                    </p>
+                </div>
+
+                <div class="pricing-shell">
+                    <div class="pricing-list">
+                        <div class="price-item">
+                            <div class="price-header">
+                                <div class="price-name">Quick network review</div>
+                                <div class="price-tag">$75</div>
+                            </div>
+                            <div class="price-sub">
+                                One call with screenshots/photos. You get a prioritized list of issues, risks, and easy
+                                wins.
+                            </div>
+                        </div>
+
+                        <div class="price-item">
+                            <div class="price-header">
+                                <div class="price-name">Clean-up &amp; reshape</div>
+                                <div class="price-tag">$150</div>
+                            </div>
+                            <div class="price-sub">
+                                Fix layout, Wi-Fi, and basic security on an existing network using the gear you already
+                                have.
+                            </div>
+                        </div>
+
+                        <div class="price-item">
+                            <div class="price-header">
+                                <div class="price-name">Full redesign</div>
+                                <div class="price-tag">$250+</div>
+                            </div>
+                            <div class="price-sub">
+                                Fresh design with VLANs, firewall policies, Wi-Fi plan, and a simple diagram you can
+                                keep.
+                            </div>
                         </div>
                     </div>
 
-                    <div class="card-grid">
-                        <article class="card">
-                            <h3>Network clean-up &amp; layout</h3>
-                            <p>
-                                Untangle the “someone else set it up once” network and get to a clean, documented
-                                baseline.
-                            </p>
-                            <ul>
-                                <li>Review existing modem / router / switches / Wi-Fi</li>
-                                <li>Map key devices and where they live</li>
-                                <li>Deliver a simple diagram you can keep</li>
-                            </ul>
-                        </article>
-
-                        <article class="card">
-                            <h3>Secure Wi-Fi &amp; VLANs</h3>
-                            <p>
-                                Separate work devices, guest traffic, and “weird” gear so a cheap camera or TV can’t see
-                                everything.
-                            </p>
-                            <ul>
-                                <li>Dedicated Wi-Fi for staff, POS, and guests</li>
-                                <li>VLANs for POS, office, guest, and IoT</li>
-                                <li>Firewall rules that are actually readable</li>
-                            </ul>
-                        </article>
-                    </div>
+                    <aside class="pricing-aside">
+                        <h3>Not sure which bucket you’re in?</h3>
+                        <p>
+                            Start with the quick review. If it makes sense to do a larger clean-up or redesign, that
+                            cost
+                            rolls into the project — you don’t pay twice.
+                        </p>
+                        <a href="#contact" class="btn btn-primary">Start with a review</a>
+                    </aside>
                 </div>
             </section>
 
-            <!-- STRIP 3: SECURITY (teal gradient) -->
-            <section id="security" class="strip strip-security">
-                <div class="strip-inner">
-                    <div class="section-header">
-                        <div>
-                            <div class="section-kicker">Security</div>
-                            <h2 class="section-title">Practical security, not paranoia.</h2>
-                            <p class="section-description muted">
-                                The goal isn’t “perfect” — it’s “way safer than it was yesterday” without wrecking how
-                                your staff works.
-                            </p>
-                        </div>
+            <!-- CONTACT SECTION -->
+            <section id="contact" class="section" style="margin-bottom: 2.5rem;">
+                <div class="section-header">
+                    <div>
+                        <div class="section-kicker">Contact</div>
+                        <h2 class="section-title">Tell me what’s breaking.</h2>
                     </div>
+                    <p class="section-sub">
+                        A few sentences about your setup and what’s annoying you is plenty to start the conversation.
+                    </p>
+                </div>
 
-                    <div class="card-grid">
-                        <article class="card">
-                            <h3>Less trust, same usability</h3>
-                            <p class="muted">
-                                Lock down the things that matter most and shrink what each device can talk to.
-                            </p>
-                            <ul>
-                                <li>POS and line-of-business apps get priority</li>
-                                <li>Guest Wi-Fi can’t talk to your gear</li>
-                                <li>IoT kept in its own lane</li>
-                            </ul>
-                        </article>
-
-                        <article class="card">
-                            <h3>Safer internet by default</h3>
-                            <p class="muted">
-                                DNS and basic policies that quietly block obvious junk and sketchy destinations.
-                            </p>
-                            <ul>
-                                <li>Secure DNS resolvers</li>
-                                <li>Lightweight filtering for known-bad domains</li>
-                                <li>Room to grow into deeper monitoring later</li>
-                            </ul>
-                        </article>
+                <!-- Success banner -->
+                <div id="contact-success" class="alert-success">
+                    <div class="alert-success-inner">
+                        <div class="alert-success-icon">✓</div>
+                        <div>
+                            <div class="alert-success-title">Thanks — got your request.</div>
+                            <div>
+                                I’ll look it over and get back with a couple of options and times.
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- STRIP 4: PRICING -->
-            <section id="pricing" class="strip strip-pricing">
-                <div class="strip-inner">
-                    <div class="section-header">
-                        <div>
-                            <div class="section-kicker">Pricing</div>
-                            <h2 class="section-title">Clear starts, no surprises.</h2>
-                            <p class="section-description">
-                                Most work fits into these ballparks. If your setup is weird or multi-site, we’ll scope
-                                it together first.
-                            </p>
-                        </div>
+                <div class="contact-grid">
+                    <div class="contact-text">
+                        <p>
+                            Helpful context:
+                        </p>
+                        <ul>
+                            <li>Who your internet provider is and what modem/router you use now</li>
+                            <li>Any UniFi / mesh / managed switches in the mix</li>
+                            <li>Biggest pain: slow Wi-Fi, POS drops, random outages, security worries, etc.</li>
+                        </ul>
+                        <p>
+                            If you’re not sure on hardware, photos are fine — we can sort it out together.
+                        </p>
                     </div>
 
-                    <div class="pricing-row">
-                        <div class="pricing-list">
-                            <div class="price-item">
-                                <div class="price-header">
-                                    <div class="price-name">Quick network review</div>
-                                    <div class="price-tag">$75</div>
-                                </div>
-                                <div class="price-sub">
-                                    One call + screenshots/photos. You get a punch-list of issues, risks, and easy wins.
-                                </div>
-                            </div>
+                    <!-- Contact form preserved -->
+                    <form class="contact-form" method="POST" action="/api/contact">
+                        <div class="form-field">
+                            <label for="businessName">Business Name</label>
+                            <input id="businessName" name="business_name" type="text" required />
+                        </div>
 
-                            <div class="price-item">
-                                <div class="price-header">
-                                    <div class="price-name">Clean-up &amp; re-shape</div>
-                                    <div class="price-tag">$150</div>
-                                </div>
-                                <div class="price-sub">
-                                    Fixes layout, Wi-Fi, and basic security on an existing network (no major hardware
-                                    changes).
-                                </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="phone">Phone</label>
+                                <input id="phone" name="phone" type="tel" required />
                             </div>
-
-                            <div class="price-item">
-                                <div class="price-header">
-                                    <div class="price-name">Full redesign</div>
-                                    <div class="price-tag">$250+</div>
-                                </div>
-                                <div class="price-sub">
-                                    Fresh design with VLANs, firewall policies, Wi-Fi plan, and simple documentation.
-                                </div>
+                            <div class="form-field">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" type="email" required />
                             </div>
                         </div>
 
-                        <aside class="cta-panel">
-                            <h3>Not sure which bucket you’re in?</h3>
-                            <p>
-                                Start with a quick review. If it turns into a larger project, that cost rolls into the
-                                bigger engagement.
-                            </p>
-                            <a href="#contact" class="btn btn-primary">Start with a review</a>
-                        </aside>
-                    </div>
-                </div>
-            </section>
-
-            <!-- STRIP 5: CONTACT -->
-            <section id="contact" class="strip strip-contact">
-                <div class="strip-inner">
-                    <div class="section-header">
-                        <div>
-                            <div class="section-kicker">Contact</div>
-                            <h2 class="section-title">Tell me what’s breaking.</h2>
-                            <p class="section-description muted">
-                                A couple of sentences about your setup and what’s annoying you is enough to start.
-                            </p>
+                        <div class="form-field">
+                            <label for="website">Website</label>
+                            <input id="website" name="website" type="url" placeholder="https://example.com" />
                         </div>
 
-                        <div id="contact-success" class="alert-success">
-                            <div class="alert-success-inner">
-                                <div class="alert-success-icon">✓</div>
-                                <div>
-                                    <div class="alert-success-title">Thanks — got your request.</div>
-                                    <div class="alert-success-text">
-                                        I’ll look it over and email or text you back with a few options and times.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-grid">
-                        <div class="contact-text">
-                            <p>
-                                Useful to know:
-                            </p>
-                            <ul>
-                                <li>Who provides your internet and what modem/router you’re using</li>
-                                <li>What gear you know you have (UniFi, ISP router, switches, access points)</li>
-                                <li>Biggest pain: slow Wi-Fi, drops, random outages, security worries, etc.</li>
-                            </ul>
-                            <p class="muted">
-                                If you’re not sure on the hardware, photos are fine — we can sort it out together.
-                            </p>
+                        <div class="form-field">
+                            <label for="subject">Subject</label>
+                            <input id="subject" name="subject" type="text"
+                                placeholder="e.g. Slow Wi-Fi in office, POS keeps dropping" required />
                         </div>
 
-                        <!-- contact form preserved -->
-                        <form class="contact-form" method="POST" action="/api/contact">
+                        <div class="form-field">
+                            <label for="description">What’s going on?</label>
+                            <textarea id="description" name="description" rows="4" required
+                                placeholder="Quick rundown of your setup and what’s not working the way you want."></textarea>
+                        </div>
+
+                        <div class="form-row">
                             <div class="form-field">
-                                <label for="businessName">Business Name</label>
-                                <input id="businessName" name="business_name" type="text" required />
+                                <label for="bestTime">Best time to contact</label>
+                                <input id="bestTime" name="best_time" type="text"
+                                    placeholder="e.g. Weekdays after 4 PM Central" />
                             </div>
-
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label for="phone">Phone</label>
-                                    <input id="phone" name="phone" type="tel" required />
-                                </div>
-                                <div class="form-field">
-                                    <label for="email">Email</label>
-                                    <input id="email" name="email" type="email" required />
-                                </div>
-                            </div>
-
                             <div class="form-field">
-                                <label for="website">Website</label>
-                                <input id="website" name="website" type="url" placeholder="https://example.com" />
-                            </div>
-
-                            <div class="form-field">
-                                <label for="subject">Subject</label>
-                                <input id="subject" name="subject" type="text"
-                                    placeholder="e.g. Slow Wi-Fi in office, POS keeps dropping" required />
-                            </div>
-
-                            <div class="form-field">
-                                <label for="description">What’s going on?</label>
-                                <textarea id="description" name="description" rows="4" required
-                                    placeholder="Quick rundown of your setup and what’s not working the way you want."></textarea>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label for="bestTime">Best time to contact</label>
-                                    <input id="bestTime" name="best_time" type="text"
-                                        placeholder="e.g. Weekdays after 4 PM Central" />
-                                </div>
-                                <div class="form-field">
-                                    <label for="bestMethod">Best method to contact</label>
-                                    <select id="bestMethod" name="best_method">
-                                        <option value="phone">Phone call</option>
-                                        <option value="text">Text message</option>
-                                        <option value="email">Email</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-field">
-                                <label for="onsite">On-site visit needed?</label>
-                                <select id="onsite" name="onsite_required">
-                                    <option value="no">No</option>
-                                    <option value="yes">Yes</option>
-                                    <option value="unsure">Not sure yet</option>
+                                <label for="bestMethod">Best method to contact</label>
+                                <select id="bestMethod" name="best_method">
+                                    <option value="phone">Phone call</option>
+                                    <option value="text">Text message</option>
+                                    <option value="email">Email</option>
                                 </select>
                             </div>
+                        </div>
 
-                            <!-- honeypot -->
-                            <div style="display:none;">
-                                <label>Leave this field empty</label>
-                                <input type="text" name="extra_field" />
-                            </div>
+                        <div class="form-field">
+                            <label for="onsite">On-site visit needed?</label>
+                            <select id="onsite" name="onsite_required">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                                <option value="unsure">Not sure yet</option>
+                            </select>
+                        </div>
 
-                            <button type="submit" class="btn btn-primary">Send request</button>
-                            <div class="form-help">
-                                Your info goes straight to G Cloud Solutions. No mailing list, no spam — just a reply
-                                with next steps.
-                            </div>
-                        </form>
-                    </div>
+                        <!-- honeypot -->
+                        <div style="display:none;">
+                            <label>Leave this field empty</label>
+                            <input type="text" name="extra_field" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send request</button>
+                        <div class="form-help">
+                            Your info goes straight to G Cloud Solutions. No mailing list, no spam — just a reply with
+                            next steps.
+                        </div>
+                    </form>
                 </div>
             </section>
 
@@ -1093,18 +1390,16 @@
         <footer>
             <div class="footer-inner">
                 <div>
-                    <div style="font-size:0.86rem; margin-bottom:0.25rem;">
+                    <div style="font-size:0.82rem; margin-bottom:0.15rem;">
                         G Cloud Solutions — Network &amp; Cybersecurity
                     </div>
                     <div>KC-style homelab &amp; small business networking.</div>
                 </div>
-                <div>
-                    <div class="footer-links">
-                        <a href="#home">Home</a>
-                        <a href="#services">Services</a>
-                        <a href="#pricing">Pricing</a>
-                        <a href="#contact">Contact</a>
-                    </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#contact">Contact</a>
                 </div>
                 <div>
                     © <span id="year"></span> G Cloud Solutions. All rights reserved.
@@ -1116,15 +1411,13 @@
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
 
-    <script>
         (function () {
             function showContactSuccess() {
                 const banner = document.getElementById("contact-success");
                 if (!banner) return;
                 banner.style.display = "block";
-                void banner.offsetWidth;
+                banner.offsetWidth;
                 banner.classList.add("show");
                 try {
                     banner.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -1133,8 +1426,8 @@
                 }
                 setTimeout(() => {
                     banner.classList.remove("show");
-                    setTimeout(() => { banner.style.display = "none"; }, 300);
-                }, 10000);
+                    setTimeout(() => { banner.style.display = "none"; }, 250);
+                }, 9000);
             }
 
             if (window.location.hash === "#contact-success") {
@@ -1146,7 +1439,6 @@
             }
         })();
     </script>
-
 </body>
 
 </html>
