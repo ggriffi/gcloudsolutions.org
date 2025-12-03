@@ -20,3 +20,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+document.querySelectorAll('.contact-form').forEach(form => {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        const formData = new FormData(form);
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (res.status === 303 && res.headers.get('Location')) {
+                window.location.href = res.headers.get('Location');
+            } else if (res.ok) {
+                window.location.hash = '#contact-success';
+            } else {
+                const errText = await res.text();
+                alert('Submit failed: ' + errText);
+                console.error('[form] Server error:', res.status, errText);
+            }
+        } catch (err) {
+            alert('Network error. Try again.');
+            console.error('[form] Exception:', err);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    });
+});

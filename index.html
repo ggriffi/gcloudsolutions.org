@@ -72,14 +72,71 @@
             <div class="container contact-container">
                 <h2 class="section-title">Contact Us</h2>
                 <form class="contact-form" action="/api/contact" method="POST">
-                    <input type="text" name="extra_field" style="display:none" tabindex="-1" autocomplete="off">
-                    <label><span>Business Name</span><input type="text" name="business_name" required></label>
-                    <label><span>Email</span><input type="email" name="email" required></label>
-                    <label><span>Description</span><textarea name="description" rows="5" required></textarea></label>
+                    <input type="text" name="extra_field" style="display:none" tabindex="-1" autocomplete="off" />
+
+                    <label>
+                        <span>Business Name</span>
+                        <input type="text" name="business_name" required>
+                    </label>
+
+                    <label>
+                        <span>Phone</span>
+                        <input type="tel" name="phone">
+                    </label>
+
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" required>
+                    </label>
+
+                    <label>
+                        <span>Website</span>
+                        <input type="url" name="website">
+                    </label>
+
+                    <label>
+                        <span>Subject</span>
+                        <input type="text" name="subject">
+                    </label>
+
+                    <label>
+                        <span>Description</span>
+                        <textarea name="description" rows="5" required></textarea>
+                    </label>
+
+                    <label>
+                        <span>Best Time to Contact</span>
+                        <input type="text" name="best_time">
+                    </label>
+
+                    <label>
+                        <span>Preferred Method</span>
+                        <select name="best_method">
+                            <option value="email">Email</option>
+                            <option value="phone">Phone</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <span>On-site Presence Required?</span>
+                        <select name="onsite_required">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="maybe">Maybe</option>
+                        </select>
+                    </label>
+
                     <button type="submit" class="btn btn-primary">Send Request</button>
                 </form>
             </div>
         </section>
+        <section id="contact-success" class="section alt-bg">
+            <div class="container">
+                <h2 class="section-title">Success!</h2>
+                <p>Thank you. We'll be in touch shortly.</p>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer">
