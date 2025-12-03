@@ -6,23 +6,26 @@
     <title>G Cloud Solutions — Network & Cybersecurity</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="G Cloud Solutions provides professional small business networking and cybersecurity services — VLAN design, firewall hardening, Wi-Fi optimization, and secure remote support." />
+        content="G Cloud Solutions provides small business networking and cybersecurity services — VLAN design, firewall hardening, Wi-Fi optimization, and secure remote support." />
+
     <style>
         :root {
             /* KC Current–inspired palette */
-            --bg: #0A2239;
+            --bg-main: #0A2239;
             /* storm navy */
             --bg-alt: #061525;
-            /* deeper navy for header/footer/sections */
+            /* deeper navy */
+            --bg-teal: #00A7A2;
+            /* teal strip */
+            --bg-red: #EF3B3A;
+            /* red strip */
             --card: #10243A;
-            /* panel/card background */
+            /* card surface */
             --accent: #00A7A2;
             /* teal primary */
             --accent-soft: rgba(0, 167, 162, 0.16);
             --text: #F5F7FA;
             --muted: #A0AEC0;
-            --danger: #EF3B3A;
-            /* KC red for strong accents */
             --border: #1F3B5B;
             --radius-lg: 18px;
             --radius-sm: 10px;
@@ -39,10 +42,7 @@
 
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background:
-                radial-gradient(circle at top, rgba(0, 167, 162, 0.18) 0, transparent 45%),
-                radial-gradient(circle at bottom right, rgba(239, 59, 58, 0.12) 0, transparent 55%),
-                radial-gradient(circle at center, #0A2239 0, #020814 55%, #01040A 100%);
+            background: #020814;
             color: var(--text);
             line-height: 1.6;
         }
@@ -58,6 +58,7 @@
             flex-direction: column;
         }
 
+        /* HEADER (sits above the strips) */
         header {
             position: sticky;
             top: 0;
@@ -65,8 +66,8 @@
             backdrop-filter: blur(14px);
             background: linear-gradient(to bottom,
                     rgba(6, 21, 37, 0.96),
-                    rgba(6, 21, 37, 0.6));
-            border-bottom: 1px solid rgba(31, 59, 91, 0.8);
+                    rgba(6, 21, 37, 0.65));
+            border-bottom: 1px solid rgba(31, 59, 91, 0.9);
         }
 
         .nav {
@@ -85,14 +86,13 @@
             gap: 0.85rem;
         }
 
-        /* Updated logo block to use shield logo */
         .logo-mark {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
             background: #020814;
-            border: 2px solid var(--danger);
-            /* red outline like the shield */
+            border: 2px solid #EF3B3A;
+            /* red outline like shield */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -129,8 +129,8 @@
 
         .nav-links a {
             color: var(--muted);
-            transition: color 0.18s ease, opacity 0.18s ease;
             opacity: 0.85;
+            transition: color 0.18s ease, opacity 0.18s ease;
         }
 
         .nav-links a:hover {
@@ -142,6 +142,26 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.18rem 0.55rem;
+            border-radius: 999px;
+            background: rgba(9, 13, 24, 0.96);
+            border: 1px solid rgba(55, 65, 81, 0.9);
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(0, 167, 162, 0.35);
         }
 
         .btn {
@@ -169,8 +189,7 @@
 
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow:
-                0 12px 26px rgba(0, 167, 162, 0.7);
+            box-shadow: 0 12px 26px rgba(0, 167, 162, 0.7);
         }
 
         .btn-ghost {
@@ -185,13 +204,56 @@
             background: rgba(15, 23, 42, 0.95);
         }
 
-        .hero {
+        /* STRIPS: full-width horizontal bands */
+        .strip {
+            width: 100%;
+        }
+
+        .strip-inner {
             max-width: var(--max-width);
-            margin: 1.7rem auto 0;
-            padding: 2.2rem 1.1rem 2.6rem;
+            margin: 0 auto;
+            padding: 3rem 1.1rem;
+        }
+
+        .strip-hero {
+            background:
+                radial-gradient(circle at top left, rgba(0, 167, 162, 0.25), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(239, 59, 58, 0.25), transparent 55%),
+                var(--bg-main);
+            color: var(--text);
+        }
+
+        .strip-services {
+            background: var(--bg-alt);
+        }
+
+        .strip-security {
+            background: var(--bg-teal);
+            color: #041318;
+        }
+
+        .strip-security .muted {
+            color: #023237;
+        }
+
+        .strip-pricing {
+            background: var(--bg-main);
+        }
+
+        .strip-contact {
+            background: var(--bg-red);
+            color: #031015;
+        }
+
+        .strip-contact .muted {
+            color: #1F2933;
+        }
+
+        /* HERO LAYOUT */
+        .hero-grid {
             display: grid;
-            grid-template-columns: minmax(0, 3fr) minmax(0, 2.7fr);
-            gap: 2.2rem;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
+            gap: 2.4rem;
             align-items: center;
         }
 
@@ -223,7 +285,7 @@
         .hero-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.8rem;
             margin-top: 1.3rem;
             font-size: 0.8rem;
             color: var(--muted);
@@ -237,11 +299,6 @@
             border-radius: 999px;
             background: rgba(9, 20, 38, 0.9);
             border: 1px solid rgba(31, 59, 91, 0.9);
-        }
-
-        .hero-right {
-            position: relative;
-            min-height: 260px;
         }
 
         .hero-card {
@@ -345,22 +402,13 @@
             z-index: 1;
         }
 
-        .section {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 1.4rem 1.1rem 2.4rem;
-        }
-
+        /* SECTION HEADERS */
         .section-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
             margin-bottom: 1.4rem;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
         }
 
         .section-kicker {
@@ -368,7 +416,12 @@
             letter-spacing: 0.18em;
             font-size: 0.65rem;
             color: var(--accent);
-            margin-bottom: 0.15rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
         }
 
         .section-description {
@@ -377,25 +430,11 @@
             max-width: 30rem;
         }
 
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 0.4rem;
-        }
-
-        .pill {
-            padding: 0.22rem 0.7rem;
-            border-radius: 999px;
-            border: 1px solid rgba(75, 85, 99, 0.9);
-            font-size: 0.72rem;
+        .muted {
             color: var(--muted);
         }
 
-        .pill span {
-            color: var(--accent);
-        }
-
+        /* SERVICES CARDS */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -434,6 +473,7 @@
             margin-right: 0.35rem;
         }
 
+        /* PROCESS GRID */
         .process-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -465,6 +505,7 @@
             color: var(--muted);
         }
 
+        /* PRICING */
         .pricing-row {
             display: grid;
             grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
@@ -519,99 +560,27 @@
             margin-bottom: 0.7rem;
         }
 
-        footer {
-            border-top: 1px solid rgba(31, 59, 91, 0.9);
-            margin-top: auto;
-            background: linear-gradient(to top, #020814, rgba(2, 8, 20, 0.8));
-        }
-
-        .footer-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 1.2rem 1.1rem 1.6rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 1rem;
-            font-size: 0.8rem;
-            color: var(--muted);
-        }
-
-        .footer-col {
-            max-width: 260px;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.9rem;
-        }
-
-        .footer-links a {
-            color: var(--muted);
-            font-size: 0.78rem;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.18rem 0.55rem;
-            border-radius: 999px;
-            background: rgba(9, 13, 24, 0.96);
-            border: 1px solid rgba(55, 65, 81, 0.9);
-            font-size: 0.72rem;
-            color: var(--muted);
-        }
-
-        .badge-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 999px;
-            background: var(--accent);
-            box-shadow: 0 0 0 4px rgba(0, 167, 162, 0.35);
-        }
-
-        @media (max-width: 840px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                grid-template-columns: minmax(0, 1fr);
-                margin-top: 1.2rem;
-            }
-
-            .hero-right {
-                order: -1;
-            }
-
-            .card-grid,
-            .process-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .pricing-row {
-                grid-template-columns: minmax(0, 1fr);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero {
-                padding-top: 1.6rem;
-            }
-
-            .nav {
-                padding-inline: 0.9rem;
-            }
-        }
-
-        /* CONTACT FORM STYLES */
+        /* CONTACT STRIP: your form preserved */
         .contact-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
             gap: 1.6rem;
             align-items: flex-start;
+        }
+
+        .contact-text p {
+            font-size: 0.9rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .contact-text ul {
+            padding-left: 1rem;
+            font-size: 0.86rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .contact-text li {
+            margin-bottom: 0.25rem;
         }
 
         .contact-form {
@@ -669,41 +638,7 @@
             margin-top: 0.3rem;
         }
 
-        .contact-aside {
-            font-size: 0.86rem;
-            color: var(--muted);
-        }
-
-        .contact-aside h3 {
-            font-size: 0.98rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .contact-aside p {
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-aside ul {
-            padding-left: 1rem;
-            margin-bottom: 0.6rem;
-            font-size: 0.82rem;
-        }
-
-        .contact-aside li {
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-aside strong {
-            color: var(--accent);
-        }
-
-        @media (max-width: 840px) {
-            .contact-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-        }
-
-        /* Success banner styles */
+        /* SUCCESS BANNER (unchanged behavior) */
         .alert-success {
             display: none;
             margin-bottom: 0.9rem;
@@ -744,45 +679,108 @@
             flex-shrink: 0;
         }
 
-        .alert-success-body {
-            font-size: 0.8rem;
-            color: #bbf7d0;
-        }
-
         .alert-success-title {
             font-weight: 600;
             margin-bottom: 0.15rem;
+            font-size: 0.8rem;
         }
 
         .alert-success-text {
             color: #a7f3d0;
             font-size: 0.78rem;
         }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid rgba(31, 59, 91, 0.9);
+            background: linear-gradient(to top, #020814, rgba(2, 8, 20, 0.8));
+            margin-top: auto;
+        }
+
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1.2rem 1.1rem 1.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+
+        .footer-links a {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        @media (max-width: 860px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .hero-card {
+                margin-top: 1.5rem;
+            }
+
+            .card-grid,
+            .process-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .pricing-row,
+            .contact-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav {
+                padding-inline: 0.9rem;
+            }
+
+            .strip-inner {
+                padding-inline: 0.9rem;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="page">
+
+        <!-- HEADER -->
         <header>
             <div class="nav">
                 <div class="nav-left">
                     <div class="logo-mark">
-                        <!-- Update this path to wherever you place the KC-style shield logo -->
-                        <img src="img/gcloud-shield-kc.png" alt="G Cloud Solutions logo">
+                        <!-- Put your KC shield icon here -->
+                        <img src="img/gcloud_icon_logo.png" alt="G Cloud Solutions logo">
                     </div>
                     <div>
                         <div class="logo-text-main">G CLOUD SOLUTIONS</div>
                         <div class="logo-text-sub">Network &amp; Cybersecurity</div>
                     </div>
                 </div>
+
                 <nav class="nav-links">
+                    <a href="#home">Home</a>
                     <a href="#services">Services</a>
-                    <a href="#smb-it">Small Business IT</a>
-                    <a href="#security">Cybersecurity</a>
+                    <a href="#security">Security</a>
                     <a href="#pricing">Pricing</a>
-                    <a href="#about">About</a>
                     <a href="#contact">Contact</a>
                 </nav>
+
                 <div class="nav-cta">
                     <span class="badge">
                         <span class="badge-dot"></span>
@@ -794,337 +792,302 @@
         </header>
 
         <main>
-            <!-- HERO -->
-            <section class="hero" id="home">
-                <div>
-                    <div class="hero-eyebrow">Small business IT • Secure networks</div>
-                    <h1>Professional <span>network &amp; security</span> for small business.</h1>
-                    <p class="hero-sub">
-                        G Cloud Solutions designs and secures business-grade networks for offices,
-                        shops, and clinics — so your Wi-Fi, POS, and critical systems stay fast,
-                        stable, and protected from everyday threats.
-                    </p>
-                    <div>
-                        <a href="#contact" class="btn btn-primary">Book a network review</a>
-                        <a href="#services" class="btn btn-ghost">View services</a>
-                    </div>
-                    <div class="hero-meta">
-                        <span>• VLAN design &amp; segmentation</span>
-                        <span>• Firewall hardening</span>
-                        <span>• Remote support available</span>
-                    </div>
-                </div>
 
-                <div class="hero-right">
-                    <div class="hero-card">
-                        <div class="card-header">
-                            <div class="card-title">Example small business layout</div>
-                            <div class="status-pill">Segmented • Monitored</div>
+            <!-- STRIP 1: HERO -->
+            <section id="home" class="strip strip-hero">
+                <div class="strip-inner hero-grid">
+                    <div class="hero">
+                        <div class="hero-eyebrow">Small business IT • Secure networks</div>
+                        <h1>Professional <span>network &amp; security</span> for small business.</h1>
+                        <p class="hero-sub">
+                            G Cloud Solutions designs and secures business-grade networks for offices,
+                            shops, and clinics — so your Wi-Fi, POS, and critical systems stay fast,
+                            stable, and protected.
+                        </p>
+                        <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+                            <a href="#contact" class="btn btn-primary">Book a network review</a>
+                            <a href="#services" class="btn btn-ghost">View services</a>
                         </div>
-                        <div class="network-grid">
-                            <div class="node node-accent">
-                                <div class="node-label">POS / Terminals</div>
-                                <div class="node-value">Isolated VLAN</div>
-                                <div class="node-badge">Guest traffic blocked</div>
-                            </div>
-                            <div class="node">
-                                <div class="node-label">Office devices</div>
-                                <div class="node-value">Trusted LAN</div>
-                                <div class="node-badge">Policy-based access</div>
-                            </div>
-                            <div class="node">
-                                <div class="node-label">Guest Wi-Fi</div>
-                                <div class="node-value">Internet only</div>
-                                <div class="node-badge">No LAN access</div>
-                            </div>
-                            <div class="node">
-                                <div class="node-label">IoT &amp; cameras</div>
-                                <div class="node-value">Restricted</div>
-                                <div class="node-badge">Limited outbound</div>
-                            </div>
-                            <div class="node">
-                                <div class="node-label">Management</div>
-                                <div class="node-value">Admin only</div>
-                                <div class="node-badge">Secured access</div>
-                            </div>
-                            <div class="node">
-                                <div class="node-label">DNS filtering</div>
-                                <div class="node-value">Enabled</div>
-                                <div class="node-badge">Threats reduced</div>
-                            </div>
+                        <div class="hero-meta">
+                            <span>• VLAN design &amp; segmentation</span>
+                            <span>• Firewall hardening</span>
+                            <span>• Remote support available</span>
                         </div>
-                        <div class="hero-footnote">
-                            <span>Clean, segmented networks stop one risky device from impacting your entire
-                                business.</span>
-                            <span>Designed • Documented • Supported</span>
+                    </div>
+
+                    <div>
+                        <div class="hero-card">
+                            <div class="card-header">
+                                <div class="card-title">Example small business layout</div>
+                                <div class="status-pill">Segmented • Monitored</div>
+                            </div>
+                            <div class="network-grid">
+                                <div class="node node-accent">
+                                    <div class="node-label">POS / Terminals</div>
+                                    <div class="node-value">Isolated VLAN</div>
+                                    <div class="node-badge">Guest traffic blocked</div>
+                                </div>
+                                <div class="node">
+                                    <div class="node-label">Office devices</div>
+                                    <div class="node-value">Trusted LAN</div>
+                                    <div class="node-badge">Policy-based access</div>
+                                </div>
+                                <div class="node">
+                                    <div class="node-label">Guest Wi-Fi</div>
+                                    <div class="node-value">Internet only</div>
+                                    <div class="node-badge">No LAN access</div>
+                                </div>
+                                <div class="node">
+                                    <div class="node-label">IoT &amp; cameras</div>
+                                    <div class="node-value">Restricted</div>
+                                    <div class="node-badge">Limited outbound</div>
+                                </div>
+                                <div class="node">
+                                    <div class="node-label">Management</div>
+                                    <div class="node-value">Admin only</div>
+                                    <div class="node-badge">Secured access</div>
+                                </div>
+                                <div class="node">
+                                    <div class="node-label">DNS filtering</div>
+                                    <div class="node-value">Enabled</div>
+                                    <div class="node-badge">Threats reduced</div>
+                                </div>
+                            </div>
+                            <div class="hero-footnote">
+                                <span>Clean, segmented networks stop one risky device from impacting your entire
+                                    business.</span>
+                                <span>Designed • Documented • Supported</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SERVICES -->
-            <section class="section" id="services">
-                <div class="section-header">
-                    <div>
-                        <div class="section-kicker">Services</div>
-                        <h2 class="section-title">Small business networking, done right.</h2>
-                        <p class="section-description">
-                            From slow Wi-Fi and unstable POS systems to confusing “mystery” configurations, we rebuild
-                            your environment with a clear, security-first design.
-                        </p>
+            <!-- STRIP 2: SERVICES -->
+            <section id="services" class="strip strip-services">
+                <div class="strip-inner">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-kicker">Services</div>
+                            <h2 class="section-title">Small business networking, done right.</h2>
+                            <p class="section-description">
+                                From slow Wi-Fi and unstable POS systems to confusing “mystery” gear, we rebuild
+                                your environment with a clear, security-first design.
+                            </p>
+                        </div>
                     </div>
-                    <div id="contact-success" class="alert-success">
-                        <div class="alert-success-inner">
-                            <div class="alert-success-icon">✓</div>
-                            <div class="alert-success-body">
-                                <div class="alert-success-title">Thanks! Your consulting request was received.</div>
-                                <div class="alert-success-text">
-                                    We’ll review your details and reach out soon with next steps and available times.
+
+                    <div class="card-grid">
+                        <article class="card">
+                            <h3>Network design &amp; cleanup</h3>
+                            <p>We organize and rebuild your network so everything is stable, documented, and easy to
+                                support.</p>
+                            <ul>
+                                <li>Router, switch, and Wi-Fi layout</li>
+                                <li>Structured VLAN design</li>
+                                <li>Clear IP, DHCP, and DNS plan</li>
+                            </ul>
+                        </article>
+
+                        <article class="card">
+                            <h3>Firewall &amp; security hardening</h3>
+                            <p>Practical protections that fit your tools, your staff, and your budget.</p>
+                            <ul>
+                                <li>Firewall policy review &amp; cleanup</li>
+                                <li>Segmentation for POS, office, guest, IoT</li>
+                                <li>Secure DNS &amp; safer remote access</li>
+                            </ul>
+                        </article>
+
+                        <article class="card">
+                            <h3>Wi-Fi &amp; performance tuning</h3>
+                            <p>Eliminate dead zones, dropouts, and random slowdowns across your business.</p>
+                            <ul>
+                                <li>Access point placement &amp; channels</li>
+                                <li>SSID and security configuration</li>
+                                <li>Bandwidth &amp; QoS adjustments</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STRIP 3: SECURITY (TEAL BAND) -->
+            <section id="security" class="strip strip-security">
+                <div class="strip-inner">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-kicker">Cybersecurity</div>
+                            <h2 class="section-title">Practical security for real-world networks.</h2>
+                            <p class="section-description muted">
+                                No scare tactics, no overkill tools — just solid protections that keep POS systems,
+                                staff devices,
+                                and guest traffic safely separated.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card-grid">
+                        <article class="card">
+                            <h3>Segmentation &amp; access control</h3>
+                            <p class="muted">Limit the blast radius when something goes wrong.</p>
+                            <ul>
+                                <li>Dedicated POS &amp; office networks</li>
+                                <li>Guest Wi-Fi with internet-only access</li>
+                                <li>Separate IoT, cameras, and “risky” devices</li>
+                            </ul>
+                        </article>
+                        <article class="card">
+                            <h3>DNS &amp; threat reduction</h3>
+                            <p class="muted">Reduce risky domains and known-bad destinations at the network edge.</p>
+                            <ul>
+                                <li>Secure DNS resolvers</li>
+                                <li>Content &amp; threat filtering options</li>
+                                <li>Safer browsing for staff and shared PCs</li>
+                            </ul>
+                        </article>
+                        <article class="card">
+                            <h3>Visibility &amp; logging (optional)</h3>
+                            <p class="muted">For businesses that want more insight into their network behavior.</p>
+                            <ul>
+                                <li>Basic logging strategies</li>
+                                <li>High-level alerting for key systems</li>
+                                <li>Guidance on future monitoring tools</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STRIP 4: PRICING -->
+            <section id="pricing" class="strip strip-pricing">
+                <div class="strip-inner">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-kicker">Pricing</div>
+                            <h2 class="section-title">Straightforward, project-based pricing.</h2>
+                            <p class="section-description">
+                                Clear pricing for typical small-business environments. Multi-site or complex setups can
+                                be scoped with a
+                                short conversation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pricing-row">
+                        <div class="pricing-list">
+                            <div class="price-item">
+                                <div class="price-header">
+                                    <div class="price-name">Network checkup</div>
+                                    <div class="price-tag">$75</div>
+                                </div>
+                                <div class="price-sub">
+                                    Full review of your current setup with documented findings, risks, and quick-win
+                                    recommendations.
+                                </div>
+                            </div>
+
+                            <div class="price-item">
+                                <div class="price-header">
+                                    <div class="price-name">Business network cleanup</div>
+                                    <div class="price-tag">$150</div>
+                                </div>
+                                <div class="price-sub">
+                                    Fixes structure, Wi-Fi issues, and common security gaps in an existing network
+                                    without a full redesign.
+                                </div>
+                            </div>
+
+                            <div class="price-item">
+                                <div class="price-header">
+                                    <div class="price-name">Full network redesign</div>
+                                    <div class="price-tag">$250</div>
+                                </div>
+                                <div class="price-sub">
+                                    VLANs, firewall policies, Wi-Fi design, and documentation for a typical small office
+                                    or shop.
+                                </div>
+                            </div>
+
+                            <div class="price-item">
+                                <div class="price-header">
+                                    <div class="price-name">Cybersecurity hardening</div>
+                                    <div class="price-tag">$300+</div>
+                                </div>
+                                <div class="price-sub">
+                                    Threat reduction, segmentation, DNS filtering, and safer remote access, scoped to
+                                    your risk level and
+                                    tools.
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="cta-panel">
+                            <h3>Not sure where to start?</h3>
+                            <p>
+                                Most clients begin with a network checkup. From there, we decide together whether you
+                                need a cleanup, a
+                                full redesign, or just a few targeted changes.
+                            </p>
+                            <a href="#contact" class="btn btn-primary">Schedule a checkup</a>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STRIP 5: CONTACT (RED BAND) -->
+            <section id="contact" class="strip strip-contact">
+                <div class="strip-inner">
+                    <div class="section-header">
+                        <div>
+                            <div class="section-kicker">Contact</div>
+                            <h2 class="section-title">Ready to talk about your network?</h2>
+                            <p class="section-description muted">
+                                Share a quick snapshot of your environment and what you’d like to improve. We’ll follow
+                                up with questions
+                                and available times.
+                            </p>
+                        </div>
+
+                        <!-- success banner stays here -->
+                        <div id="contact-success" class="alert-success">
+                            <div class="alert-success-inner">
+                                <div class="alert-success-icon">✓</div>
+                                <div>
+                                    <div class="alert-success-title">Thanks! Your consulting request was received.</div>
+                                    <div class="alert-success-text">
+                                        We’ll review your details and reach out soon with next steps and available
+                                        times.
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="pill-row">
-                            <div class="pill"><span>Retail</span> • shops &amp; cafes</div>
-                            <div class="pill"><span>Offices</span> • clinics &amp; services</div>
-                            <div class="pill"><span>Hybrid</span> • remote &amp; on-site</div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="card-grid">
-                    <article class="card">
-                        <h3>Network design &amp; cleanup</h3>
-                        <p>We organize and rebuild your network so everything is stable, documented, and easy to
-                            support.</p>
-                        <ul>
-                            <li>Router, switch, and Wi-Fi layout</li>
-                            <li>Structured VLAN design</li>
-                            <li>Clear IP, DHCP, and DNS plan</li>
-                        </ul>
-                    </article>
-
-                    <article class="card">
-                        <h3>Firewall &amp; security hardening</h3>
-                        <p>Practical cybersecurity protections that fit your tools, your staff, and your budget.</p>
-                        <ul>
-                            <li>Firewall policy review &amp; cleanup</li>
-                            <li>Segmentation for POS, office, guest, IoT</li>
-                            <li>Secure DNS &amp; safer remote access</li>
-                        </ul>
-                    </article>
-
-                    <article class="card">
-                        <h3>Wi-Fi &amp; performance tuning</h3>
-                        <p>Eliminate dead zones, dropouts, and random slowdowns across your business.</p>
-                        <ul>
-                            <li>Access point placement &amp; channels</li>
-                            <li>SSID and security configuration</li>
-                            <li>Bandwidth &amp; QoS adjustments</li>
-                        </ul>
-                    </article>
-                </div>
-            </section>
-
-            <!-- PROCESS -->
-            <section class="section" id="smb-it">
-                <div class="section-header">
-                    <div>
-                        <div class="section-kicker">Process</div>
-                        <h2 class="section-title">A clear, three-step engagement.</h2>
-                        <p class="section-description">
-                            We keep the process straightforward: understand your environment,
-                            redesign with security in mind, and support you as your business grows.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="process-grid">
-                    <div class="step">
-                        <div class="step-index">Step 1</div>
-                        <h3>Network assessment</h3>
-                        <p>
-                            We review your existing setup, map devices, identify risks, and
-                            document how things are configured today — including ISP gear.
-                        </p>
-                    </div>
-                    <div class="step">
-                        <div class="step-index">Step 2</div>
-                        <h3>Secure redesign</h3>
-                        <p>
-                            We propose a clear network layout with VLANs, firewall rules, and
-                            Wi-Fi configuration tailored to the way your business actually runs.
-                        </p>
-                    </div>
-                    <div class="step">
-                        <div class="step-index">Step 3</div>
-                        <h3>Implementation &amp; handoff</h3>
-                        <p>
-                            We implement changes, verify performance, and leave you with
-                            clean documentation and optional ongoing support if you want it.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CYBERSECURITY -->
-            <section class="section" id="security">
-                <div class="section-header">
-                    <div>
-                        <div class="section-kicker">Cybersecurity</div>
-                        <h2 class="section-title">Practical security for real-world networks.</h2>
-                        <p class="section-description">
-                            No scare tactics, no overkill tools — just solid protections that
-                            keep POS systems, staff devices, and guest traffic safely separated.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card-grid">
-                    <article class="card">
-                        <h3>Segmentation &amp; access control</h3>
-                        <p>Limit the blast radius when something goes wrong.</p>
-                        <ul>
-                            <li>Dedicated POS &amp; office networks</li>
-                            <li>Guest Wi-Fi with internet-only access</li>
-                            <li>Separate IoT, cameras, and “risky” devices</li>
-                        </ul>
-                    </article>
-                    <article class="card">
-                        <h3>DNS &amp; threat reduction</h3>
-                        <p>Reduce risky domains and known-bad destinations at the network edge.</p>
-                        <ul>
-                            <li>Secure DNS resolvers</li>
-                            <li>Content &amp; threat filtering options</li>
-                            <li>Safer browsing for staff and shared PCs</li>
-                        </ul>
-                    </article>
-                    <article class="card">
-                        <h3>Visibility &amp; logging (optional)</h3>
-                        <p>For businesses that want more insight into their network behavior.</p>
-                        <ul>
-                            <li>Basic logging strategies</li>
-                            <li>High-level alerting for key systems</li>
-                            <li>Guidance on future monitoring tools</li>
-                        </ul>
-                    </article>
-                </div>
-            </section>
-
-            <!-- PRICING -->
-            <section class="section" id="pricing">
-                <div class="section-header">
-                    <div>
-                        <div class="section-kicker">Pricing</div>
-                        <h2 class="section-title">Straightforward, project-based pricing.</h2>
-                        <p class="section-description">
-                            Clear pricing for typical small-business environments. Multi-site or
-                            complex setups can be scoped with a short conversation.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="pricing-row">
-                    <div class="pricing-list">
-                        <div class="price-item">
-                            <div class="price-header">
-                                <div class="price-name">Network checkup</div>
-                                <div class="price-tag">$75</div>
-                            </div>
-                            <div class="price-sub">
-                                Full review of your current setup with documented findings, risks, and quick-win
-                                recommendations.
-                            </div>
+                    <div class="contact-grid">
+                        <div class="contact-text">
+                            <p>
+                                Every project starts with listening: what your business does, what systems you rely on,
+                                and what’s causing
+                                headaches today.
+                            </p>
+                            <p>
+                                Typical environments include:
+                            </p>
+                            <ul>
+                                <li>One or more UniFi / ISP routers and switches</li>
+                                <li>POS systems, office PCs, and shared printers</li>
+                                <li>Guest Wi-Fi and employee Wi-Fi</li>
+                                <li>Cameras, smart TVs, and other IoT</li>
+                            </ul>
+                            <p class="muted">
+                                If you’re not sure how everything is wired today — that’s normal. Share what you can and
+                                we’ll map the
+                                rest together.
+                            </p>
                         </div>
 
-                        <div class="price-item">
-                            <div class="price-header">
-                                <div class="price-name">Business network cleanup</div>
-                                <div class="price-tag">$150</div>
-                            </div>
-                            <div class="price-sub">
-                                Fixes structure, Wi-Fi issues, and common security gaps in an existing network without a
-                                full redesign.
-                            </div>
-                        </div>
-
-                        <div class="price-item">
-                            <div class="price-header">
-                                <div class="price-name">Full network redesign</div>
-                                <div class="price-tag">$250</div>
-                            </div>
-                            <div class="price-sub">
-                                VLANs, firewall policies, Wi-Fi design, and documentation for a typical small office or
-                                shop.
-                            </div>
-                        </div>
-
-                        <div class="price-item">
-                            <div class="price-header">
-                                <div class="price-name">Cybersecurity hardening</div>
-                                <div class="price-tag">$300+</div>
-                            </div>
-                            <div class="price-sub">
-                                Threat reduction, segmentation, DNS filtering, and safer remote access, scoped to your
-                                risk level and tools.
-                            </div>
-                        </div>
-
-                        <div class="price-item">
-                            <div class="price-header">
-                                <div class="price-name">Managed support</div>
-                                <div class="price-tag">$49–99/mo</div>
-                            </div>
-                            <div class="price-sub">
-                                Ongoing checkups, policy adjustments, and priority support for existing G Cloud
-                                Solutions clients.
-                            </div>
-                        </div>
-                    </div>
-
-                    <aside class="cta-panel">
-                        <h3>Not sure where to start?</h3>
-                        <p>
-                            Most clients begin with a network checkup. From there, we decide
-                            together whether you need a cleanup, a full redesign, or just a
-                            few targeted changes.
-                        </p>
-                        <a href="#contact" class="btn btn-primary">Schedule a checkup</a>
-                    </aside>
-                </div>
-            </section>
-
-            <!-- ABOUT + CONTACT -->
-            <section class="section" id="about">
-                <div class="section-header">
-                    <div>
-                        <div class="section-kicker">About</div>
-                        <h2 class="section-title">A partner who understands small business networks.</h2>
-                        <p class="section-description">
-                            G Cloud Solutions focuses on practical, maintainable IT —
-                            the kind that fits real businesses, not just enterprise diagrams.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="pricing-row">
-                    <div>
-                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.8rem;">
-                            Every project starts with listening: what your business does, what
-                            systems you rely on, and what’s causing headaches today. From
-                            there, we design a network that balances security, performance, and
-                            simplicity — and we document it so you’re never stuck with a
-                            “black box” configuration.
-                        </p>
-                        <p style="color: var(--muted); font-size: 0.9rem;">
-                            The goal is simple: fewer outages, fewer surprises, and a clear
-                            understanding of how your network supports your business.
-                        </p>
-                    </div>
-
-                    <!-- CONTACT FORM -->
-                    <div id="contact">
+                        <!-- CONTACT FORM (preserved) -->
                         <form class="contact-form" method="POST" action="/api/contact">
                             <div class="form-field">
                                 <label for="businessName">Business Name</label>
@@ -1176,7 +1139,7 @@
                             </div>
 
                             <div class="form-field">
-                                <label for="onsite">On site presence required?</label>
+                                <label for="onsite">On-site presence required?</label>
                                 <select id="onsite" name="onsite_required">
                                     <option value="no">No</option>
                                     <option value="yes">Yes</option>
@@ -1192,23 +1155,27 @@
 
                             <button type="submit" class="btn btn-primary">Submit consulting request</button>
                             <div class="form-help">
-                                Your details will be securely submitted to G Cloud Solutions. We’ll reply with
-                                follow-up questions or available time slots.
+                                Your details will be securely submitted to G Cloud Solutions. We’ll reply with follow-up
+                                questions or
+                                available time slots.
                             </div>
                         </form>
-
                     </div>
+                </div>
             </section>
+
         </main>
 
+        <!-- FOOTER -->
         <footer>
             <div class="footer-inner">
-                <div class="footer-col">
-                    <div style="font-size: 0.86rem; margin-bottom: 0.25rem;">G Cloud Solutions — Network &amp;
-                        Cybersecurity</div>
+                <div>
+                    <div style="font-size:0.86rem; margin-bottom:0.25rem;">
+                        G Cloud Solutions — Network &amp; Cybersecurity
+                    </div>
                     <div>Secure, modern networking for small business.</div>
                 </div>
-                <div class="footer-col">
+                <div>
                     <div class="footer-links">
                         <a href="#home">Home</a>
                         <a href="#services">Services</a>
@@ -1216,35 +1183,32 @@
                         <a href="#contact">Contact</a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <div>© <span id="year"></span> G Cloud Solutions. All rights reserved.</div>
+                <div>
+                    © <span id="year"></span> G Cloud Solutions. All rights reserved.
                 </div>
             </div>
         </footer>
+
     </div>
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
     </script>
+
+    <!-- contact-success banner behavior -->
     <script>
         (function () {
             function showContactSuccess() {
                 const banner = document.getElementById("contact-success");
                 if (!banner) return;
-
                 banner.style.display = "block";
-                // force layout so transition applies
                 void banner.offsetWidth;
                 banner.classList.add("show");
-
-                // Smooth scroll to center around the banner
                 try {
                     banner.scrollIntoView({ behavior: "smooth", block: "center" });
                 } catch (e) {
                     banner.scrollIntoView();
                 }
-
-                // Auto-hide after 10 seconds
                 setTimeout(() => {
                     banner.classList.remove("show");
                     setTimeout(() => {
@@ -1262,6 +1226,7 @@
             }
         })();
     </script>
+
 </body>
 
 </html>
