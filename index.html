@@ -113,22 +113,68 @@
             <div class="container contact-container">
                 <h2>Contact Us</h2>
                 <p>Ready to secure your network? Fill out the form below and we’ll get back to you within 24 hours.</p>
-                <form class="contact-form" action="mailto:info@gcloudsolutions.org" method="post" enctype="text/plain">
+                <form class="contact-form" action="/functions/api/contact" method="POST">
+                    <input type="text" name="extra_field" style="display:none" tabindex="-1" autocomplete="off" />
+
                     <label>
-                        <span>Name / Business</span>
-                        <input type="text" name="name" placeholder="Your name or business" required>
+                        <span>Business Name</span>
+                        <input type="text" name="business_name" placeholder="e.g. Acme Inc." required />
                     </label>
+
                     <label>
                         <span>Email</span>
-                        <input type="email" name="email" placeholder="you@example.com" required>
+                        <input type="email" name="email" placeholder="you@example.com" required />
                     </label>
+
                     <label>
-                        <span>How can we help you?</span>
-                        <textarea name="message" placeholder="Tell us about your network needs…" rows="5"
-                            required></textarea>
+                        <span>Phone</span>
+                        <input type="tel" name="phone" placeholder="(Optional)" />
                     </label>
+
+                    <label>
+                        <span>Website</span>
+                        <input type="url" name="website" placeholder="https://example.com" />
+                    </label>
+
+                    <label>
+                        <span>Subject</span>
+                        <input type="text" name="subject" placeholder="e.g. Network Setup Help" />
+                    </label>
+
+                    <label>
+                        <span>Describe your needs</span>
+                        <textarea name="description" placeholder="Tell us what’s going wrong or what you need..."
+                            rows="5" required></textarea>
+                    </label>
+
+                    <label>
+                        <span>Best time to contact you</span>
+                        <input type="text" name="best_time" placeholder="e.g. Mornings or 3–5pm weekdays" />
+                    </label>
+
+                    <label>
+                        <span>Preferred contact method</span>
+                        <select name="best_method">
+                            <option value="">Choose one</option>
+                            <option value="Email">Email</option>
+                            <option value="Phone">Phone</option>
+                            <option value="Text">Text</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <span>Do you need onsite support?</span>
+                        <select name="onsite_required">
+                            <option value="">Not sure</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Maybe">Maybe</option>
+                        </select>
+                    </label>
+
                     <button type="submit" class="btn-primary">Send Request</button>
                 </form>
+
             </div>
         </section>
     </main>
