@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>G Cloud Solutions — Small Business Network & Cybersecurity</title>
+    <title>G Cloud Solutions — Practical Small Business Cybersecurity & Networking</title>
+    <meta name="description"
+        content="G Cloud Solutions: Affordable, reliable networking and cybersecurity services for small businesses — firewall setup, secure Wi‑Fi, VLAN, network hardening, and ongoing support." />
+    <meta name="author" content="G Cloud Solutions" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -13,94 +19,143 @@
     <header class="header">
         <div class="container nav-container">
             <div class="logo">G Cloud Solutions</div>
-            <nav class="nav">
+            <nav class="nav" aria-label="Main Navigation">
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#process">Our Process</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="mobile-menu" id="mobileMenu">&#9776;</div>
+                <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation menu">☰</button>
             </nav>
         </div>
     </header>
 
-    <section id="hero" class="hero">
-        <div class="container hero-content">
-            <h1>Practical Cybersecurity & Networking for Small Businesses</h1>
-            <p>Secure your Wi‑Fi, firewall, POS, IoT — without complexity. Keep work running, avoid surprises.</p>
-            <a href="#services" class="btn-primary">See Our Services</a>
-        </div>
-    </section>
+    <main>
 
-    <section id="services" class="section">
-        <div class="container">
-            <h2>What We Do</h2>
-            <div class="cards">
-                <div class="card">
-                    <h3>Network Hardening & VLAN Design</h3>
-                    <p>Segment POS, guest Wi‑Fi, office, IoT — reduce risks without disrupting business flow.</p>
-                </div>
-                <div class="card">
-                    <h3>Firewall & DNS Security</h3>
-                    <p>Block unwanted traffic, filter DNS, enforce safe‑default policies — fewer “how‑did‑that‑happen”
-                        moments.</p>
-                </div>
-                <div class="card">
-                    <h3>Wi‑Fi Optimization & Reliability</h3>
-                    <p>Improve signal, stability and guest‑LAN isolation — keep your network responsive and safe.</p>
+        <section id="hero" class="hero">
+            <div class="container hero-content">
+                <h1>Secure. Reliable. Simple.</h1>
+                <p>Practical networking and cybersecurity solutions for small businesses — from Wi‑Fi to firewalls, we
+                    make digital safety painless.</p>
+                <a href="#services" class="btn-primary">Explore Our Services</a>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <div class="container">
+                <h2>Our Core Services</h2>
+                <div class="cards">
+
+                    <div class="card">
+                        <img src="https://source.unsplash.com/800x600/?network-cables"
+                            alt="Network cables and switch illustrating network wiring" loading="lazy">
+                        <h3>Network Hardening & VLAN Design</h3>
+                        <p>We analyze your existing setup, redesign your local network with VLANs — isolating POS, guest
+                            Wi‑Fi, office & IoT — minimizing risk while keeping operations smooth.</p>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://source.unsplash.com/800x600/?firewall,cybersecurity"
+                            alt="Firewall security graphic" loading="lazy">
+                        <h3>Firewall & DNS Security</h3>
+                        <p>We configure firewalls, set secure DNS rules, block malicious traffic, and enforce
+                            safe‑default policies — so you don’t get hit by surprises.</p>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://source.unsplash.com/800x600/?wifi-router"
+                            alt="Business WiFi router in small office" loading="lazy">
+                        <h3>Wi‑Fi Optimization & Reliability</h3>
+                        <p>We improve wireless signal coverage, manage guest isolation, and ensure stable,
+                            lightning‑fast WiFi for staff and customers alike.</p>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="pricing" class="section alt-bg">
-        <div class="container">
-            <h2>Simple, Transparent Pricing</h2>
-            <div class="pricing-table">
-                <div class="pricing-card">
-                    <h3>Quick Network Review</h3>
-                    <p class="price">$75</p>
-                    <p>One call with screenshots/photos to identify easy wins & security issues.</p>
-                </div>
-                <div class="pricing-card">
-                    <h3>Clean‑Up & Reshape</h3>
-                    <p class="price">$150</p>
-                    <p>Fix network layout, Wi‑Fi and basic security using your existing gear.</p>
-                </div>
-                <div class="pricing-card">
-                    <h3>Full Redesign</h3>
-                    <p class="price">$250+</p>
-                    <p>Full VLAN design, firewall policies, Wi‑Fi plan + a clean diagram to keep.</p>
+        <section id="process" class="section alt-bg">
+            <div class="container">
+                <h2>How It Works</h2>
+
+                <div class="timeline">
+
+                    <div class="timeline-step">
+                        <div class="icon">📞</div>
+                        <div class="step-content">
+                            <h4>1. Free Consultation</h4>
+                            <p>Share a few details about your network via email. We reply within 24 hours with immediate
+                                suggestions or scheduling for in‑person review.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="icon">🛠️</div>
+                        <div class="step-content">
+                            <h4>2. Assessment & Quote</h4>
+                            <p>We analyze your current setup, recommendation improvements, and provide a flat‑rate quote
+                                — no confusing hourly billing.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="icon">🔒</div>
+                        <div class="step-content">
+                            <h4>3. Secure Implementation</h4>
+                            <p>We implement VLANs, firewall rules, Wi‑Fi segmentation, and test thoroughly — you get a
+                                clean network diagram at the end.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="icon">✅</div>
+                        <div class="step-content">
+                            <h4>4. Ongoing Support</h4>
+                            <p>Need tweaks, expansion, or troubleshooting later? We’re just a call or email away — no
+                                long‑term contracts unless you want them.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <p class="pricing-note">If your setup is multi‑site or unusual, we’ll scope it first — you don’t pay twice.
-            </p>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>Tell us what’s breaking — a few sentences about your setup is enough. We'll get back with options and
-                times.</p>
-            <form class="contact-form">
-                <input type="text" name="name" placeholder="Business Name / Your Name" required />
-                <input type="tel" name="phone" placeholder="Phone (optional)" />
-                <input type="email" name="email" placeholder="Email" required />
-                <textarea name="message" placeholder="Tell us what you need..." rows="5" required></textarea>
-                <button type="submit" class="btn-primary">Send Request</button>
-            </form>
-        </div>
-    </section>
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>Ready to make your business network secure and stress‑free? Drop us a line — we’ll reply within
+                    24 hours.</p>
+                <form class="contact-form" action="mailto:info@gcloudsolutions.org" method="post" enctype="text/plain">
+                    <label>
+                        <span>Your Name / Business Name</span>
+                        <input type="text" name="name" placeholder="Your Name or Business" required>
+                    </label>
+                    <label>
+                        <span>Your Email</span>
+                        <input type="email" name="email" placeholder="you@example.com" required>
+                    </label>
+                    <label>
+                        <span>Describe your needs</span>
+                        <textarea name="message" placeholder="E.g. Guest WiFi, firewall setup, POS VLAN..." rows="5"
+                            required></textarea>
+                    </label>
+                    <button type="submit" class="btn-primary">Send Request</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
 
     <footer class="footer">
         <div class="container">
-            <p>© 2025 G Cloud Solutions. All rights reserved.</p>
+            <p>© 2025 G Cloud Solutions. All rights reserved. <br> <small>Serving small businesses across the
+                    U.S.</small></p>
         </div>
     </footer>
 
     <script src="script.js"></script>
+
 </body>
 
 </html>
