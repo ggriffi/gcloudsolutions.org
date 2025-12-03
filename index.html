@@ -4,12 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>G Cloud Solutions — Simple, Secure Networking & Cybersecurity</title>
-    <meta name="description"
-        content="G Cloud Solutions offers cost‑effective network hardening, firewall/DNS security, and Wi‑Fi optimization for small businesses." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>G Cloud Solutions — Secure, Reliable Networking</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -17,171 +12,91 @@
 
     <header class="header">
         <div class="container nav-container">
-            <div class="logo">G&nbsp;Cloud&nbsp;Solutions</div>
-            <nav class="nav" aria-label="Main Navigation">
+            <div class="logo">G Cloud Solutions</div>
+            <nav>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#hero">Home</a></li>
-                    <li><a href="#benefits">Why Us</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
+                <div class="mobile-menu" id="mobileMenu">☰</div>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- Hero Split -->
         <section id="hero" class="hero-split">
             <div class="container hero-split-content">
                 <div class="hero-text">
                     <h1>Secure. Reliable. Effortless.</h1>
-                    <p>We provide practical networking and cybersecurity solutions for small businesses — from Wi‑Fi to
-                        firewalls and VLANs, without the tech‑overwhelm.</p>
-                    <a href="#contact" class="btn-primary">Get a Free Consult</a>
+                    <p>We build secure business networks with clean wiring, strong firewalls, and reliable Wi‑Fi.</p>
+                    <a href="#contact" class="btn-primary">Get Started</a>
                 </div>
                 <div class="hero-image">
-                    <img src="https://source.unsplash.com/900x700/?cybersecurity,network"
-                        alt="Business network security illustration" loading="lazy">
+                    <img src="assets/images/hero.jpg" alt="Cybersecurity network setup" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Benefits / Why Us -->
-        <section id="benefits" class="section alt-bg">
-            <div class="container">
-                <h2>Why Choose G Cloud Solutions</h2>
-                <div class="benefits-grid">
-                    <div class="benefit">
-                        <div class="icon">🔒</div>
-                        <h4>Security First</h4>
-                        <p>Firewall, DNS filtering, VLANs — we fortify your network from threats and misconfigurations.
-                        </p>
-                    </div>
-                    <div class="benefit">
-                        <div class="icon">⚙️</div>
-                        <h4>Custom Setup</h4>
-                        <p>Every business is unique — we tailor wiring, Wi‑Fi architecture, and policies for your needs.
-                        </p>
-                    </div>
-                    <div class="benefit">
-                        <div class="icon">📶</div>
-                        <h4>Stable Connectivity</h4>
-                        <p>Optimized Wi‑Fi and network layout ensures reliable access for staff, POS, and customer
-                            devices.</p>
-                    </div>
-                    <div class="benefit">
-                        <div class="icon">🛠️</div>
-                        <h4>Flat‑Rate Pricing</h4>
-                        <p>Clear, upfront pricing — no surprise bills. You know what you pay, and what you get.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services -->
         <section id="services" class="section">
             <div class="container">
                 <h2>Our Services</h2>
                 <div class="cards">
                     <div class="card">
-                        <h3>Network Hardening & VLAN Design</h3>
-                        <p>Segment POS, guest Wi‑Fi, office devices and IoT — reducing attack surfaces while keeping
-                            operations running smoothly.</p>
+                        <img src="assets/images/service-network.jpg" alt="Office network switch" loading="lazy">
+                        <h3>Network Hardening</h3>
+                        <p>Segment traffic, isolate devices, and clean up your VLAN layout.</p>
                     </div>
                     <div class="card">
-                        <h3>Firewall & DNS Configuration</h3>
-                        <p>Block malicious traffic, filter unsafe domains, and enforce secure‑by‑default rules to keep
-                            your business safe.</p>
+                        <img src="assets/images/service-firewall.jpg" alt="Firewall control panel" loading="lazy">
+                        <h3>Firewall & DNS Rules</h3>
+                        <p>We lock down internet access with safe DNS and firewall defaults.</p>
                     </div>
                     <div class="card">
-                        <h3>Wi‑Fi Setup & Optimization</h3>
-                        <p>Reliable, fast, secure Wi‑Fi for staff and guests. Proper isolation and coverage for maximum
-                            uptime.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Network Assessment & Audit</h3>
-                        <p>Review your current setup, identify vulnerabilities or misconfigurations — with
-                            easy‑to‑understand report and actionable fixes.</p>
+                        <img src="assets/images/service-wifi.jpg" alt="Secure WiFi router" loading="lazy">
+                        <h3>Wi‑Fi Optimization</h3>
+                        <p>Separate guest/staff, prevent drops, and boost signal stability.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact -->
         <section id="contact" class="section alt-bg">
             <div class="container contact-container">
                 <h2>Contact Us</h2>
-                <p>Ready to secure your network? Fill out the form below and we’ll get back to you within 24 hours.</p>
                 <form class="contact-form" action="/functions/api/contact" method="POST">
                     <input type="text" name="extra_field" style="display:none" tabindex="-1" autocomplete="off" />
-
-                    <label>
-                        <span>Business Name</span>
-                        <input type="text" name="business_name" placeholder="e.g. Acme Inc." required />
-                    </label>
-
-                    <label>
-                        <span>Email</span>
-                        <input type="email" name="email" placeholder="you@example.com" required />
-                    </label>
-
-                    <label>
-                        <span>Phone</span>
-                        <input type="tel" name="phone" placeholder="(Optional)" />
-                    </label>
-
-                    <label>
-                        <span>Website</span>
-                        <input type="url" name="website" placeholder="https://example.com" />
-                    </label>
-
-                    <label>
-                        <span>Subject</span>
-                        <input type="text" name="subject" placeholder="e.g. Network Setup Help" />
-                    </label>
-
-                    <label>
-                        <span>Describe your needs</span>
-                        <textarea name="description" placeholder="Tell us what’s going wrong or what you need..."
-                            rows="5" required></textarea>
-                    </label>
-
-                    <label>
-                        <span>Best time to contact you</span>
-                        <input type="text" name="best_time" placeholder="e.g. Mornings or 3–5pm weekdays" />
-                    </label>
-
-                    <label>
-                        <span>Preferred contact method</span>
+                    <label><span>Business Name</span><input type="text" name="business_name" required></label>
+                    <label><span>Email</span><input type="email" name="email" required></label>
+                    <label><span>Description</span><textarea name="description" rows="5" required></textarea></label>
+                    <label><span>Phone</span><input type="text" name="phone"></label>
+                    <label><span>Website</span><input type="text" name="website"></label>
+                    <label><span>Best time to contact</span><input type="text" name="best_time"></label>
+                    <label><span>Preferred contact method</span>
                         <select name="best_method">
-                            <option value="">Choose one</option>
-                            <option value="Email">Email</option>
-                            <option value="Phone">Phone</option>
-                            <option value="Text">Text</option>
+                            <option value="">Select one</option>
+                            <option>Email</option>
+                            <option>Phone</option>
+                            <option>Text</option>
                         </select>
                     </label>
-
-                    <label>
-                        <span>Do you need onsite support?</span>
+                    <label><span>Onsite Required?</span>
                         <select name="onsite_required">
                             <option value="">Not sure</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                            <option value="Maybe">Maybe</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Maybe</option>
                         </select>
                     </label>
-
                     <button type="submit" class="btn-primary">Send Request</button>
                 </form>
-
             </div>
         </section>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p>© 2025 G Cloud Solutions. All rights reserved.</p>
+            <p>&copy; 2025 G Cloud Solutions. All rights reserved.</p>
         </div>
     </footer>
 
