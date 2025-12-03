@@ -219,4 +219,64 @@ h2 {
 .contact-form label {
     display: flex;
     flex-direction: column;
-    align
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: #1C2331;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #1C2331;
+    outline: none;
+}
+
+.contact-form button {
+    align-self: flex-start;
+}
+
+/* Footer */
+.footer {
+    background-color: #1C2331;
+    color: #E5E7EB;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        right: 1rem;
+        top: 70px;
+        background: #fff;
+        border: 1px solid #D1D5DB;
+        padding: 1rem;
+        border-radius: 6px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .hero-split-content {
+        flex-direction: column-reverse;
+    }
+}
