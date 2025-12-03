@@ -2,93 +2,81 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>G Cloud Solutions — Secure, Reliable Networking</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>G Cloud Solutions — Secure Networking & Cybersecurity</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
     <header class="header">
         <div class="container nav-container">
-            <div class="logo">G Cloud Solutions</div>
-            <nav>
+            <div class="logo"><img src="/assets/images/logo-shield.svg" alt="G Cloud Solutions Logo" height="50"></div>
+            <nav id="navbar" class="nav">
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#benefits">Why Us</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="mobile-menu" id="mobileMenu">☰</div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="hero-split">
-            <div class="container hero-split-content">
-                <div class="hero-text">
-                    <h1>Secure. Reliable. Effortless.</h1>
-                    <p>We build secure business networks with clean wiring, strong firewalls, and reliable Wi‑Fi.</p>
-                    <a href="#contact" class="btn-primary">Get Started</a>
-                </div>
-                <div class="hero-image">
-                    <img src="/assets/images/hero.jpg" alt="Cybersecurity network setup" loading="lazy">
-                </div>
+        <section id="hero" class="hero">
+            <div class="container hero-content">
+                <h1 class="hero-title">Secure. Reliable. Effortless.</h1>
+                <p class="hero-subtitle">We provide next‑gen networking & cybersecurity for small businesses.</p>
+                <a href="#contact" class="btn btn-primary">Get a Free Consult</a>
             </div>
         </section>
 
         <section id="services" class="section">
             <div class="container">
-                <h2>Our Services</h2>
+                <h2 class="section-title">Our Services</h2>
                 <div class="cards">
-                    <div class="card">
-                        <img src="/assets/images/patch-panel.jpg" alt="Office network switch" loading="lazy">
-                        <h3>Network Hardening</h3>
-                        <p>Segment traffic, isolate devices, and clean up your VLAN layout.</p>
+                    <div class="card">Network Hardening & VLAN Design</div>
+                    <div class="card">Firewall & DNS Security</div>
+                    <div class="card">Wi‑Fi Optimization & Reliability</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits" class="section alt-bg">
+            <div class="container">
+                <h2 class="section-title">Why Choose Us</h2>
+                <div class="benefits-grid">
+                    <div class="benefit">
+                        <div class="icon">🔒</div>
+                        <h4>Security‑First</h4>
+                        <p>We lock it down before you open shop — no compromises.</p>
                     </div>
-                    <div class="card">
-                        <img src="/assets/images/security.jpg" alt="Firewall control panel" loading="lazy">
-                        <h3>Firewall & DNS Rules</h3>
-                        <p>We lock down internet access with safe DNS and firewall defaults.</p>
+                    <div class="benefit">
+                        <div class="icon">⚙️</div>
+                        <h4>Custom Setup</h4>
+                        <p>Tailored networking and Wi‑Fi to match your business needs.</p>
                     </div>
-                    <div class="card">
-                        <img src="/assets/images/service-network.jpg" alt="Secure WiFi router" loading="lazy">
-                        <h3>Wi‑Fi Optimization</h3>
-                        <p>Separate guest/staff, prevent drops, and boost signal stability.</p>
+                    <div class="benefit">
+                        <div class="icon">📶</div>
+                        <h4>Reliable Connectivity</h4>
+                        <p>Stable, fast, and secure access for staff and guests alike.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section alt-bg">
+        <section id="contact" class="section">
             <div class="container contact-container">
-                <h2>Contact Us</h2>
+                <h2 class="section-title">Contact Us</h2>
                 <form class="contact-form" action="/api/contact" method="POST">
-                    <input type="text" name="extra_field" style="display:none" tabindex="-1" autocomplete="off" />
+                    <input type="text" name="extra_field" style="display:none" tabindex="-1" autocomplete="off">
                     <label><span>Business Name</span><input type="text" name="business_name" required></label>
                     <label><span>Email</span><input type="email" name="email" required></label>
                     <label><span>Description</span><textarea name="description" rows="5" required></textarea></label>
-                    <label><span>Phone</span><input type="text" name="phone"></label>
-                    <label><span>Website</span><input type="text" name="website"></label>
-                    <label><span>Best time to contact</span><input type="text" name="best_time"></label>
-                    <label><span>Preferred contact method</span>
-                        <select name="best_method">
-                            <option value="">Select one</option>
-                            <option>Email</option>
-                            <option>Phone</option>
-                            <option>Text</option>
-                        </select>
-                    </label>
-                    <label><span>Onsite Required?</span>
-                        <select name="onsite_required">
-                            <option value="">Not sure</option>
-                            <option>Yes</option>
-                            <option>No</option>
-                            <option>Maybe</option>
-                        </select>
-                    </label>
-                    <button type="submit" class="btn-primary">Send Request</button>
+                    <button type="submit" class="btn btn-primary">Send Request</button>
                 </form>
             </div>
         </section>
@@ -96,7 +84,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 G Cloud Solutions. All rights reserved.</p>
+            <p>© 2025 G Cloud Solutions — All rights reserved.</p>
         </div>
     </footer>
 
