@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gcloudsolutions.org/sitemap.xml
