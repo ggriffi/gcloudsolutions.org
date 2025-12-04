@@ -55,9 +55,15 @@
             <div class="container">
                 <h2 class="section-title">Our Services</h2>
                 <div class="cards">
-                    <div class="card">Network Hardening & VLAN Design</div>
-                    <div class="card">Firewall & DNS Security</div>
-                    <div class="card">Wi‑Fi Optimization & Reliability</div>
+                    <div class="card" data-service="network">
+                        Network Hardening & VLAN Design
+                    </div>
+                    <div class="card" data-service="firewall">
+                        Firewall & DNS Security
+                    </div>
+                    <div class="card" data-service="wifi">
+                        Wi-Fi Optimization & Reliability
+                    </div>
                 </div>
             </div>
         </section>
@@ -156,6 +162,17 @@
             <p>© 2025 G Cloud Solutions — All rights reserved.</p>
         </div>
     </footer>
+
+    <div class="service-modal" id="serviceModal" aria-hidden="true">
+        <div class="service-modal-backdrop" data-modal-close></div>
+        <div class="service-modal-dialog">
+            <button class="service-modal-close" type="button" data-modal-close aria-label="Close">
+                ✕
+            </button>
+            <h3 class="service-modal-title" id="serviceModalTitle"></h3>
+            <p class="service-modal-body" id="serviceModalBody"></p>
+        </div>
+    </div>
 
     <script src="script.js" defer></script>
 </body>
