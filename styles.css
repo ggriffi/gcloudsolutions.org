@@ -85,9 +85,7 @@ a {
 .brand {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    white-space: nowrap;
-    /* prevents "G CLOUD SOL" cutoff */
+    gap: 0.9rem;
 }
 
 .logo img {
@@ -102,24 +100,31 @@ a {
     filter: drop-shadow(0 0 18px rgba(0, 209, 217, 0.6));
 }
 
+.brand-logo {
+    height: 44px;
+    width: auto;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 12px rgba(0, 209, 217, 0.5));
+}
+
 .brand-text {
     display: flex;
     flex-direction: column;
     line-height: 1.1;
-    min-width: max-content;
-    /* forces full expansion */
 }
 
 .brand-title {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: #ffffff;
 }
 
 .brand-tagline {
     font-size: 0.72rem;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     color: #9aa4c6;
 }
 
@@ -128,7 +133,9 @@ a {
 .nav {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: nowrap;
 }
 
 .nav-links {
