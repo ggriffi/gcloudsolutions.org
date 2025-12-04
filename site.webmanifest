@@ -1,0 +1,33 @@
+{
+    "name": "G Cloud Solutions",
+    "short_name": "G Cloud",
+    "description": "Secure Networking, Wi-Fi Optimization, Cybersecurity & Home/Business Infrastructure.",
+    "icons": [
+        {
+            "src": "/assets/images/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/images/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/images/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/images/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "maskable"
+        }
+    ],
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#050814",
+    "background_color": "#050814"
+}
