@@ -546,6 +546,79 @@ a {
     }
 }
 
+/* Clickable cards */
+.card {
+    cursor: pointer;
+}
+
+/* Service modal */
+.service-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+    z-index: 1500;
+}
+
+.service-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.service-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+}
+
+.service-modal-dialog {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    width: 90%;
+    background: #050814;
+    border-radius: 18px;
+    padding: 1.9rem 1.8rem 1.7rem;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.service-modal-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.service-modal-body {
+    font-size: 0.96rem;
+    color: #9aa4c6;
+    line-height: 1.5;
+}
+
+.service-modal-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #9aa4c6;
+    padding: 0.2rem;
+    border-radius: 999px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.service-modal-close:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+
 @media (max-width: 480px) {
     .brand-text {
         display: none;
