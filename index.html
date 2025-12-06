@@ -173,24 +173,14 @@
             <p class="service-modal-body" id="serviceModalBody"></p>
         </div>
     </div>
-
     <!-- Google Calendar Appointment Scheduling begin -->
-    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet" />
     <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 
     <div id="gcloud-appointment-btn"></div>
 
-    <script>
-        window.addEventListener("load", function () {
-            calendar.schedulingButton.load({
-                url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LsjbH9GulIIVJDUZPn6rlDJt8tlHFZEQm7TIbOePXF4YfpdSx28gKT0329VqQ21gA1iXCgb7X?gv=true",
-                color: "#039BE5",
-                label: "Book an Appointment",
-                target: document.getElementById("gcloud-appointment-btn")
-            });
-        });
-    </script>
-    <!-- end Google Calendar Appointment Scheduling -->
+    <!-- Your local init script (no inline JS) -->
+    <script src="/js/calendar-init.js" defer></script>
     <!-- end Google Calendar Appointment Scheduling -->
 
 </body>
