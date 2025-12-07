@@ -632,3 +632,17 @@ a {
         padding: 3.2rem 0 3.6rem;
     }
 }
+
+#header-booking-btn button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 0 0 10px;
+    /* small left gap to match nav spacing */
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+#header-booking-btn button:hover {
+    text
